@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>polariis&#39;s blog</title>
+  
+  <subtitle>where&#39;s my code?</subtitle>
+  <link href="https://polariis.gitee.io/atom.xml" rel="self"/>
+  
+  <link href="https://polariis.gitee.io/"/>
+  <updated>2021-04-08T07:38:35.857Z</updated>
+  <id>https://polariis.gitee.io/</id>
+  
+  <author>
+    <name>polariis</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo+Gitee搭建博客踩坑总结</title>
+    <link href="https://polariis.gitee.io/posts/hexo-gitee.html"/>
+    <id>https://polariis.gitee.io/posts/hexo-gitee.html</id>
+    <published>2021-04-03T22:37:56.000Z</published>
+    <updated>2021-04-08T07:38:35.857Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;搭建过程如下：&quot;&gt;&lt;a href=&quot;#搭建过程如下：&quot; class=&quot;headerlink&quot; title=&quot;搭建过程如下：&quot;&gt;&lt;/a&gt;搭建过程如下：&lt;/h1&gt;&lt;h2 id=&quot;阶段一：-本地搭建&quot;&gt;&lt;a href=&quot;#阶段一：-本地搭建&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="hexo" scheme="https://polariis.gitee.io/categories/hexo/"/>
+    
+    
+    <category term="hexo" scheme="https://polariis.gitee.io/tags/hexo/"/>
+    
+    <category term="gitee" scheme="https://polariis.gitee.io/tags/gitee/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://polariis.gitee.io/posts/3eeb.html"/>
+    <id>https://polariis.gitee.io/posts/3eeb.html</id>
+    <published>2021-04-03T22:31:29.624Z</published>
+    <updated>2021-04-07T19:52:58.267Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>
