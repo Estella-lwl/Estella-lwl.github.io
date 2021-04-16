@@ -6,7 +6,7 @@
   <link href="https://polariis.gitee.io/atom.xml" rel="self"/>
   
   <link href="https://polariis.gitee.io/"/>
-  <updated>2021-04-09T18:43:25.693Z</updated>
+  <updated>2021-04-16T19:01:55.330Z</updated>
   <id>https://polariis.gitee.io/</id>
   
   <author>
@@ -21,14 +21,14 @@
     <link href="https://polariis.gitee.io/posts/hexo-gitee/"/>
     <id>https://polariis.gitee.io/posts/hexo-gitee/</id>
     <published>2021-04-03T22:37:56.000Z</published>
-    <updated>2021-04-09T18:43:25.693Z</updated>
+    <updated>2021-04-16T19:01:55.330Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="1-搭建过程如下："><a href="#1-搭建过程如下：" class="headerlink" title="1.搭建过程如下："></a>1.搭建过程如下：</h2><h3 id="阶段一：-本地搭建"><a href="#阶段一：-本地搭建" class="headerlink" title="阶段一： 本地搭建"></a>阶段一： 本地搭建</h3><p>1.下载安装node.js </p><p>2.下载安装git </p><p>3.使用命令行(win+r,输入cmd)下载淘宝镜像：    </p><pre><code>npm install -g cnpm --registry=https://.npm.taobao.org</code></pre><p>4.使用命令行下载hexo :    （git bash和cmd都可以）</p><pre><code>npm install -g hexo-cli</code></pre><p>5.建立空文件夹 ：</p><pre><code>md blog</code></pre><p>6.进入建好的文件夹：</p><pre><code>cd blog </code></pre><p>7.启动服务：</p><pre><code>hexo s</code></pre><p>8.停一下：ctrl c再按y </p><p>9.新建文章： hexo n “标题” </p><p>10.看这时在哪个目录下，然后cd进入 </p><p>11.确认新建的文章是否成功：dir </p><p>12.给博文加内容：这里我用typora写。用vim的方法是：vim 标题.md。然后保存退出：先按esc，再输入    wq(w保存，q退出)。 </p><p>13.文件退两层： cd../.. (到了blog目录) </p><p>14.win下写博文从文件夹用typora打开文章，然后保存刷新页面，不用重新启动hexo。 </p><p>15.清理 :</p><pre><code>hexo clean </code></pre><p>16.生成:</p><pre><code>hexo g </code></pre><h3 id="阶段二：部署到Gitee"><a href="#阶段二：部署到Gitee" class="headerlink" title="阶段二：部署到Gitee"></a>阶段二：部署到Gitee</h3><p>1.装一个git的部署插件cnpm install –save hexo-deployer-git(win用npm install) </p><p>2.注册登录Gitee账号，新建仓库，设置仓库名（一定要和用户名一样，否则可能会有无法预料结果）。</p><p>3.设置根目录的_config.yml文件，用typore打开，拉到最底下设置deploy的值：</p><pre><code>deploy:  type: git  repo: 你的仓库地址（去Gitee复制）  branch: master</code></pre><p>注意冒号和值之间一定要有空格，type后面有单引号的话可以直接删了。</p><p>4.这样就随时可以用电脑/手机访问了，地址可以直接复制仓库名访问。接下来就是换主题和自定义主题为满意的样式，我用的是Matery，网上有很多，Hexo官网也有。</p><h2 id="2-需要注意的地方："><a href="#2-需要注意的地方：" class="headerlink" title="2.需要注意的地方："></a>2.需要注意的地方：</h2><p>1.主题名别忘了在_config.ym中更改，这种配置文件一定要严格按照格式！否则一言不合就报错！</p><p>2.下载的主题在解压缩后不要更改</p><p>3.注意有没有漏下的插件，检查所有插件及版本号的指令：</p><pre><code>npm list</code></pre><p>4.卸载某个插件的指令：</p><pre><code>npm uninstall 插件名@版本号</code></pre><p>5.怕出错想找回改动前的文件：可以提前复制粘贴一份在桌面，方便随时对照/改动。</p><p>6.Typora可以选择是否显示目录，设置toc: true，如果某篇文章不显示目录了，可以查看文章最上方的设置是否正确。</p><h2 id="3-踩坑-amp-解决："><a href="#3-踩坑-amp-解决：" class="headerlink" title="3.踩坑&amp;解决："></a>3.踩坑&amp;解决：</h2><p>1.报错：FATAL err:[Error: EBUSY: resource busy or locked, rmdir ‘C:\User...]</p><p>网上搜索了一下，关闭软件重启电脑，果然有奇效。</p><p>2.我的页面刚开始一直404，我百思不得其解，大佬们的各路招数试了个遍，然而它的纹丝不动仿佛在告诉我不要浪费时间。</p><p>最后！我在Gitee Page页面看到了一个更新的按钮，我一脸疑惑的点了一下。接着，大不一样，顿时体会到柳暗花明又一村天无绝人之路。没错，我想了一下，大概是因为我的git一键部署功能出错了。总之，现在是记了，    每次终端部署完之后，在这个页面再点更新就好了。</p><p>3.我发现我的主题，在设置成功之后无法在网站中更新，在尝试了很多方法之后，我发现把根目录的config yml文件的repo由SSH的地址变换为HTTPS的位置，这样就可以成功解决，不过还有一个问题就是这样的话，每次重新部署都要输入用户名和密码。</p><p>然后我就尝试在网上搜集一些办法，但是没有什么用。这时我就想，如果我把repo. 再换成SSH的地址。这样换了之后我看会有什么变化变化，结果发现。重新部署之后是可以的，页面刷新也没有完全问题。</p><p>4.我在所选的主题下找到了read me，开始按照里面的提示来配置我的主题文件夹。其中有一个是配置评论的表情的。我在配置过后发现你发现在本地运行的时候都会报错，后来在网上查找，提示说检查Jason文件格式，一般情况下，他都是一对花括号是首尾。后来我把最上面那行Json删了也把最外层的中括号删了。结果发现依旧报    错，接着我又尝试把中括号加上，运行一下再也没有红色字段，就Json这四个字母导致了运行报错。</p><p>​    5.修改根目录配置文件时，注意缩进，有报错的情况！</p><p>​    6.卸载了<a href="mailto:&#104;&#105;&#x67;&#x68;&#108;&#x69;&#x67;&#104;&#116;&#x2e;&#x6a;&#115;&#64;&#x31;&#x30;&#x2e;&#55;&#46;&#49;">&#104;&#105;&#x67;&#x68;&#108;&#x69;&#x67;&#104;&#116;&#x2e;&#x6a;&#115;&#64;&#x31;&#x30;&#x2e;&#55;&#46;&#49;</a>：npm uninstall <a href="mailto:&#104;&#101;&#x78;&#111;&#45;&#113;&#x69;&#110;&#105;&#x75;&#45;&#x73;&#x79;&#x6e;&#99;&#x40;&#x31;&#x2e;&#x34;&#46;&#55;">&#104;&#101;&#x78;&#111;&#45;&#113;&#x69;&#110;&#105;&#x75;&#45;&#x73;&#x79;&#x6e;&#99;&#x40;&#x31;&#x2e;&#x34;&#46;&#55;</a> （相关的配置我暂时未删，试了一下已    经好了）</p><p>​    7.设置文章永久链接，下载指令：</p><pre><code>npm install hexo-abbrlink --save</code></pre><p>​    设置修改<code>_config.yml</code>文件中的配置项（记得把原来的<code>permalink:</code>删除掉）:</p><pre><code>#设置永久链接permalink: posts/:abbrlink.html  # 此处可以自己设置，也可以直接使用 :/abbrlinkabbrlink:    alg: crc16   #算法： crc16(default) and crc32    rep: dec     #进制： dec(default) and hex</code></pre><p>​    8.npm resource busy or locked报错解决：</p><pre><code>npm cache verify</code></pre>]]></content>
+    <content type="html"><![CDATA[<h2 id="一、搭建过程如下："><a href="#一、搭建过程如下：" class="headerlink" title="一、搭建过程如下："></a>一、搭建过程如下：</h2><h3 id="阶段1：-本地搭建"><a href="#阶段1：-本地搭建" class="headerlink" title="阶段1： 本地搭建"></a>阶段1： 本地搭建</h3><p>1.下载安装node.js </p><p>2.下载安装git </p><p>3.使用命令行(win+r,输入cmd)下载淘宝镜像：    </p><pre><code>npm install -g cnpm --registry=https://.npm.taobao.org</code></pre><p>4.使用命令行下载hexo :    （git bash和cmd都可以）</p><pre><code>npm install -g hexo-cli</code></pre><p>5.建立空文件夹 ：</p><pre><code>md blog</code></pre><p>6.进入建好的文件夹：</p><pre><code>cd blog </code></pre><p>7.启动服务：</p><pre><code>hexo s</code></pre><p>8.停一下：ctrl c再按y </p><p>9.新建文章： hexo n “标题” </p><p>10.看这时在哪个目录下，然后cd进入 </p><p>11.确认新建的文章是否成功：dir </p><p>12.给博文加内容：这里我用typora写。用vim的方法是：vim 标题.md。然后保存退出：先按esc，再输入    wq(w保存，q退出)。 </p><p>13.文件退两层： cd../.. (到了blog目录) </p><p>14.win下写博文从文件夹用typora打开文章，然后保存刷新页面，不用重新启动hexo。 </p><p>15.清理 :</p><pre><code>hexo clean </code></pre><p>16.生成:</p><pre><code>hexo g </code></pre><h3 id="阶段2：部署到Gitee"><a href="#阶段2：部署到Gitee" class="headerlink" title="阶段2：部署到Gitee"></a>阶段2：部署到Gitee</h3><p>1.装一个git的部署插件cnpm install –save hexo-deployer-git(win用npm install) </p><p>2.注册登录Gitee账号，新建仓库，设置仓库名（一定要和用户名一样，否则可能会有无法预料结果）。</p><p>3.设置根目录的_config.yml文件，用typore打开，拉到最底下设置deploy的值：</p><pre><code>deploy:  type: git  repo: 你的仓库地址（去Gitee复制）  branch: master</code></pre><p>注意冒号和值之间一定要有空格，type后面有单引号的话可以直接删了。</p><p>4.这样就随时可以用电脑/手机访问了，地址可以直接复制仓库名访问。接下来就是换主题和自定义主题为满意的样式，我用的是Matery，网上有很多，Hexo官网也有。</p><h2 id="二、需要注意的地方："><a href="#二、需要注意的地方：" class="headerlink" title="二、需要注意的地方："></a>二、需要注意的地方：</h2><p>1.主题名别忘了在_config.ym中更改，这种配置文件一定要严格按照格式！否则一言不合就报错！</p><p>2.下载的主题在解压缩后不要更改</p><p>3.注意有没有漏下的插件，检查所有插件及版本号的指令：</p><pre><code>npm list</code></pre><p>4.卸载某个插件的指令：</p><pre><code>npm uninstall 插件名@版本号</code></pre><p>5.怕出错想找回改动前的文件：可以提前复制粘贴一份在桌面，方便随时对照/改动。</p><p>6.Typora可以选择是否显示目录，设置toc: true，如果某篇文章不显示目录了，可以查看文章最上方的设置是否正确。</p><h2 id="三、踩坑-amp-解决："><a href="#三、踩坑-amp-解决：" class="headerlink" title="三、踩坑&amp;解决："></a>三、踩坑&amp;解决：</h2><p>1.报错：FATAL err:[Error: EBUSY: resource busy or locked, rmdir ‘C:\User...]</p><p>网上搜索了一下，关闭软件重启电脑，果然有奇效。</p><p>2.我的页面刚开始一直404，我百思不得其解，大佬们的各路招数试了个遍，然而它的纹丝不动仿佛在告诉我不要浪费时间。</p><p>最后！我在Gitee Page页面看到了一个更新的按钮，我一脸疑惑的点了一下。接着，大不一样，顿时体会到柳暗花明又一村天无绝人之路。没错，我想了一下，大概是因为我的git一键部署功能出错了。总之，现在是记了，    每次终端部署完之后，在这个页面再点更新就好了。</p><p>3.我发现我的主题，在设置成功之后无法在网站中更新，在尝试了很多方法之后，我发现把根目录的config yml文件的repo由SSH的地址变换为HTTPS的位置，这样就可以成功解决，不过还有一个问题就是这样的话，每次重新部署都要输入用户名和密码。</p><p>然后我就尝试在网上搜集一些办法，但是没有什么用。这时我就想，如果我把repo. 再换成SSH的地址。这样换了之后我看会有什么变化变化，结果发现。重新部署之后是可以的，页面刷新也没有完全问题。</p><p>4.我在所选的主题下找到了read me，开始按照里面的提示来配置我的主题文件夹。其中有一个是配置评论的表情的。我在配置过后发现你发现在本地运行的时候都会报错，后来在网上查找，提示说检查Jason文件格式，一般情况下，他都是一对花括号是首尾。后来我把最上面那行Json删了也把最外层的中括号删了。结果发现依旧报    错，接着我又尝试把中括号加上，运行一下再也没有红色字段，就Json这四个字母导致了运行报错。</p><p>​    5.修改根目录配置文件时，注意缩进，有报错的情况！</p><p>​    6.卸载了<a href="mailto:&#x68;&#x69;&#x67;&#x68;&#108;&#105;&#x67;&#x68;&#x74;&#46;&#x6a;&#115;&#x40;&#49;&#48;&#x2e;&#x37;&#46;&#49;">&#x68;&#x69;&#x67;&#x68;&#108;&#105;&#x67;&#x68;&#x74;&#46;&#x6a;&#115;&#x40;&#49;&#48;&#x2e;&#x37;&#46;&#49;</a>：npm uninstall <a href="mailto:&#x68;&#x65;&#120;&#111;&#45;&#113;&#x69;&#x6e;&#x69;&#x75;&#x2d;&#115;&#x79;&#110;&#99;&#x40;&#x31;&#x2e;&#x34;&#46;&#55;">&#x68;&#x65;&#120;&#111;&#45;&#113;&#x69;&#x6e;&#x69;&#x75;&#x2d;&#115;&#x79;&#110;&#99;&#x40;&#x31;&#x2e;&#x34;&#46;&#55;</a> （相关的配置我暂时未删，试了一下已    经好了）</p><p>​    7.设置文章永久链接，下载指令：</p><pre><code>npm install hexo-abbrlink --save</code></pre><p>​    设置修改<code>_config.yml</code>文件中的配置项（记得把原来的<code>permalink:</code>删除掉）:</p><pre><code>#设置永久链接permalink: posts/:abbrlink.html  # 此处可以自己设置，也可以直接使用 :/abbrlinkabbrlink:    alg: crc16   #算法： crc16(default) and crc32    rep: dec     #进制： dec(default) and hex</code></pre><p>​    8.npm resource busy or locked报错解决：</p><pre><code>npm cache verify</code></pre>]]></content>
     
     
       
       
-    <summary type="html">&lt;h2 id=&quot;1-搭建过程如下：&quot;&gt;&lt;a href=&quot;#1-搭建过程如下：&quot; class=&quot;headerlink&quot; title=&quot;1.搭建过程如下：&quot;&gt;&lt;/a&gt;1.搭建过程如下：&lt;/h2&gt;&lt;h3 id=&quot;阶段一：-本地搭建&quot;&gt;&lt;a href=&quot;#阶段一：-本地搭建&quot; class</summary>
+    <summary type="html">&lt;h2 id=&quot;一、搭建过程如下：&quot;&gt;&lt;a href=&quot;#一、搭建过程如下：&quot; class=&quot;headerlink&quot; title=&quot;一、搭建过程如下：&quot;&gt;&lt;/a&gt;一、搭建过程如下：&lt;/h2&gt;&lt;h3 id=&quot;阶段1：-本地搭建&quot;&gt;&lt;a href=&quot;#阶段1：-本地搭建&quot; class</summary>
       
     
     
@@ -59,6 +59,100 @@
     
     
     
+    
+  </entry>
+  
+  <entry>
+    <title>CSS添加方法&amp;优先级&amp;CSS选择器</title>
+    <link href="https://polariis.gitee.io/posts/6a1f6cdf/"/>
+    <id>https://polariis.gitee.io/posts/6a1f6cdf/</id>
+    <published>2020-03-30T16:02:56.000Z</published>
+    <updated>2021-04-16T18:58:45.851Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="一、CSS添加方法："><a href="#一、CSS添加方法：" class="headerlink" title="一、CSS添加方法："></a>一、CSS添加方法：</h2><h3 id="1-行内样式："><a href="#1-行内样式：" class="headerlink" title="1.行内样式："></a>1.行内样式：</h3><p>表示当前样式作为CSS样式被添加到标签上（只对这个标签起作用）。</p><h3 id="2-内嵌样式："><a href="#2-内嵌样式：" class="headerlink" title="2.内嵌样式："></a>2.内嵌样式：</h3><p>将CSS代码内嵌到当前页面的head标签部分（只对当前页面起作用）。</p><p>首先body部分不再包含样式，将样式放在style标签中表示，和head标签为嵌套关系。</p><h3 id="3-链接样式（单独文件）："><a href="#3-链接样式（单独文件）：" class="headerlink" title="3.链接样式（单独文件）："></a>3.链接样式（单独文件）：</h3><pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;css/style.css&quot;&gt;</code></pre><p>stylesheet为样式表文件；</p><p>href后面的是相对路径。</p><h2 id="二、样式优先级："><a href="#二、样式优先级：" class="headerlink" title="二、样式优先级："></a>二、样式优先级：</h2><ul><li><input disabled="" type="checkbox"> 多重样式可重叠，可覆盖。</li><li><input disabled="" type="checkbox"> 样式的优先级按”就近原则“。</li><li><input disabled="" type="checkbox"> 行内样式&gt;内嵌样式&gt;链接样式&gt;浏览器默认样式</li></ul><h2 id="三、CSS选择器："><a href="#三、CSS选择器：" class="headerlink" title="三、CSS选择器："></a>三、CSS选择器：</h2><h3 id="1-标签选择器："><a href="#1-标签选择器：" class="headerlink" title="1.标签选择器："></a>1.标签选择器：</h3><p>与标签同名，紧跟着一对花括号，例如：</p><pre><code>body&#123;    border-color: #aaaaff;&#125;</code></pre><h3 id="2-类选择器："><a href="#2-类选择器：" class="headerlink" title="2.类选择器："></a>2.类选择器：</h3><p>以.开头，例:</p><pre><code>.one&#123;    font-size:18px;&#125;</code></pre><h3 id="3-ID选择器："><a href="#3-ID选择器：" class="headerlink" title="3.ID选择器："></a>3.ID选择器：</h3><p>以#开头，例:</p><pre><code>#two&#123;    font-size:18px;&#125;</code></pre><p>2和3的区别：</p><ul><li><input disabled="" type="checkbox"> ID是唯一的，只能在HTML被引用一次。</li><li><input disabled="" type="checkbox"> 类选择器可以被多次引用，应用中多个页面元素上。</li><li><input disabled="" type="checkbox"> *因此：ID选择器用来布局，class选择器用在样式。</li></ul><h3 id="4-后代选择器："><a href="#4-后代选择器：" class="headerlink" title="4.后代选择器："></a>4.后代选择器：</h3><pre><code>p span&#123;    clor:red;            //作用于p标签内部的span标签&#125;</code></pre><p>两个标签之间使用空格空开。</p><h3 id="5-并集选择器："><a href="#5-并集选择器：" class="headerlink" title="5.并集选择器："></a>5.并集选择器：</h3><pre><code>p,span&#123;    clor:red;            //同时作用于两个标签&#125;</code></pre><p>连接符为,会使两者都变为红色。</p><h3 id="6-伪类选择器-Pseudo-classes-："><a href="#6-伪类选择器-Pseudo-classes-：" class="headerlink" title="6.伪类选择器(Pseudo-classes)："></a>6.伪类选择器(Pseudo-classes)：</h3><p>语法：</p><pre><code>selector:pseudo-class &#123;property:value;&#125;</code></pre><p>例如：</p><pre><code>a:link            //普通的，未被访问的链接a:visited         //用户已经访问过的链接a:hover         //鼠标悬停于链接上的样式a:active         //链接被点击时的样式</code></pre><p>​    注意：必须严格遵守以下顺序。</p><p>a:hover            <strong>必须在a:link和a:visited之后</strong></p><p>a:active             <strong>必须在a:hover之后</strong></p><p><strong>口诀：</strong></p><p><strong>l</strong>o<strong>v</strong>e&amp;<strong>ha</strong>te</p><h3 id="7-混合："><a href="#7-混合：" class="headerlink" title="7.混合："></a>7.混合：</h3><ul><li>多个class选择器混用，用空格分开。</li></ul><pre><code>&lt;div class=&quot;one yellow left&quot;&gt;&lt;/div&gt;</code></pre><ul><li>id和class混用：</li></ul><pre><code>&lt;div id=&quot;my&quot; class=&quot;one yellow left&quot;&gt;&lt;/div&gt;</code></pre><ul><li>id选择器不可以多个同时使用。</li></ul></br></br></br>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;一、CSS添加方法：&quot;&gt;&lt;a href=&quot;#一、CSS添加方法：&quot; class=&quot;headerlink&quot; title=&quot;一、CSS添加方法：&quot;&gt;&lt;/a&gt;一、CSS添加方法：&lt;/h2&gt;&lt;h3 id=&quot;1-行内样式：&quot;&gt;&lt;a href=&quot;#1-行内样式：&quot; class</summary>
+      
+    
+    
+    
+    <category term="CSS" scheme="https://polariis.gitee.io/categories/CSS/"/>
+    
+    
+    <category term="CSS" scheme="https://polariis.gitee.io/tags/CSS/"/>
+    
+    <category term="基础回顾" scheme="https://polariis.gitee.io/tags/%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>图像格式和路径</title>
+    <link href="https://polariis.gitee.io/posts/66ad3928/"/>
+    <id>https://polariis.gitee.io/posts/66ad3928/</id>
+    <published>2020-03-29T16:02:56.000Z</published>
+    <updated>2021-04-16T18:59:39.519Z</updated>
+    
+    <content type="html"><![CDATA[</br><h2 id="一、图像格式："><a href="#一、图像格式：" class="headerlink" title="一、图像格式："></a>一、图像格式：</h2></br><p>JPG：有损压缩，图片色彩丰富。（快，不失真）</p><p>GIF：简单动画，背景透明。</p><p>PNG：无损压缩，透明，交错，动画（支持有/无损，比GIF色彩丰富）。</p></br><p>透明：可以给定图片一种颜色，使其不被显示而成为透明。</p><p>交错：在显示图片的过程中可以从概貌逐渐变化为全貌，看上去也就是清晰度从低到高。</p><h2 id="二、插入图片img："><a href="#二、插入图片img：" class="headerlink" title="二、插入图片img："></a>二、插入图片img：</h2></br><p>src属性：组成为 路径+文件名（不仅要带有图片的名字及后缀，还要有图片的完整路径）</p><p>alt属性：当图片没有被找到时，显示的替代文本。</p></br><h2 id="三、绝对路径-amp-相对路径："><a href="#三、绝对路径-amp-相对路径：" class="headerlink" title="三、绝对路径&amp;相对路径："></a>三、绝对路径&amp;相对路径：</h2></br><p>绝对路径：以根目录为基准。</p><p>相对路径：以该文件所在位置为基准。</p><ul><li><input disabled="" type="checkbox"> ..表示上一级</li><li><input disabled="" type="checkbox"> /表示下一级</li></ul></br></br></br></br></br>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;/br&gt;
+
+&lt;h2 id=&quot;一、图像格式：&quot;&gt;&lt;a href=&quot;#一、图像格式：&quot; class=&quot;headerlink&quot; title=&quot;一、图像格式：&quot;&gt;&lt;/a&gt;一、图像格式：&lt;/h2&gt;&lt;/br&gt;
+
+&lt;p&gt;JPG：有损压缩，图片色彩丰富。（快，不失真）&lt;/p&gt;
+&lt;p&gt;GIF：简</summary>
+      
+    
+    
+    
+    <category term="HTML" scheme="https://polariis.gitee.io/categories/HTML/"/>
+    
+    
+    <category term="基础回顾" scheme="https://polariis.gitee.io/tags/%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/"/>
+    
+    <category term="HTML" scheme="https://polariis.gitee.io/tags/HTML/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>字符，编码，乱码问题</title>
+    <link href="https://polariis.gitee.io/posts/1ce900cc/"/>
+    <id>https://polariis.gitee.io/posts/1ce900cc/</id>
+    <published>2020-03-29T16:02:56.000Z</published>
+    <updated>2021-04-16T19:02:50.187Z</updated>
+    
+    <content type="html"><![CDATA[</br></br><p>1.字符：文字，符号                    空符字符：&amp;nbsp</p></br><p>2.字符集：字符的集合</p></br><p>3.编码：将字符和二进制码对应起来</p><p>ASCⅡ：数字、英文字母、符号进行编码</p><p>GB2313: 简体中文</p><p>Unicode：所有语言</p><p>UTF-8：所有语言，占用空间更小</p></br><h6 id="4-乱码问题："><a href="#4-乱码问题：" class="headerlink" title="4.乱码问题："></a>4.乱码问题：</h6><ul><li><input disabled="" type="checkbox"> 源文件保存时的编码</li><li><input disabled="" type="checkbox"> 源文件标签里的声明： meta charset = “编码模式”</li></ul><p>以上两个不一致，就会出现乱码。</p></br></br></br></br></br></br>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;/br&gt;
+
+&lt;/br&gt;
+
+&lt;p&gt;1.字符：文字，符号                    空符字符：&amp;amp;nbsp&lt;/p&gt;
+&lt;/br&gt;
+
+&lt;p&gt;2.字符集：字符的集合&lt;/p&gt;
+&lt;/br&gt;
+
+&lt;p&gt;3.编码：将字符和二进制码对应起来&lt;/p&gt;
+&lt;p&gt;ASCⅡ：数字、英文字母、</summary>
+      
+    
+    
+    
+    <category term="HTML" scheme="https://polariis.gitee.io/categories/HTML/"/>
+    
+    
+    <category term="基础回顾" scheme="https://polariis.gitee.io/tags/%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/"/>
+    
+    <category term="HTML" scheme="https://polariis.gitee.io/tags/HTML/"/>
     
   </entry>
   
