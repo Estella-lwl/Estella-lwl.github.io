@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, HTML,CSS,JavaScript,JQuery,React,Vue.js">
+    <meta name="keywords" content="ref &amp; reactive &amp; 响应式差异, HTML,CSS,JavaScript,JQuery,React,Vue.js">
     <meta name="description" content="前端进阶之旅">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World | polariis</title>
+    <title>ref &amp; reactive &amp; 响应式差异 | polariis</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -252,12 +252,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">ref &amp; reactive &amp; 响应式差异</h1>
                 </div>
             </div>
         </div>
@@ -371,12 +371,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Vue3/">
+                                <span class="chip bg-color">Vue3</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Vue3/" class="post-category">
+                                Vue3
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -385,28 +398,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-04
+                    2022-08-10
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-04-08
+                    2022-08-10
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    75
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    6 分
                 </div>
                 
 
@@ -426,19 +439,241 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre><code class="bash">$ hexo new &quot;My New Post&quot;
+                <h2 id="1-Ref"><a href="#1-Ref" class="headerlink" title="1. Ref"></a>1. Ref</h2><ul>
+<li><p><strong>作用</strong>：定义一个响应式的数据。</p>
+</li>
+<li><p><strong>语法</strong>：const xxx = ref(initValue)  </p>
+</li>
+<li><ul>
+<li>创建一个包含响应式数据的引用对象（reference对象）。</li>
+<li>模板中使用引用对象不用后面加.value，而setup中使用该值时需要加.value。</li>
+</ul>
+</li>
+<li><p><strong>接收的数据</strong>：</p>
+</li>
+<li><ul>
+<li>可以是：基本类型、对象类型。</li>
+<li>ref处理 <strong>基本类型： 响应式</strong>依旧使用是<strong>defineProperty</strong> ，以set &amp; get数据劫持的方式。</li>
+<li>而处理 <strong>对象类型</strong>时使用<strong>proxy</strong>实现的（proxy是封装在reactive函数中的，ref内部会自动通过reactive转为代理对象）。</li>
+<li>补充：使用ref数据要 .value 是因为Object.defineProperty本身无法作用于基本数据类型，所以通过对象做了一层转化。</li>
+</ul>
+</li>
+<li><p><strong>使用ref获取节点</strong>：</p>
+</li>
+<li><p><strong>注意</strong>：如果要在setup中拿到DOM元素，声明的变量名必须与元素中写的ref<strong>一致</strong>。</p>
+</li>
+</ul>
+<p><template>  <div id="countBox" ref="countupRef">    <span class="countSpan"></span>  </div> </template></p>
+<ul>
+<li><p>在<strong>onMounted</strong>中可以拿到节点：</p>
+<pre><code>  setup() &#123;
+      // 这里的变量名countupRef必须与ref写的一样：
+    const countupRef = ref(null);
+    console.log(&quot;ref&quot;, countupRef);
+
+    onMounted(() =&gt; &#123;
+      // 拿到ref节点
+      console.log(countupRef);
+    &#125;);
+
+    return &#123;
+      countupRef
+    &#125;;
+  &#125;,
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre><code class="bash">$ hexo server
+</li>
+</ul>
+<h2 id="2-reactive："><a href="#2-reactive：" class="headerlink" title="2. reactive："></a><strong>2. reactive：</strong></h2><ul>
+<li><p><strong>作用</strong>：定义一个<strong>对象/数组类型</strong>的响应式数据（基本类型别用，要用ref函数）。</p>
+</li>
+<li><p><strong>语法</strong>：const 代理对象 = reactive(源对象);  接收一个对象或数组，返回一个<strong>代理对象</strong>（Proxy的实例对象，简称proxy对象）。</p>
+</li>
+<li><ul>
+<li>绿色框里的就是源对象，粉色的是代理对象：</li>
+</ul>
+</li>
+</ul>
+<p> <img src="C:\Users\失频本人\Desktop\blog修改历史\blog\source_posts\image-20220810035136457-16600746990031.png" alt="image-20220810035136457"></p>
+<ul>
+<li>reactive定义的响应式数据是”深层次的“。</li>
+<li>内部基于ES6的Proxy实现，通过代理对象操作源对象内部的数据。</li>
+</ul>
+<h2 id="3-ref对比reactive总结"><a href="#3-ref对比reactive总结" class="headerlink" title="3. ref对比reactive总结"></a><strong>3. ref对比reactive总结</strong></h2><ul>
+<li><p><strong>从定义数据据角度对比</strong>：</p>
+</li>
+<li><ul>
+<li>ref定义：基本类型数据。</li>
+<li>reactive定义：对象/数组类型数据。</li>
+<li>注意：ref也可以定义对象/数组类型数据，它内部会自动通过reactive转为代理对象。</li>
+</ul>
+</li>
+<li><p><strong>从原理角度对比</strong>：</p>
+</li>
+<li><ul>
+<li>ref：通过Object.defineProperty()的get和set实现响应式（数据劫持）。</li>
+<li>reactive：通过使用Proxy实现响应式（数据劫持），并通过Reflect操作源对象内部的数据。</li>
+</ul>
+</li>
+<li><p><strong>从使用角度对比</strong>：</p>
+</li>
+<li><ul>
+<li>ref定义的数据：操作数据需要.value，读取数据时模板会直接读取不用.value。</li>
+<li>reactive定义的数据：操作数据与读取数据均不需要.value。</li>
+</ul>
+</li>
+</ul>
+<h2 id="4-响应式原理对比"><a href="#4-响应式原理对比" class="headerlink" title="4. 响应式原理对比"></a><strong>4. 响应式原理对比</strong></h2><h2 id="4-1-Vue2的响应式"><a href="#4-1-Vue2的响应式" class="headerlink" title="4.1 Vue2的响应式"></a><strong>4.1 Vue2的响应式</strong></h2><ul>
+<li><p><strong>实现原理</strong>：</p>
+</li>
+<li><ul>
+<li><p><strong>对象类型</strong>：通过<strong>Object.defineProperty()</strong> 对属性的读取、修改进行拦截（<strong>数据劫持</strong>）。</p>
+</li>
+<li><p><strong>数组类型</strong>：通过<strong>重写更新数组的方法实现拦截</strong>。</p>
+</li>
+<li><ul>
+<li><p>比如：调用push方法，其实调用的是vue2二次封装后的push。</p>
+</li>
+<li><p>这个push里做了两件事：</p>
+</li>
+<li><ul>
+<li>\1. 帮助正常调用push方法。</li>
+<li>\2. 帮助更新界面。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>存在的问题</strong>：</p>
+</li>
+<li><ul>
+<li>新增属性 or 删除属性，<strong>界面不会自动更新</strong>。</li>
+<li>直接通过下标修改数组，界面也不会自动更新。</li>
+</ul>
+</li>
+</ul>
+<pre><code>// 修改对象：
+//     添加属性：
+this.$set(target, &#39;name&#39;, value);
+Vue.set(target, &#39;name&#39;, value);
+// 删除属性：
+this.$delete(target, &#39;name&#39;, value);
+Vue.delete(target, &#39;name&#39;, value);
+
+// 修改数组：
+this.xxx.splice(0, 1, &#39;&#39;);
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre><code class="bash">$ hexo generate
+<p><img src="C:\Users\失频本人\Desktop\blog修改历史\blog\source_posts\image-20220810035246493-16600747685122.png" alt="image-20220810035246493"></p>
+<ul>
+<li><p><strong>Object.defineProperty</strong>:</p>
+</li>
+<li><ul>
+<li>读取和修改有<strong>get</strong>和<strong>set</strong>方法，但是添加和删除是捕获不到的。</li>
+<li><strong>configurable</strong>配置项：能否使用delete删除属性，默认值为false。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-2-Vue3的响应式"><a href="#4-2-Vue3的响应式" class="headerlink" title="4.2 Vue3的响应式"></a><strong>4.2 Vue3的响应式</strong></h3><h4 id="4-2-1实现原理："><a href="#4-2-1实现原理：" class="headerlink" title="4.2.1实现原理："></a><strong>4.2.1实现原理：</strong></h4><ul>
+<li><p>通过<strong>Proxy</strong>（代理）：拦截对象中任意属性的变化，<strong>包括</strong>：属性的读写 、添加、删除 等。</p>
+</li>
+<li><p>通过<strong>Reflect</strong>（反射）：对源对象（被代理）的属性进行操作。</p>
+</li>
+<li><p>MDN文档中描述的<strong>Proxy</strong>与<strong>Reflect</strong>：</p>
+</li>
+<li><ul>
+<li><strong>Proxy</strong>：window上内置的，接收<strong>两个参数</strong>（必填）：<strong>1</strong>.target(代理对谁的操作)；<strong>2.</strong> 对象，至少要有个空对象占位。</li>
+<li><strong>Reflect</strong>：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect</a></li>
+</ul>
+</li>
+<li><p>vue2和vue3响应时原理对比的补充：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7001999813344493581">https://juejin.cn/post/7001999813344493581</a></p>
+</li>
+<li><ul>
+<li><strong>模拟Vue3中实现响应式</strong>：（不完整，看下面的<strong>reflect</strong>。）</li>
+</ul>
+</li>
+</ul>
+<pre><code>        // 模拟Vue3中实现响应式：
+        const p = new Proxy(person,  &#123;
+    // 读取某个属性时调用此方法：接收两个参数：源对象&amp;当前属性名
+    get(target, propName) &#123;
+        console.log(`$&#123;propName&#125;属性被读取~`);
+        return target[pcropName];    
+    &#125;,
+    // 修改/增加某个属性时调用此方法：接收两个参数：比get多收到一个value值。
+    set(target, propName, value) &#123;
+        console.log(`$&#123;propName&#125;属性被修改，准备更新界面`);
+        target[propName] = value;    
+    &#125;,
+    // 删除某个属性时调用此方法：
+    deleteProperty(target, propName) &#123;
+        console.log(`$&#123;propName&#125;属性被修改，准备更新界面`);
+        // delete target[propName]  最好是把真实结果给他返回：
+        return delete target[propName]   
+    &#125;
+&#125;)
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre><code class="bash">$ hexo deploy
+<p>绿色框在真正修改源数据：</p>
+<p><img src="C:\Users\失频本人\Desktop\blog修改历史\blog\source_posts\image-20220810035353361-16600748348953.png" alt="image-20220810035353361"></p>
+<h4 id="4-2-2-响应式中Reflect的应用："><a href="#4-2-2-响应式中Reflect的应用：" class="headerlink" title="4.2.2. 响应式中Reflect的应用："></a>4.2.2. 响应式中Reflect的应用：</h4><ul>
+<li><strong>ES6</strong>，<strong>Windows内置</strong>。</li>
+<li>增删改查<strong>用法</strong>：reflect.get、reflect.set、 reflect.delete。</li>
+<li>reflect里也有defineProperty方法，且有返回值（若不返回的话就不知道是否操作成功，因为它不报错。返回值是布尔值）。</li>
+</ul>
+<p><strong>与Object.definProperty<strong><strong>对比</strong></strong>：</strong></p>
+<ul>
+<li><p><strong>在做封装的时候，Object.definProperty捕获错误只能通过try catch。若使用reflect就可以避免。</strong><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Zy4y1K7SH?p=147&amp;t=672.1">https://www.bilibili.com/video/BV1Zy4y1K7SH?p=147&amp;t=672.1</a></p>
+</li>
+<li><p> <strong>模拟Vue3中实现响应式</strong>（使用<strong>reflect</strong>改进后）：</p>
+</li>
+<li><ul>
+<li><p>用到了proxy代理对象，及reflect反射对象。</p>
+<pre><code>        // 模拟Vue3中实现响应式：
+        const p = new Proxy(person,  &#123;
+    // 读取某个属性时调用此方法：接收两个参数：源对象&amp;当前属性名
+    get(target, propName) &#123;
+        console.log(`$&#123;propName&#125;属性被读取~`);
+        return Reflect.get(target, propName);    
+    &#125;,
+    // 修改/增加某个属性时调用此方法：接收两个参数：比get多收到一个value值。
+    set(target, propName, value) &#123;
+        console.log(`$&#123;propName&#125;属性被修改，准备更新界面`);
+        Reflect.set(target, propName, value);    
+    &#125;,
+    // 删除某个属性时调用此方法：
+    deleteProperty(target, propName) &#123;
+        console.log(`$&#123;propName&#125;属性被修改，准备更新界面`);
+        // delete target[propName]  最好是把真是结果给他返回：
+        return Reflect.deleteProperty(target, propName); 
+    &#125;
+&#125;)
 </code></pre>
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p><strong>toRef</strong></p>
+<ul>
+<li>toRef可以创建一个ref，其的value值可以指向令一个对象的属性。</li>
+</ul>
+<p><strong>举例</strong>：</p>
+<pre><code>const obj = &#123;
+    a: 10,
+    b: &#39;start&#39;
+&#125;
+
+const obj2 = toRef(obj)
+
+return &#123;
+    obj,
+    // 返回的格式：
+    ...toRef(obj)
+&#125;
+</code></pre>
+<p><strong>toRefs</strong></p>
+<p>指向多个</p>
+<p><strong>toRefs</strong></p>
+<p>指向多个属性</p>
 
                 
             </div>
@@ -465,7 +700,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://polariis.gitee.io/posts/3eeb/">https://polariis.gitee.io/posts/3eeb/</a>
+                    <a href="https://polariis.gitee.io/posts/9badfa3f/">https://polariis.gitee.io/posts/9badfa3f/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -502,7 +737,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/Vue3/">
+                                    <span class="chip bg-color">Vue3</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -933,17 +1172,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/posts/hexo-gitee/">
+                <a href="/posts/9badfa3f/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Hexo+Gitee搭建博客踩坑总结">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="ref &amp; reactive &amp; 响应式差异">
                         
-                        <span class="card-title">Hexo+Gitee搭建博客踩坑总结</span>
+                        <span class="card-title">ref &amp; reactive &amp; 响应式差异</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -953,30 +1193,27 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-04
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/hexo/" class="post-category">
-                                    hexo
+                            <a href="/categories/Vue3/" class="post-category">
+                                    Vue3
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/hexo/">
-                        <span class="chip bg-color">hexo</span>
-                    </a>
-                    
-                    <a href="/tags/gitee/">
-                        <span class="chip bg-color">gitee</span>
+                    <a href="/tags/Vue3/">
+                        <span class="chip bg-color">Vue3</span>
                     </a>
                     
                 </div>
@@ -990,13 +1227,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/5d7648ee/">
+                <a href="/posts/2606f5b3/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="CSS定位机制">
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="vue3生命周期的变更">
                         
-                        <span class="card-title">CSS定位机制</span>
+                        <span class="card-title">vue3生命周期的变更</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1007,14 +1244,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-10
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CSS/" class="post-category">
-                                    CSS
+                            <a href="/categories/Vue3/" class="post-category">
+                                    Vue3
                                 </a>
                             
                             
@@ -1024,12 +1261,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CSS/">
-                        <span class="chip bg-color">CSS</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/">
-                        <span class="chip bg-color">基础回顾</span>
+                    <a href="/tags/vue3/">
+                        <span class="chip bg-color">vue3</span>
                     </a>
                     
                 </div>
