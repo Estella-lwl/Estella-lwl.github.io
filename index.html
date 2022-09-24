@@ -473,75 +473,6 @@ npm install -g cnpm --registry=https://.npm.
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/14.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">字符，编码，乱码问题</div>
-                            <div class="description center-align">
-                                
-                                    
-
-
-
-1.字符：文字，符号                    空符字符：&amp;nbsp
-
-
-2.字符集：字符的集合
-
-
-3.编码：将字符和二进制码对应起来
-ASCⅡ：数字、英文字母、符号进行编码
-GB2313: 简体中文
-Unic
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/posts/1ce900cc/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/1.jpg');">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s10 offset-s1">
-                            <div class="title center-align">图像格式和路径</div>
-                            <div class="description center-align">
-                                
-                                    
-
-一、图像格式：
-
-JPG：有损压缩，图片色彩丰富。（快，不失真）
-GIF：简单动画，背景透明。
-PNG：无损压缩，透明，交错，动画（支持有/无损，比GIF色彩丰富）。
-
-
-透明：可以给定图片一种颜色，使其不被显示而成为透明。
-交错：在显
-                                
-                            </div>
-                            <div class="cover-btns">
-                                <a href="/posts/66ad3928/" class="waves-effect waves-light btn"
-                                   target="_blank">
-                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        
-            
-            <div class="carousel-item amber white-text carousel-post bg-cover"
                  style="background-image: url('/medias/featureimages/13.jpg');">
                 <div class="container">
                     <div class="row">
@@ -560,6 +491,36 @@ return只能返回一个值。（有多个时返回最后一个）
                             </div>
                             <div class="cover-btns">
                                 <a href="/posts/ac58b7ea/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/17.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">ref &amp; reactive &amp; 响应式差异</div>
+                            <div class="description center-align">
+                                
+                                    1. Ref
+作用：定义一个响应式的数据。
+
+语法：const xxx = ref(initValue)  
+
+
+创建一个包含响应式数据的引用对象（reference对象）。
+模板中使用引用对象不用后面加.value，而setup中使用该值
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/posts/9badfa3f/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -607,25 +568,61 @@ Vue3提供的Co
         
             
             <div class="carousel-item amber white-text carousel-post bg-cover"
-                 style="background-image: url('/medias/featureimages/17.jpg');">
+                 style="background-image: url('/medias/featureimages/1.jpg');">
                 <div class="container">
                     <div class="row">
                         <div class="col s10 offset-s1">
-                            <div class="title center-align">ref &amp; reactive &amp; 响应式差异</div>
+                            <div class="title center-align">图像格式和路径</div>
                             <div class="description center-align">
                                 
-                                    1. Ref
-作用：定义一个响应式的数据。
+                                    
 
-语法：const xxx = ref(initValue)  
+一、图像格式：
+
+JPG：有损压缩，图片色彩丰富。（快，不失真）
+GIF：简单动画，背景透明。
+PNG：无损压缩，透明，交错，动画（支持有/无损，比GIF色彩丰富）。
 
 
-创建一个包含响应式数据的引用对象（reference对象）。
-模板中使用引用对象不用后面加.value，而setup中使用该值
+透明：可以给定图片一种颜色，使其不被显示而成为透明。
+交错：在显
                                 
                             </div>
                             <div class="cover-btns">
-                                <a href="/posts/9badfa3f/" class="waves-effect waves-light btn"
+                                <a href="/posts/66ad3928/" class="waves-effect waves-light btn"
+                                   target="_blank">
+                                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            
+            <div class="carousel-item amber white-text carousel-post bg-cover"
+                 style="background-image: url('/medias/featureimages/18.jpg');">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s10 offset-s1">
+                            <div class="title center-align">Vue3语法变更总结</div>
+                            <div class="description center-align">
+                                
+                                    1.生命周期的变更
+销毁的概念改为卸载，更名：
+
+beforeDestroy改名为beforeUnmounted。
+destroyed改名为unmounted。
+
+
+vue2中的两次判断改为一次（如图）。
+
+
+Vue3提供的**Compos
+                                
+                            </div>
+                            <div class="cover-btns">
+                                <a href="/posts/c33d6177/" class="waves-effect waves-light btn"
                                    target="_blank">
                                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                                 </a>
@@ -896,78 +893,6 @@ Vue3提供的Co
     
     <div class="col s12 m6" data-aos="zoom-in-up">
         
-            <div class="post-card" style="background-image: url('/medias/featureimages/14.jpg')">
-            
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/HTML/" class="category">HTML</a>
-                        
-                    
-                </div>
-                <a href="/posts/1ce900cc/">
-                    <h3 class="post-title">字符，编码，乱码问题</h3>
-                </a>
-                <p class="post-description">
-                    
-                        
-
-
-
-1.字符：文字，符号                    空符字符：&amp;nbsp
-
-
-2.字符集：字符的集合
-
-
-3.编码：
-                    
-                </p>
-                <a href="/posts/1ce900cc/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FFCC00 0%, #FF9500 100%)" target="_blank">
-                    <i class="icon far fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12 m6" data-aos="zoom-in-up">
-        
-            <div class="post-card" style="background-image: url('/medias/featureimages/1.jpg')">
-            
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/HTML/" class="category">HTML</a>
-                        
-                    
-                </div>
-                <a href="/posts/66ad3928/">
-                    <h3 class="post-title">图像格式和路径</h3>
-                </a>
-                <p class="post-description">
-                    
-                        
-
-一、图像格式：
-
-JPG：有损压缩，图片色彩丰富。（快，不失真）
-GIF：简单动画，背景透明。
-PNG：无损压缩，透明，交错，动画（支持
-                    
-                </p>
-                <a href="/posts/66ad3928/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%)" target="_blank">
-                    <i class="icon far fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12 m6" data-aos="zoom-in-up">
-        
             <div class="post-card" style="background-image: url('/medias/featureimages/13.jpg')">
             
             <div class="post-body">
@@ -989,40 +914,7 @@ return 有终止函数的作用，return后的语句不会被执行。
 re
                     
                 </p>
-                <a href="/posts/ac58b7ea/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #C644FC 0%, #5856D6 100%)" target="_blank">
-                    <i class="icon far fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12 m6" data-aos="zoom-in-up">
-        
-            <div class="post-card" style="background-image: url('/medias/featureimages/5.jpg')">
-            
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                        
-                            <a href="/categories/Vue3/" class="category">Vue3</a>
-                        
-                    
-                </div>
-                <a href="/posts/2606f5b3/">
-                    <h3 class="post-title">vue3生命周期的变更</h3>
-                </a>
-                <p class="post-description">
-                    
-                        
-销毁的概念改为卸载（unmounted），更名：
-
-
-beforeDestroy改名为beforeUnmounted。
-destroyed
-                    
-                </p>
-                <a href="/posts/2606f5b3/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #55EFCB 0%, #5BCAFF 100%)" target="_blank">
+                <a href="/posts/ac58b7ea/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FFCC00 0%, #FF9500 100%)" target="_blank">
                     <i class="icon far fa-eye fa-fw"></i>阅读更多
                 </a>
             </div>
@@ -1056,7 +948,106 @@ destroyed
 创建一个包含响应式数据的引
                     
                 </p>
-                <a href="/posts/9badfa3f/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)" target="_blank">
+                <a href="/posts/9badfa3f/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #4cbf30 0%, #0f9d58 100%)" target="_blank">
+                    <i class="icon far fa-eye fa-fw"></i>阅读更多
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col s12 m6" data-aos="zoom-in-up">
+        
+            <div class="post-card" style="background-image: url('/medias/featureimages/5.jpg')">
+            
+            <div class="post-body">
+                <div class="post-categories">
+                    
+                        
+                            <a href="/categories/Vue3/" class="category">Vue3</a>
+                        
+                    
+                </div>
+                <a href="/posts/2606f5b3/">
+                    <h3 class="post-title">vue3生命周期的变更</h3>
+                </a>
+                <p class="post-description">
+                    
+                        
+销毁的概念改为卸载（unmounted），更名：
+
+
+beforeDestroy改名为beforeUnmounted。
+destroyed
+                    
+                </p>
+                <a href="/posts/2606f5b3/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #C644FC 0%, #5856D6 100%)" target="_blank">
+                    <i class="icon far fa-eye fa-fw"></i>阅读更多
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col s12 m6" data-aos="zoom-in-up">
+        
+            <div class="post-card" style="background-image: url('/medias/featureimages/1.jpg')">
+            
+            <div class="post-body">
+                <div class="post-categories">
+                    
+                        
+                            <a href="/categories/HTML/" class="category">HTML</a>
+                        
+                    
+                </div>
+                <a href="/posts/66ad3928/">
+                    <h3 class="post-title">图像格式和路径</h3>
+                </a>
+                <p class="post-description">
+                    
+                        
+
+一、图像格式：
+
+JPG：有损压缩，图片色彩丰富。（快，不失真）
+GIF：简单动画，背景透明。
+PNG：无损压缩，透明，交错，动画（支持
+                    
+                </p>
+                <a href="/posts/66ad3928/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #55EFCB 0%, #5BCAFF 100%)" target="_blank">
+                    <i class="icon far fa-eye fa-fw"></i>阅读更多
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col s12 m6" data-aos="zoom-in-up">
+        
+            <div class="post-card" style="background-image: url('/medias/featureimages/18.jpg')">
+            
+            <div class="post-body">
+                <div class="post-categories">
+                    
+                        
+                            <a href="/categories/Vue3/" class="category">Vue3</a>
+                        
+                    
+                </div>
+                <a href="/posts/c33d6177/">
+                    <h3 class="post-title">Vue3语法变更总结</h3>
+                </a>
+                <p class="post-description">
+                    
+                        1.生命周期的变更
+销毁的概念改为卸载，更名：
+
+beforeDestroy改名为beforeUnmounted。
+destroyed改名为
+                    
+                </p>
+                <a href="/posts/c33d6177/" class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #FF5E3A 0%, #FF2A68 100%)" target="_blank">
                     <i class="icon far fa-eye fa-fw"></i>阅读更多
                 </a>
             </div>
@@ -1080,6 +1071,63 @@ destroyed
     <!-- 所有文章卡片 -->
     <article id="articles" class="container articles">
         <div class="row article-row">
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/posts/c33d6177/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Vue3语法变更总结">
+                            
+                            <span class="card-title">Vue3语法变更总结</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                1.生命周期的变更
+销毁的概念改为卸载，更名：
+
+beforeDestroy改名为beforeUnmounted。
+destroyed改名为unmounted。
+
+
+vue2中的两次判断改为一次（如图）。
+
+
+Vue3提供的**Compos
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-24
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Vue3/" class="post-category">
+                                    Vue3
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Vue3/">
+                            <span class="chip bg-color">Vue3</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
@@ -1254,6 +1302,41 @@ return只能返回一个值。（有多个时返回最后一个）
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/posts/3eeb/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Hello World">
+                            
+                            <span class="card-title">Hello World</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-11
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-user fa-fw"></i>
+                                polariis
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/posts/hexo-gitee/">
                         <div class="card-image">
                             
@@ -1302,41 +1385,6 @@ npm install -g cnpm --registry=https://.npm.
                         </a>
                         
                     </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/posts/3eeb/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Hello World">
-                            
-                            <span class="card-title">Hello World</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-04
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                polariis
-                                
-                            </span>
-                        </div>
-                    </div>
-
                     
                 </div>
             </div>
@@ -1456,70 +1504,6 @@ npm install -g cnpm --registry=https://.npm.
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/posts/1ce900cc/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="字符，编码，乱码问题">
-                            
-                            <span class="card-title">字符，编码，乱码问题</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                
-
-
-
-1.字符：文字，符号                    空符字符：&amp;nbsp
-
-
-2.字符集：字符的集合
-
-
-3.编码：将字符和二进制码对应起来
-ASCⅡ：数字、英文字母、符号进行编码
-GB2313: 简体中文
-Unic
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-30
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/HTML/" class="post-category">
-                                    HTML
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/">
-                            <span class="chip bg-color">基础回顾</span>
-                        </a>
-                        
-                        <a href="/tags/HTML/">
-                            <span class="chip bg-color">HTML</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
                     <a href="/posts/66ad3928/">
                         <div class="card-image">
                             
@@ -1602,7 +1586,7 @@ PNG：无损压缩，透明，交错，动画（支持有/无损，比GIF色彩�
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">6.7k</span>&nbsp;字
+                class="white-color">12.3k</span>&nbsp;字
             
             
             
