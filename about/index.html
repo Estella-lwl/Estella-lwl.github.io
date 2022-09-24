@@ -320,7 +320,7 @@
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">8</a></span>
+    <span class="count"><a href="/tags">7</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -350,7 +350,7 @@
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">8</a></span>
+    <span class="count"><a href="/tags">7</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -375,10 +375,6 @@
 
 
 
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1443560212" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1443560212" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
 
 
 
@@ -413,10 +409,6 @@
 
 
 
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1443560212" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1443560212" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
 
 
 
@@ -494,7 +486,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,2,0,0,0,0,0,0,0,2,1],
+                data: [0,0,0,2,0,0,0,0,0,0,0,3,0],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -536,7 +528,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"CSS","value":2},{"name":"hexo","value":1},{"name":"JS","value":1},{"name":"Vue3","value":2},{"name":"HTML","value":1}],
+                data: [{"name":"CSS","value":2},{"name":"hexo","value":1},{"name":"JS","value":1},{"name":"Vue3","value":3},{"name":"HTML","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -560,7 +552,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["基础回顾","CSS","hexo","gitee","JS","Vue3","vue3","HTML"]
+                data: ["基础回顾","Vue3","CSS","hexo","gitee","JS","HTML"]
             }
         ],
         yAxis: [
@@ -573,7 +565,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [4,2,1,1,1,1,1,1],
+                data: [4,3,2,1,1,1,1],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -618,8 +610,8 @@
         <div class="col s12 m6 l6" data-aos="fade-up">
             <div class="skillbar">
                 <div class="skillbar-title"
-                     style="background: linear-gradient(to right, #9900FF 0%, #CC66FF 100%); width: 80%">
-                    <span>JavaScript</span>
+                     style="background: linear-gradient(to right, #bfe6ee 0%, #CC66FF 100%); width: 80%">
+                    <span>JavaScript/ES6+</span>
                 </div>
                 <div class="skill-bar-percent">80%</div>
             </div>
@@ -629,8 +621,8 @@
         <div class="col s12 m6 l6" data-aos="fade-up">
             <div class="skillbar">
                 <div class="skillbar-title"
-                     style="background: linear-gradient(to right, #2196F3 0%, #42A5F5 100%); width: 80%">
-                    <span>HTML5</span>
+                     style="background: linear-gradient(to right, #82d3f4 0%, #6fb6db 100%); width: 80%">
+                    <span>Vue全家桶/Vue3</span>
                 </div>
                 <div class="skill-bar-percent">80%</div>
             </div>
@@ -640,21 +632,21 @@
         <div class="col s12 m6 l6" data-aos="fade-up">
             <div class="skillbar">
                 <div class="skillbar-title"
-                     style="background: linear-gradient(to right, #00BCD4 0%, #80DEEA 100%); width: 70%">
-                    <span>CSS</span>
+                     style="background: linear-gradient(to right, #6fb6db 0%, #42A5F5 100%); width: 80%">
+                    <span>HTML/HTML5</span>
+                </div>
+                <div class="skill-bar-percent">80%</div>
+            </div>
+        </div>
+        
+        
+        <div class="col s12 m6 l6" data-aos="fade-up">
+            <div class="skillbar">
+                <div class="skillbar-title"
+                     style="background: linear-gradient(to right, #e6dff6 0%, #ab75d6 100%); width: 70%">
+                    <span>CSS/CSS3</span>
                 </div>
                 <div class="skill-bar-percent">70%</div>
-            </div>
-        </div>
-        
-        
-        <div class="col s12 m6 l6" data-aos="fade-up">
-            <div class="skillbar">
-                <div class="skillbar-title"
-                     style="background: linear-gradient(to right, #FFEB3B 0%, #FFF176 100%); width: 75%">
-                    <span>程序设计</span>
-                </div>
-                <div class="skill-bar-percent">75%</div>
             </div>
         </div>
         
@@ -668,6 +660,10 @@
         <div class="sub-title center-align"><i class="fa fa-book"></i>&nbsp;&nbsp;其他技能</div>
         <div class="tag-chips center-align">
             
+            
+            <a href="/tags/CSS/">
+                <span class="chip center-align waves-effect waves-light chip-default">CSS</span>
+            </a>
             
             
             
@@ -697,12 +693,6 @@
             
             <a href="/tags/Vue3/">
                 <span class="chip center-align waves-effect waves-light chip-default">Vue3</span>
-            </a>
-            
-            
-            
-            <a href="/tags/vue3/">
-                <span class="chip center-align waves-effect waves-light chip-default">vue3</span>
             </a>
             
             
@@ -929,7 +919,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">6.6k</span>&nbsp;字
+                class="white-color">12.3k</span>&nbsp;字
             
             
             
@@ -1012,10 +1002,6 @@
 
 
 
-
-    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1443560212" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1443560212" data-position="top" data-delay="50">
-        <i class="fab fa-qq"></i>
-    </a>
 
 
 
