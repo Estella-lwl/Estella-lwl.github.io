@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hexo+Gitee搭建博客踩坑总结, HTML,CSS,JavaScript,JQuery,React,Vue.js">
+    <meta name="keywords" content="vue3变更总结, HTML,CSS,JavaScript,JQuery,React,Vue.js">
     <meta name="description" content="前端进阶之旅">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hexo+Gitee搭建博客踩坑总结 | polariis</title>
+    <title>vue3变更总结 | polariis</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -252,12 +252,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hexo+Gitee搭建博客踩坑总结</h1>
+                    <h1 class="description center-align post-title">vue3变更总结</h1>
                 </div>
             </div>
         </div>
@@ -371,29 +371,12 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/hexo/">
-                                <span class="chip bg-color">hexo</span>
-                            </a>
-                        
-                            <a href="/tags/gitee/">
-                                <span class="chip bg-color">gitee</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/hexo/" class="post-category">
-                                hexo
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -402,28 +385,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-04-04
+                    2022-09-24
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-12-04
+                    2022-09-24
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    0
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    1 分
                 </div>
                 
 
@@ -443,79 +426,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="一、搭建过程如下："><a href="#一、搭建过程如下：" class="headerlink" title="一、搭建过程如下："></a>一、搭建过程如下：</h2><h3 id="阶段1：-本地搭建"><a href="#阶段1：-本地搭建" class="headerlink" title="阶段1： 本地搭建"></a>阶段1： 本地搭建</h3><p>1.下载安装node.js </p>
-<p>2.下载安装git </p>
-<p>3.使用命令行(win+r,输入cmd)下载淘宝镜像：    </p>
-<pre><code>npm install -g cnpm --registry=https://.npm.taobao.org
-</code></pre>
-<p>4.使用命令行下载hexo :    （git bash和cmd都可以）</p>
-<pre><code>npm install -g hexo-cli
-</code></pre>
-<p>5.建立空文件夹 ：</p>
-<pre><code>md blog
-</code></pre>
-<p>6.进入建好的文件夹：</p>
-<pre><code>cd blog 
-</code></pre>
-<p>7.启动服务：</p>
-<pre><code>hexo s
-</code></pre>
-<p>8.停一下：ctrl c再按y </p>
-<p>9.新建文章： hexo n “标题” </p>
-<p>10.看这时在哪个目录下，然后cd进入 </p>
-<p>11.确认新建的文章是否成功：dir </p>
-<p>12.给博文加内容：这里我用typora写。用vim的方法是：vim 标题.md。然后保存退出：先按esc，再输入    wq(w保存，q退出)。 </p>
-<p>13.文件退两层： cd../.. (到了blog目录) </p>
-<p>14.win下写博文从文件夹用typora打开文章，然后保存刷新页面，不用重新启动hexo。 </p>
-<p>15.清理 :</p>
-<pre><code>hexo clean 
-</code></pre>
-<p>16.生成:</p>
-<pre><code>hexo g 
-</code></pre>
-<h3 id="阶段2：部署到Gitee"><a href="#阶段2：部署到Gitee" class="headerlink" title="阶段2：部署到Gitee"></a>阶段2：部署到Gitee</h3><p>1.装一个git的部署插件cnpm install –save hexo-deployer-git(win用npm install) </p>
-<p>2.注册登录Gitee账号，新建仓库，设置仓库名（一定要和用户名一样，否则可能会有无法预料结果）。</p>
-<p>3.设置根目录的_config.yml文件，用typore打开，拉到最底下设置deploy的值：</p>
-<pre><code>deploy:
-  type: git
-  repo: 你的仓库地址（去Gitee复制）
-  branch: master
-</code></pre>
-<p>注意冒号和值之间一定要有空格，type后面有单引号的话可以直接删了。</p>
-<p>4.这样就随时可以用电脑/手机访问了，地址可以直接复制仓库名访问。接下来就是换主题和自定义主题为满意的样式，我用的是Matery，网上有很多，Hexo官网也有。</p>
-<h2 id="二、需要注意的地方："><a href="#二、需要注意的地方：" class="headerlink" title="二、需要注意的地方："></a>二、需要注意的地方：</h2><p>1.主题名别忘了在_config.ym中更改，这种配置文件一定要严格按照格式！否则一言不合就报错！</p>
-<p>2.下载的主题在解压缩后不要更改</p>
-<p>3.注意有没有漏下的插件，检查所有插件及版本号的指令：</p>
-<pre><code>npm list
-</code></pre>
-<p>4.卸载某个插件的指令：</p>
-<pre><code>npm uninstall 插件名@版本号
-</code></pre>
-<p>5.怕出错想找回改动前的文件：可以提前复制粘贴一份在桌面，方便随时对照/改动。</p>
-<p>6.Typora可以选择是否显示目录，设置toc: true，如果某篇文章不显示目录了，可以查看文章最上方的设置是否正确。</p>
-<h2 id="三、踩坑-amp-解决："><a href="#三、踩坑-amp-解决：" class="headerlink" title="三、踩坑&amp;解决："></a>三、踩坑&amp;解决：</h2><p>1.报错：FATAL err:[Error: EBUSY: resource busy or locked, rmdir ‘C:\User...]</p>
-<p>网上搜索了一下，关闭软件重启电脑，果然有奇效。</p>
-<p>2.我的页面刚开始一直404，我百思不得其解，大佬们的各路招数试了个遍，然而它的纹丝不动仿佛在告诉我不要浪费时间。</p>
-<p>最后！我在Gitee Page页面看到了一个更新的按钮，我一脸疑惑的点了一下。接着，大不一样，顿时体会到柳暗花明又一村天无绝人之路。没错，我想了一下，大概是因为我的git一键部署功能出错了。总之，现在是记了，    每次终端部署完之后，在这个页面再点更新就好了。</p>
-<p>3.我发现我的主题，在设置成功之后无法在网站中更新，在尝试了很多方法之后，我发现把根目录的config yml文件的repo由SSH的地址变换为HTTPS的位置，这样就可以成功解决，不过还有一个问题就是这样的话，每次重新部署都要输入用户名和密码。</p>
-<p>然后我就尝试在网上搜集一些办法，但是没有什么用。这时我就想，如果我把repo. 再换成SSH的地址。这样换了之后我看会有什么变化变化，结果发现。重新部署之后是可以的，页面刷新也没有完全问题。</p>
-<p>4.我在所选的主题下找到了read me，开始按照里面的提示来配置我的主题文件夹。其中有一个是配置评论的表情的。我在配置过后发现你发现在本地运行的时候都会报错，后来在网上查找，提示说检查Jason文件格式，一般情况下，他都是一对花括号是首尾。后来我把最上面那行Json删了也把最外层的中括号删了。结果发现依旧报    错，接着我又尝试把中括号加上，运行一下再也没有红色字段，就Json这四个字母导致了运行报错。</p>
-<p>​    5.修改根目录配置文件时，注意缩进，有报错的情况！</p>
-<p>​    6.卸载了<a href="mailto:&#x68;&#105;&#x67;&#104;&#x6c;&#105;&#103;&#x68;&#116;&#x2e;&#x6a;&#115;&#x40;&#49;&#x30;&#46;&#x37;&#x2e;&#49;">&#x68;&#105;&#x67;&#104;&#x6c;&#105;&#103;&#x68;&#116;&#x2e;&#x6a;&#115;&#x40;&#49;&#x30;&#46;&#x37;&#x2e;&#49;</a>：npm uninstall <a href="mailto:&#104;&#x65;&#x78;&#x6f;&#x2d;&#x71;&#x69;&#x6e;&#x69;&#117;&#45;&#x73;&#121;&#110;&#99;&#x40;&#x31;&#x2e;&#52;&#x2e;&#x37;">&#104;&#x65;&#x78;&#x6f;&#x2d;&#x71;&#x69;&#x6e;&#x69;&#117;&#45;&#x73;&#121;&#110;&#99;&#x40;&#x31;&#x2e;&#52;&#x2e;&#x37;</a> （相关的配置我暂时未删，试了一下已    经好了）</p>
-<p>​    7.设置文章永久链接，下载指令：</p>
-<pre><code>npm install hexo-abbrlink --save
-</code></pre>
-<p>​    设置修改<code>_config.yml</code>文件中的配置项（记得把原来的<code>permalink:</code>删除掉）:</p>
-<pre><code>#设置永久链接
-permalink: posts/:abbrlink.html  # 此处可以自己设置，也可以直接使用 :/abbrlink
-abbrlink:
-    alg: crc16   #算法： crc16(default) and crc32
-    rep: dec     #进制： dec(default) and hex
-</code></pre>
-<p>​    8.npm resource busy or locked报错解决：</p>
-<pre><code>npm cache verify
-</code></pre>
-
+                
                 
             </div>
             <hr/>
@@ -541,7 +452,7 @@ abbrlink:
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://polariis.gitee.io/posts/hexo-gitee/">https://polariis.gitee.io/posts/hexo-gitee/</a>
+                    <a href="https://polariis.gitee.io/posts/97e721dd/">https://polariis.gitee.io/posts/97e721dd/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -578,15 +489,7 @@ abbrlink:
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/hexo/">
-                                    <span class="chip bg-color">hexo</span>
-                                </a>
-                            
-                                <a href="/tags/gitee/">
-                                    <span class="chip bg-color">gitee</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -1017,54 +920,18 @@ abbrlink:
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/posts/3eeb/">
+                <a href="/posts/97e721dd/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="vue3变更总结">
                         
-                        <span class="card-title">Hello World</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-11
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            polariis
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/posts/5d7648ee/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="CSS定位机制">
-                        
-                        <span class="card-title">CSS定位机制</span>
+                        <span class="card-title">vue3变更总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1075,14 +942,52 @@ abbrlink:
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-04-05
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-24
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            polariis
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/9badfa3f/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="ref &amp; reactive &amp; 响应式差异">
+                        
+                        <span class="card-title">ref &amp; reactive &amp; 响应式差异</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-10
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CSS/" class="post-category">
-                                    CSS
+                            <a href="/categories/Vue3/" class="post-category">
+                                    Vue3
                                 </a>
                             
                             
@@ -1092,12 +997,8 @@ abbrlink:
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CSS/">
-                        <span class="chip bg-color">CSS</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/">
-                        <span class="chip bg-color">基础回顾</span>
+                    <a href="/tags/Vue3/">
+                        <span class="chip bg-color">Vue3</span>
                     </a>
                     
                 </div>
