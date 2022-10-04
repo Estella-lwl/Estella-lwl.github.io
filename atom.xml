@@ -97,6 +97,28 @@
   </entry>
   
   <entry>
+    <title>SEO优化</title>
+    <link href="https://polariis.gitee.io/posts/7f8d26b3/"/>
+    <id>https://polariis.gitee.io/posts/7f8d26b3/</id>
+    <published>2021-12-18T03:21:35.000Z</published>
+    <updated>2022-10-04T11:50:47.045Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-SEO"><a href="#1-SEO" class="headerlink" title="1. SEO"></a>1. SEO</h2><p><strong>1. SEO：Search Engine Optimization，译为 搜索引擎优化，是一种利用搜索引擎的规则提高网站在有关搜索引擎内自然排名的方式。</strong></p><ul><li><p>SEO的<strong>目的</strong>是：对网站进行深度优化，从而帮助网站获取免费的流量，进而在搜索引擎上提高网站的排名。</p></li><li><p>页面必须有三个标签用来符合SEO优化。</p></li><li><ul><li><p><strong>title 网站标题</strong></p></li><li><ul><li>title具有不可代替性，是内页的第一个重要标签，是搜索引擎了解王爷的入口和对网页主题归属的最佳判断点。</li><li>建议写法：<span style="color: red">网站名（产品名）-网站的介绍</span>（尽量不要超过30个汉字）</li></ul></li><li><p><strong>description 网站说明</strong></p></li><li><ul><li><span style="color: red">简要说明网站是干什么的。 </span></li><li>例：京东JD.COM-专业的综合网上购物商城，销售家电、数码通讯、电脑、家居百货…….为您提供愉悦的购物体验。</li></ul></li><li><p><strong>keyword 关键字</strong></p></li><li><ul><li>页面关键字，是搜索引擎的关注度之一。</li><li>最好限制在6-8个关键字，关键字之间用英文逗号隔开。</li></ul></li><li><p>例：</p></li></ul></li><li><pre><code>&lt;meta name=&quot;description&quot; content=&quot;......&quot;/&gt;</code></pre></li><li></li></ul><h2 id="2-LOGO的SEO-优化："><a href="#2-LOGO的SEO-优化：" class="headerlink" title="2. LOGO的SEO 优化："></a>2. LOGO的SEO 优化：</h2><p>具体步骤：</p><p><strong>1. logo里面首先放一个h1标签，目的是为了提权，告诉搜索引擎这个地方很重要。</strong></p><p><strong>2. h1里面再放一个链接(a)，可以返回首页的，把logo的背景图片给链接即可。</strong></p><p><strong>3. 为了搜索引擎的收录，链接里要放文字（网站名称），但是文字不能显示出来。</strong></p><ul><li>方法一：<span style="color: red">text-indent </span>移到盒子外面（<span style="color: red">text-indent: -9999px; </span>），然后<span style="color: red">over-flow: hidden;</span>   （淘宝的做法）</li><li>方法二：直接给<span style="color: red">font-size: 0;  </span>就看不到文字了（京东的做法）。</li></ul><p><strong>4. 最后给链接一个<span style="color: red">title</span>属性，这样鼠标放到logo上就可以看到提示文字。</strong></p><p>示例： </p><pre><code>  &lt;header class=&quot;header&quot;&gt;    &lt;div class=&quot;logo&quot;&gt;      &lt;h1&gt;        &lt;a href=&quot;index.html&quot; title=&quot;这是一个网站名称&quot;&gt;这是一个网站名&lt;/a&gt;      &lt;/h1&gt;    &lt;/div&gt;  &lt;/header&gt;</code></pre><p>css部分省略。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;1-SEO&quot;&gt;&lt;a href=&quot;#1-SEO&quot; class=&quot;headerlink&quot; title=&quot;1. SEO&quot;&gt;&lt;/a&gt;1. SEO&lt;/h2&gt;&lt;p&gt;&lt;strong&gt;1. SEO：Search Engine Optimization，译为 搜索引擎优化，是一种利</summary>
+      
+    
+    
+    
+    
+    <category term="SEO" scheme="https://polariis.gitee.io/tags/SEO/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JS小总结</title>
     <link href="https://polariis.gitee.io/posts/ac58b7ea/"/>
     <id>https://polariis.gitee.io/posts/ac58b7ea/</id>
