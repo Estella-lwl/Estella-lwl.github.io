@@ -6,7 +6,7 @@
   <link href="https://polariis.gitee.io/atom.xml" rel="self"/>
   
   <link href="https://polariis.gitee.io/"/>
-  <updated>2022-10-05T08:17:28.577Z</updated>
+  <updated>2022-10-05T08:05:40.112Z</updated>
   <id>https://polariis.gitee.io/</id>
   
   <author>
@@ -15,33 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>JS获取视频任意进度</title>
-    <link href="https://polariis.gitee.io/posts/5ced3654/"/>
-    <id>https://polariis.gitee.io/posts/5ced3654/</id>
-    <published>2022-09-15T16:00:00.000Z</published>
-    <updated>2022-10-05T08:17:28.577Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><p>利用视频的<span style="color: #0091ff;background-color: #f2f4f5;"> duration </span>获取视频相关信息。</p></li><li><p>利用<span style="color: #0091ff;background-color: #f2f4f5;"> addEventListener </span>事件监听的相关事件👇🏻，可以获取各个播放进度&amp;在不同阶段操作数据。</p><ul><li><span style="color: #678f00">play</span>： 视频开始播放 。</li><li><span style="color: #678f00">playing</span>： 视频播放过程中 。</li><li><span style="color: #678f00">ended</span>： 视频结束播放 。</li><li><span style="color: #678f00">loadedmetadata </span>事件： 音频/视频的元数据已加载时（时长、尺寸（仅视频）以及文本轨道）。</li></ul></li><li><p>当 音频/视频 处于加载过程中时，会 依次发生 以下事件：</p></li><li><ol><li><span style="color: #3850b8">loadstart</span></li><li><span style="color: #3850b8">durationchange</span></li><li><span style="color: #3850b8">loadedmetadata</span></li><li><span style="color: #3850b8">loadeddata</span></li><li><span style="color: #3850b8">progress</span></li><li><span style="color: #3850b8">canplay</span></li><li><span style="color: #3850b8">canplaythrough</span></li></ol></li></ul><p><span style="color: #CC0000">1.</span> 在视频第6秒时显示一个按钮：</p><pre><code>    function videoInit() &#123;      let elevideo = document.getElementById(&#39;video2&#39;);      elevideo.addEventListener(&#39;loadedmetadata&#39;, () =&gt; &#123;        //视频的总长度        console.log(&#39;总长度:&#39;, elevideo.duration);        clearInterval(this.timer);      &#125;);            elevideo.addEventListener(&#39;play&#39;, () =&gt; &#123;        //播放开始执行的函数        console.log(&#39;开始播放&#39;);      &#125;);            elevideo.addEventListener(&#39;playing&#39;, () =&gt; &#123;        //播放中        console.log(&#39;播放中&#39;);        this.timer = setInterval(() =&gt; &#123;          console.log(&#39;播放进度:&#39; + parseFloat(elevideo.currentTime));          if (parseInt(elevideo.currentTime) === 6) &#123;            const btn = document.querySelector(&#39;.main-button&#39;)            btn.classList.remove(&#39;main-button-hide&#39;)          &#125;        &#125;, 100);      &#125;);            elevideo.addEventListener(&#39;ended&#39;, () =&gt; &#123;        //结束        console.log(&#39;播放结束&#39;);        clearInterval(this.timer);      &#125;, false);          &#125;;    videoInit();</code></pre><p><span style="color: #CC0000">2.</span> 改进：</p><pre><code>      eleVideo.addEventListener(&#39;playing&#39;, () =&gt; &#123;        //播放中        console.log(&#39;播放中&#39;);        const timer = setInterval(() =&gt; &#123;          console.log(&#39;播放进度:&#39; + parseFloat(eleVideo.currentTime));          if (Math.round(eleVideo.currentTime) === 6) &#123;            const btn = document.querySelector(&#39;.main-button&#39;)            btn.classList.remove(&#39;main-button-hide&#39;)          &#125;          if (eleVideo.currentTime &gt; 6) &#123;            console.log(&#39;结束监听&#39;);            clearInterval(timer);          &#125;        &#125;, 1000);      &#125;);</code></pre><p><span style="color: #CC0000">3.</span> 改进使用video的 currentTime 事件后：</p><pre><code>    function videoInit() &#123;      let eleVideo = document.getElementById(&#39;videoEl&#39;);      eleVideo.addEventListener(&#39;timeupdate&#39;, () =&gt; &#123;        console.log(&#39;播放中&#39;);        if (Math.round(eleVideo.currentTime) === 6) &#123;          console.log(&#39;第6秒了&#39;);          const btn = document.querySelector(&#39;.main-button&#39;)          btn.classList.remove(&#39;main-button-hide&#39;)        &#125;      &#125;)    &#125;;    videoInit();</code></pre>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;利用视频的&lt;span style=&quot;color: #0091ff;background-color: #f2f4f5;&quot;&gt; duration &lt;/span&gt;获取视频相关信息。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;利用&lt;span style=&quot;color: #</summary>
-      
-    
-    
-    
-    <category term="JavaScript" scheme="https://polariis.gitee.io/categories/JavaScript/"/>
-    
-    
-    <category term="JavaScript" scheme="https://polariis.gitee.io/tags/JavaScript/"/>
-    
-  </entry>
   
   <entry>
     <title>JS获取视频任意进度</title>
@@ -551,6 +524,32 @@
     
     
     
+    
+  </entry>
+  
+  <entry>
+    <title>CSS三角的制作</title>
+    <link href="https://polariis.gitee.io/posts/433aec41/"/>
+    <id>https://polariis.gitee.io/posts/433aec41/</id>
+    <published>2021-11-27T01:45:19.000Z</published>
+    <updated>2022-10-05T01:26:05.849Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-等腰三角形"><a href="#1-等腰三角形" class="headerlink" title="1. 等腰三角形"></a>1. 等腰三角形</h2><p>使用场景：悬停到导航栏的某个li</p><p>原理：</p><pre><code>// 宽高必须是0 ！！！.box1 &#123;    width: 0;    height: 0;    border: 10px solid transparent;    // 只改某一边的颜色：    border-top-color: blue；    // 兼容低版本浏览器：    line-height: 0;    font-size: 0;&#125;</code></pre><p>transparent: 透明的。</p><h2 id="2-直角三角形"><a href="#2-直角三角形" class="headerlink" title="2. 直角三角形"></a>2. 直角三角形</h2><p>使用场景：制作梯形时，例：</p><p>  <img src="https://s2.loli.net/2022/10/05/pwfxo1imyKztODA.png" alt="image-20221005085722720"></p><p>原理：    和上面类似，图解：</p><p>​    <img src="https://s2.loli.net/2022/10/05/EAzkygNa9QG23i8.png" alt="image-20221005085758685"></p><pre><code>.box2 &#123;    width: 0;    height: 0;    // 上边框取高点，撑起盒子高度：    border-top: 100px solid transparent;    border-right: 50px solod skyblue;    // 下面这行可以让一个正方形的4个三角变为3个：    // 左边和下边的边框宽度必须为0：    border-bottom: 0 solod blue;   border-left: 0 solod green;&#125;</code></pre><p>​           </p><p>上面的代码简写为：</p><pre><code>.box2 &#123;    width: 0;    height: 0;    border-color: transparent skyblue transparent transparent;    border-style: solid;    border-width: 100px 50px 0 0;    &#125;</code></pre><p>​       </p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;1-等腰三角形&quot;&gt;&lt;a href=&quot;#1-等腰三角形&quot; class=&quot;headerlink&quot; title=&quot;1. 等腰三角形&quot;&gt;&lt;/a&gt;1. 等腰三角形&lt;/h2&gt;&lt;p&gt;使用场景：悬停到导航栏的某个li&lt;/p&gt;
+&lt;p&gt;原理：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 宽高</summary>
+      
+    
+    
+    
+    <category term="CSS" scheme="https://polariis.gitee.io/categories/CSS/"/>
+    
+    
+    <category term="CSS" scheme="https://polariis.gitee.io/tags/CSS/"/>
     
   </entry>
   
