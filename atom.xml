@@ -167,6 +167,56 @@
   </entry>
   
   <entry>
+    <title>CSS三角的制作</title>
+    <link href="https://polariis.gitee.io/posts/433aec41/"/>
+    <id>https://polariis.gitee.io/posts/433aec41/</id>
+    <published>2021-11-27T01:45:19.000Z</published>
+    <updated>2022-10-05T00:59:10.717Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-等腰三角形"><a href="#1-等腰三角形" class="headerlink" title="1. 等腰三角形"></a>1. 等腰三角形</h2><p>使用场景：悬停到导航栏的某个li</p><p>原理：</p><pre><code>// 宽高必须是0 ！！！.box1 &#123;    width: 0;    height: 0;    border: 10px solid transparent;    // 只改某一边的颜色：    border-top-color: blue；    // 兼容低版本浏览器：    line-height: 0;    font-size: 0;&#125;</code></pre><p>transparent: 透明的。</p><h2 id="2-直角三角形"><a href="#2-直角三角形" class="headerlink" title="2. 直角三角形"></a>2. 直角三角形</h2><p>使用场景：制作梯形时，例：</p><p>  <img src="https://s2.loli.net/2022/10/05/pwfxo1imyKztODA.png" alt="image-20221005085722720"></p><p>原理：    和上面类似，图解：</p><p>​    <img src="https://s2.loli.net/2022/10/05/EAzkygNa9QG23i8.png" alt="image-20221005085758685"></p><pre><code>.box2 &#123;    width: 0;    height: 0;    // 上边框取高点，撑起盒子高度：    border-top: 100px solid transparent;    border-right: 50px solod skyblue;    // 下面这行可以让一个正方形的4个三角变为3个：    // 左边和下边的边框宽度必须为0：    border-bottom: 0 solod blue;   border-left: 0 solod green;&#125;</code></pre><p>​           </p><p>上面的代码简写为：</p><pre><code>.box2 &#123;    width: 0;    height: 0;    border-color: transparent skyblue transparent transparent;    border-style: solid;    border-width: 100px 50px 0 0;    &#125;</code></pre><p>​       </p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;1-等腰三角形&quot;&gt;&lt;a href=&quot;#1-等腰三角形&quot; class=&quot;headerlink&quot; title=&quot;1. 等腰三角形&quot;&gt;&lt;/a&gt;1. 等腰三角形&lt;/h2&gt;&lt;p&gt;使用场景：悬停到导航栏的某个li&lt;/p&gt;
+&lt;p&gt;原理：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 宽高</summary>
+      
+    
+    
+    
+    <category term="CSS" scheme="https://polariis.gitee.io/categories/CSS/"/>
+    
+    
+    <category term="CSS" scheme="https://polariis.gitee.io/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CSS样式的继承</title>
+    <link href="https://polariis.gitee.io/posts/dbc5d360/"/>
+    <id>https://polariis.gitee.io/posts/dbc5d360/</id>
+    <published>2021-11-07T08:03:12.000Z</published>
+    <updated>2022-10-05T01:12:38.376Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-行高的继承"><a href="#1-行高的继承" class="headerlink" title="1.行高的继承"></a>1.行高的继承</h2><pre><code>font:12px/24px &#39;Microsoft YaHei&#39;;              </code></pre><p>指的是行高24px。</p><pre><code>font:12px/1.5 &#39;Microsoft YaHei&#39;;</code></pre><ul><li>指的是让子元素继承父元素1.5，而且是子元素字体大小*1，5。</li><li>行高可以有或没有单位。</li><li>例：</li></ul><img src="https://s2.loli.net/2022/10/05/kgiL2KZDFUzonf4.png" alt="image.png" style="zoom: 50%;" /><h2 id="2-权重的注意点"><a href="#2-权重的注意点" class="headerlink" title="2. 权重的注意点"></a>2. 权重的注意点</h2><h3 id="2-1-选择器权重："><a href="#2-1-选择器权重：" class="headerlink" title="2.1 选择器权重："></a>2.1 选择器权重：</h3>  <img src="https://s2.loli.net/2022/10/05/2VbphskzyWPR8an.png" alt="image.png" style="zoom: 67%;" /><h3 id="2-2-注意：继承的权重是0！！！！！！"><a href="#2-2-注意：继承的权重是0！！！！！！" class="headerlink" title="2.2 注意：继承的权重是0！！！！！！"></a>2.2 注意：继承的权重是0！！！！！！</h3><ul><li>所以当父元素设置了属性，其子元素也设置并且属性值冲突时的时候，子元素并不会继承，而是按照自己给的值显示。因为就算父元素权重再大，继承的权重也是0。</li><li>再比如最近写Vplus官网碰到的，给body设置颜色，但a便签依旧没变，这是因为继承过来为0，同时在浏览器中，a是有自己的默认样式的，所以自然影响不到。</li></ul><h3 id="2-3-权重会叠加，但不会出现进位。"><a href="#2-3-权重会叠加，但不会出现进位。" class="headerlink" title="2.3 权重会叠加，但不会出现进位。"></a>2.3 权重会叠加，但不会出现进位。</h3>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;1-行高的继承&quot;&gt;&lt;a href=&quot;#1-行高的继承&quot; class=&quot;headerlink&quot; title=&quot;1.行高的继承&quot;&gt;&lt;/a&gt;1.行高的继承&lt;/h2&gt;&lt;pre&gt;&lt;code&gt;font:12px/24px &amp;#39;Microsoft YaHei&amp;#39;; </summary>
+      
+    
+    
+    
+    <category term="CSS" scheme="https://polariis.gitee.io/categories/CSS/"/>
+    
+    
+    <category term="CSS" scheme="https://polariis.gitee.io/tags/CSS/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hexo+Gitee搭建博客踩坑总结</title>
     <link href="https://polariis.gitee.io/posts/hexo-gitee/"/>
     <id>https://polariis.gitee.io/posts/hexo-gitee/</id>

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Vue3生命周期的变更, HTML,CSS,JavaScript,JQuery,React,Vue.js">
+    <meta name="keywords" content="CSS样式的继承, HTML,CSS,JavaScript,JQuery,React,Vue.js">
     <meta name="description" content="前端进阶之旅">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Vue3生命周期的变更 | polariis</title>
+    <title>CSS样式的继承 | polariis</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -252,12 +252,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Vue3生命周期的变更</h1>
+                    <h1 class="description center-align post-title">CSS样式的继承</h1>
                 </div>
             </div>
         </div>
@@ -373,8 +373,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Vue3/">
-                                <span class="chip bg-color">Vue3</span>
+                            <a href="/tags/CSS/">
+                                <span class="chip bg-color">CSS</span>
                             </a>
                         
                     </div>
@@ -385,8 +385,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Vue3/" class="post-category">
-                                Vue3
+                            <a href="/categories/CSS/" class="post-category">
+                                CSS
                             </a>
                         
                     </div>
@@ -398,21 +398,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-08-10
+                    2021-11-07
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-25
+                    2022-10-05
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    98
+                    232
                 </div>
                 
 
@@ -434,42 +434,25 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id=""><a href="#" class="headerlink" title=""></a></h2><ul>
-<li><p>销毁的概念改为<strong>卸载</strong>（unmounted），更名：</p>
-</li>
-<li><ul>
-<li>beforeDestroy改名为beforeUnmounted。</li>
-<li>destroyed改名为unmounted。</li>
-</ul>
-</li>
-<li><p>vue2中的两次判断改为一次。</p>
-</li>
-</ul>
-<p>​    <img src="C:\Users\失频本人\Desktop\blog修改历史\blog\source_posts\image-20220810030613459.png" alt="image-20220810030613459"></p>
+                <h2 id="1-行高的继承"><a href="#1-行高的继承" class="headerlink" title="1.行高的继承"></a>1.行高的继承</h2><pre><code>font:12px/24px &#39;Microsoft YaHei&#39;;              
+</code></pre>
+<p>指的是行高24px。</p>
+<pre><code>font:12px/1.5 &#39;Microsoft YaHei&#39;;
+</code></pre>
 <ul>
-<li><p>Vue3提供的<strong>Composition API</strong>形式对比：</p>
-</li>
-<li><ul>
-<li>beforeCreate     =&gt;     <strong>setup()</strong></li>
-<li>created     =&gt;     <strong>setup()</strong></li>
-<li>beforeMount     =&gt;     <strong>onBeforeMount</strong></li>
-<li>mounted         =&gt;     <strong>onMounted</strong></li>
-<li>beforeUpdate      =&gt;     <strong>onBeforeUpdate</strong></li>
-<li>updated         =&gt;     <strong>onUpdated</strong></li>
-<li>beforeUnmounted     =&gt;     <strong>onBeforeUnmounted</strong></li>
-<li>unmounted     =&gt;     <strong>OnUnmounted</strong></li>
+<li>指的是让子元素继承父元素1.5，而且是子元素字体大小*1，5。</li>
+<li>行高可以有或没有单位。</li>
+<li>例：</li>
 </ul>
-</li>
-<li><p>组合式API的vue2生命钩子的<strong>优先级：</strong></p>
-</li>
-<li><ul>
-<li><p>下图打印结果可以看到：setup中的组合式API优先级更高。</p>
-<p><img src="C:\Users\失频本人\Desktop\blog修改历史\blog\source_posts\image-20220810034139355-16600741018631.png" alt="image-20220810034139355"></p>
-</li>
-</ul>
-</li>
-</ul>
+<img src="https://s2.loli.net/2022/10/05/kgiL2KZDFUzonf4.png" alt="image.png" style="zoom: 50%;" />
 
+<h2 id="2-权重的注意点"><a href="#2-权重的注意点" class="headerlink" title="2. 权重的注意点"></a>2. 权重的注意点</h2><h3 id="2-1-选择器权重："><a href="#2-1-选择器权重：" class="headerlink" title="2.1 选择器权重："></a>2.1 选择器权重：</h3>  <img src="https://s2.loli.net/2022/10/05/2VbphskzyWPR8an.png" alt="image.png" style="zoom: 67%;" />
+
+<h3 id="2-2-注意：继承的权重是0！！！！！！"><a href="#2-2-注意：继承的权重是0！！！！！！" class="headerlink" title="2.2 注意：继承的权重是0！！！！！！"></a>2.2 注意：继承的权重是0！！！！！！</h3><ul>
+<li>所以当父元素设置了属性，其子元素也设置并且属性值冲突时的时候，子元素并不会继承，而是按照自己给的值显示。因为就算父元素权重再大，继承的权重也是0。</li>
+<li>再比如最近写Vplus官网碰到的，给body设置颜色，但a便签依旧没变，这是因为继承过来为0，同时在浏览器中，a是有自己的默认样式的，所以自然影响不到。</li>
+</ul>
+<h3 id="2-3-权重会叠加，但不会出现进位。"><a href="#2-3-权重会叠加，但不会出现进位。" class="headerlink" title="2.3 权重会叠加，但不会出现进位。"></a>2.3 权重会叠加，但不会出现进位。</h3>
                 
             </div>
             <hr/>
@@ -495,7 +478,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://polariis.gitee.io/posts/2606f5b3/">https://polariis.gitee.io/posts/2606f5b3/</a>
+                    <a href="https://polariis.gitee.io/posts/dbc5d360/">https://polariis.gitee.io/posts/dbc5d360/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -533,8 +516,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Vue3/">
-                                    <span class="chip bg-color">Vue3</span>
+                                <a href="/tags/CSS/">
+                                    <span class="chip bg-color">CSS</span>
                                 </a>
                             
                         </div>
@@ -971,13 +954,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/9badfa3f/">
+                <a href="/posts/433aec41/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="ref &amp; reactive &amp; 响应式差异">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="CSS三角的制作">
                         
-                        <span class="card-title">ref &amp; reactive &amp; 响应式差异</span>
+                        <span class="card-title">CSS三角的制作</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -988,14 +971,14 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-10
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-27
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Vue3/" class="post-category">
-                                    Vue3
+                            <a href="/categories/CSS/" class="post-category">
+                                    CSS
                                 </a>
                             
                             
@@ -1005,8 +988,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Vue3/">
-                        <span class="chip bg-color">Vue3</span>
+                    <a href="/tags/CSS/">
+                        <span class="chip bg-color">CSS</span>
                     </a>
                     
                 </div>
@@ -1020,13 +1003,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/7f8d26b3/">
+                <a href="/posts/hexo-gitee/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="SEO优化">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Hexo+Gitee搭建博客踩坑总结">
                         
-                        <span class="card-title">SEO优化</span>
+                        <span class="card-title">Hexo+Gitee搭建博客踩坑总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1037,12 +1020,16 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-18
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-04
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            polariis
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/hexo/" class="post-category">
+                                    hexo
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -1050,8 +1037,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/SEO/">
-                        <span class="chip bg-color">SEO</span>
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
+                    </a>
+                    
+                    <a href="/tags/gitee/">
+                        <span class="chip bg-color">gitee</span>
                     </a>
                     
                 </div>
