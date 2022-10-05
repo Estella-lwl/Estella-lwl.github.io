@@ -79,6 +79,56 @@
     
     
     <entry>
+      <title>Promise总结</title>
+      <link href="posts/5b39b356/"/>
+      <url>posts/5b39b356/</url>
+      
+        <content type="html"><![CDATA[<p><strong>关联笔记</strong>：<a href="note://WEBcaea4312c824c3e5ed720687a4dde45f">Promise补充</a>    <a href="note://WEBb2bc4bcd1fe230dba73429e31b71de72">事件循环event loop</a></p><hr><h2 id="1-一些需要知道的前置内容"><a href="#1-一些需要知道的前置内容" class="headerlink" title="1. 一些需要知道的前置内容"></a>1. 一些需要知道的前置内容</h2><h3 id="1-1-实例对象与函数对象"><a href="#1-1-实例对象与函数对象" class="headerlink" title="1.1 实例对象与函数对象"></a>1.1 实例对象与函数对象</h3><ul><li><span style="color: #ff0001">实例对象</span>：new函数产生的对象，称为实例对象，简称对象。</li><li><span style="color: #ff0001">函数对象</span>：将函数作为对象使用时，简称函数对象。</li></ul><p>看以下对比：</p><pre><code> function Fn() &#123;&#125;            // Fn是函数             </code></pre><pre><code> const Fn = new Fn();        // Fn是构造函数；fn是实例对象。</code></pre><pre><code>console.log(Fn.prototype);  // Fn函数对象                 </code></pre><pre><code>Fn.call(&#123;&#125;)                 // Fn函数对象  </code></pre><pre><code>$(&#39;#test&#39;)                  // Jquery函数            </code></pre><pre><code>$.get(&#39;/test&#39;)              // Jquery函数对象</code></pre><p>​              </p><p>异步加载图片为例：</p><pre><code>// 声明一个函数&amp;传3个参数：function loadImg(src, res, reject) &#123;    // new一个对象    let img = new Image();    // 增加3个对象属性&amp;赋值：    img.src = src;    img.onload = res;    img.onerr = reject;&#125;// 调用loadImgloadImg(&#123;&#125;)</code></pre><p>​       通过回调，</p><h3 id="1-2-两种回调函数（同步-amp-异步）"><a href="#1-2-两种回调函数（同步-amp-异步）" class="headerlink" title="1.2 两种回调函数（同步&amp;异步）"></a>1.2 两种回调函数（同步&amp;异步）</h3><h4 id="1-2-1-同步回调函数："><a href="#1-2-1-同步回调函数：" class="headerlink" title="1.2.1 同步回调函数："></a>1.2.1 同步回调函数：</h4><ul><li><ol><li><strong>理解</strong>：<span style="color: #ff0001">立即执行，每一步完全执行完才结束</span>，不会放进回调队列中。</li></ol></li><li><ol start="2"><li><strong>例子</strong>：看下打印出来的顺序</li></ol></li></ul><pre><code>const arr =  [1, 2, 3];arr.forEach(item =&gt; &#123;       // 遍历回调；同步回调函数。不会放入队列，一上来就执行。    console.log(item);&#125;)console.log(&#39;forEach()后的打印&#39;);</code></pre><p>​            </p><ul><li>打印<strong>结果</strong>：arr中的每个item被打印，然后是第5行。</li><li><strong>说明</strong>：这段代码同步的。函数内每一步都执行完了才会进行下面的代码。</li></ul><h4 id="1-2-2-异步回调函数："><a href="#1-2-2-异步回调函数：" class="headerlink" title="1.2.2 异步回调函数："></a>1.2.2 异步回调函数：</h4><ul><li><ol><li><strong>理解</strong>：不会立即执行，而是<span style="color: #ff0001">放入回调队列等待执行</span>。</li></ol></li><li><ol start="2"><li><strong>例子</strong>：（比如：定时器回调、ajax回调、Promise的成功or失败回调。）</li></ol></li></ul><pre><code>// 异步回调函数，会放入队列在将来执行。setTimeout(() =&gt; &#123;    console.log(&#39;我是setTimeout中的回调~&#39;);&#125;, 0)console.log(&#39;我是setTimeout后的打印&#39;);       // 先打印</code></pre><p>​        </p><ul><li><p>打印<strong>结果&amp;说明</strong>：这段代码会先打印第4行，尽管定时器时间为0。因为是异步的，定时器里的需要等待后执行里面的打印；所以第4行直接先被打印。</p></li><li><ol><li>如果要判断一个函数是否是异步的，可以打印输出看顺序<strong>看是否需要等待</strong>输出来判断。</li></ol></li><li><ol start="2"><li>并不是所有回调都是异步。</li></ol></li></ul><h3 id="1-3-常见的内置错误"><a href="#1-3-常见的内置错误" class="headerlink" title="1.3 常见的内置错误"></a>1.3 常见的内置错误</h3><h4 id="1-3-1-错误的类型："><a href="#1-3-1-错误的类型：" class="headerlink" title="1.3.1 错误的类型："></a>1.3.1 错误的类型：</h4><ul><li><strong>Error:</strong> 是以下所有错误的<span style="background-color: #f2f4f5;">父类型</span>。<ul><li><strong>1.</strong> <span style="color: #CC0000"><strong>ReferenceError</strong></span>：<u>引用的变量不存在</u>；</li></ul></li></ul><pre><code>// 例：console.log(a);    // ReferenceError: a is not definedconsole.log(&#39;====&#39;);    // 未捕获错误，本行代码也不会执行。</code></pre><ul><li><ul><li><strong>2.</strong> <span style="color: #CC0000"><strong>TypeError</strong></span>： <u>数据类型不正确</u>；</li></ul></li></ul><pre><code>// 例：let b = undefined;b.xxx();             // Uncaught TypeError: b.xxx is not a function// 或：console.log(b.xxx);  // Uncaught TypeError: cannot read property &#39;xxx&#39; of undefined</code></pre><ul><li><ul><li><p><strong>3.</strong> <span style="color: #CC0000"><strong>RangeError</strong></span>： <u>数据值不在其所允许的范围内</u>；</p><pre><code>// 例：function fn () &#123;    // 在函数内部调用自己:（叫递归调用）    fn();&#125;// 加上这行就会报错：（最大调用栈溢出，也就是数据值不在其所允许的范围内）fn();              // RangeError: Maximum call stack size exceeded</code></pre><p>​    <strong>PS</strong>：<strong>这种形式不叫函数自调用，要区分开</strong>。函数自调用是：一次性函数。  <a href="https://www.cnblogs.com/liushisaonian/p/9425427.html">https://www.cnblogs.com/liushisaonian/p/9425427.html</a></p></li><li><p><strong>4.</strong>  <span style="color: #CC0000"><strong>SyntaxError</strong></span>： <u>语法错误</u>。</p><pre><code>// 例：// 本意：字符串里放入一个空字符串const c = &quot;&quot;&quot;&quot;;       // SyntaxError: Unexpected string     </code></pre></li></ul></li></ul><h4 id="1-3-2-错误处理："><a href="#1-3-2-错误处理：" class="headerlink" title="1.3.2 错误处理："></a>1.3.2 错误处理：</h4><p>不处理程序没法向下执行，有时需要在出现错误时加一些提示，所以会处理。</p><ul><li><strong>1.</strong> <span style="color: #CC0000"><strong>捕获处理</strong></span>：<strong>try  …  catch</strong><ul><li><strong>error里面默认有两个属性：<span style="color: #0091ff">1.</span> message 信息 ；<span style="color: #0091ff">2.</span> stack 调用栈</strong>    </li></ul></li></ul><pre><code>//try &#123;    let d;    console.log(d.xxx);&#125; catch (error) &#123;    console.log(error.message);   // 提示文本    console.log(error.stack);     // 相关信息文本&#125;// 只有上面处理了错误后，下面这行才可以正常执行：console.log(&#39;上面出错了&#39;);</code></pre><p>​             </p><ul><li><strong>2.</strong> <span style="color: #CC0000"><strong>抛出错误</strong></span>：<strong>throw error</strong>    <ul><li>当想让调用者自己处理，就可以使用抛出异常。若没有相关处理的需求也就没必要抛出异常了。</li><li>当自己抛异常时通常抛的是<strong>Error</strong>类型，而不是其下的别的类型错误。</li></ul></li></ul><pre><code>// 抛出错误： throwfunction fn() &#123;    // 判断当前时间是否为奇数:    if(Date.now()%2 === 1) &#123;        console.log(&#39;是奇数，可以执行任务&#39;);    &#125; else &#123;        // 抛出异常，由调用者来处理：        // new出来一个Error，它是对象类型。里面参数是错误信息        thorw new Error(&#39;当前为偶数，无法执行&#39;);    &#125;&#125;// 当调用时，要先捕获(否则不执行):try &#123;    fn();&#125; catch (err) &#123;    alert(err.message);   // 给个错误提示的效果&#125;</code></pre><p>​              </p><hr><h2 id="2-Promise"><a href="#2-Promise" class="headerlink" title="2. Promise"></a>2. Promise</h2><h3 id="2-1-Promise的理解"><a href="#2-1-Promise的理解" class="headerlink" title="2.1 Promise的理解"></a>2.1 Promise的理解</h3><ul><li>Promise是JS中进行异步编程的新的解决方案（旧方法：纯回调）。</li><li>具体来讲：<ul><li><strong>语法上</strong>：Promise是一个构造函数。</li><li><strong>功能上</strong>：Promise对象用来封装一个异步操作并可以获取其结果。</li></ul></li></ul><h3 id="2-2-promise的状态改变"><a href="#2-2-promise的状态改变" class="headerlink" title="2.2 promise的状态改变"></a>2.2 promise的状态改变</h3><ul><li>pending变为resolved；</li><li>pending变为rejected。</li></ul><p>PS：</p><ul><li><strong>只有这2种</strong>。且一个promise对象只能改变一次。</li><li>成功&amp;失败都会有一个结果数据。</li><li>成功的结果数据称为value，失败的结果数据称为reason。</li></ul><hr><p>未完待续…….</p><h3 id="2-3-promise的基本流"><a href="#2-3-promise的基本流" class="headerlink" title="2.3 promise的基本流"></a>2.3 promise的基本流</h3><h3 id="2-4-promise的基本使用"><a href="#2-4-promise的基本使用" class="headerlink" title="2.4 promise的基本使用"></a>2.4 promise的基本使用</h3><h3 id="2-5-为什么使用promise"><a href="#2-5-为什么使用promise" class="headerlink" title="2.5 为什么使用promise"></a>2.5 为什么使用promise</h3><h3 id="2-6-如何使用promise"><a href="#2-6-如何使用promise" class="headerlink" title="2.6 如何使用promise"></a>2.6 如何使用promise</h3><hr><h2 id="3-手写promise"><a href="#3-手写promise" class="headerlink" title="3. 手写promise"></a>3. 手写promise</h2><hr><h2 id="4-async-amp-await"><a href="#4-async-amp-await" class="headerlink" title="4. async &amp; await"></a>4. async &amp; await</h2><p>补充：<a href="https://zhuanlan.zhihu.com/p/26260061">https://zhuanlan.zhihu.com/p/26260061</a></p><hr><h2 id="5-JS异步——宏队列和微队列"><a href="#5-JS异步——宏队列和微队列" class="headerlink" title="5. JS异步——宏队列和微队列"></a>5. JS异步——宏队列和微队列</h2><p>完整笔记：<a href="note://WEBb2bc4bcd1fe230dba73429e31b71de72">事件循环event loop</a></p><hr><h2 id="6-promise练习题"><a href="#6-promise练习题" class="headerlink" title="6. promise练习题"></a>6. promise练习题</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> JavaScript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JavaScript </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Web服务器</title>
+      <link href="posts/80ca1d96/"/>
+      <url>posts/80ca1d96/</url>
+      
+        <content type="html"><![CDATA[<h3 id="1-什么是Web服务器"><a href="#1-什么是Web服务器" class="headerlink" title="1. 什么是Web服务器"></a>1. 什么是Web服务器</h3><ul><li>服务器（也会称之为主机）是提供计算服务的设备，它也是一台计算机。在网络环境下，根据服务器提供的服务类型不同，服务器又分为文件服务器，数据库服务器，应用程序服务器，Web服务器等。</li><li>Web服务器一般指网站服务器，是指驻留于因特网上某种类型计算机的程序，可以向浏览器等Web客户端提供文档，也可以放置网站文件让全世界浏览；可以放置数据文件让全世界下载。</li></ul><p><strong>以下服务器主要指的是Web服务器。</strong></p><p>根据服务器在网络中所在位置不同，又可分为本地服务器和远程服务器。</p><h3 id="2-本地服务器"><a href="#2-本地服务器" class="headerlink" title="2. 本地服务器"></a>2. 本地服务器</h3><p>可以把自己的电脑设置为本地服务器，这样同一个局域网内的人就可以访问你的网站了。</p><p>关于如何配置，和ajax有关。</p><h3 id="3-远程服务器"><a href="#3-远程服务器" class="headerlink" title="3.远程服务器"></a>3.远程服务器</h3><p>本地服务器主要是在局域网中访问，可以把网站上传到远程服务器。</p><p>远程服务器通常是别的公司提供的主机，只要把项目上传，就可以通过域名访问网站。</p><hr><p>待更新…</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Web </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SEO优化</title>
       <link href="posts/7f8d26b3/"/>
       <url>posts/7f8d26b3/</url>
@@ -90,6 +140,31 @@
         <tags>
             
             <tag> SEO </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Git代码写错分支了怎么办</title>
+      <link href="posts/e1ab1244/"/>
+      <url>posts/e1ab1244/</url>
+      
+        <content type="html"><![CDATA[<p>2021/12/14 11:07</p><p><strong>场景</strong>：代码写在了主分支，在提交时显示”推送被拒“。</p><p><strong>步骤：</strong> </p><h3 id="1-当未提交代码："><a href="#1-当未提交代码：" class="headerlink" title="1.当未提交代码："></a><strong>1.当未提交代码</strong>：</h3><pre><code>// 第一步，将修改的代码暂存到stashgit stash// 第二步，切换到正确的分支git checkout targetbranch // 第三步，从stash中取出暂存的代码修改。git stash pop</code></pre><p>​             </p><p>继续提交的话就是</p><pre><code>git add .git commit -m xx  </code></pre><h3 id="2-当已经提交了："><a href="#2-当已经提交了：" class="headerlink" title="2. 当已经提交了："></a><strong>2. 当已经提交了：</strong></h3><p>撤回即可</p><pre><code>git reset HEAD^              </code></pre><p>然后继续执行 没提交时的操作。</p><h3 id="3-已经push了："><a href="#3-已经push了：" class="headerlink" title="3. 已经push了："></a><strong>3.</strong> <strong>已经push了：</strong></h3><p>同已经提交了的步骤。 先撤回，然后再push下撤回后的。不过会有记录</p><p><strong>PS： 期间还有别的报错：</strong> </p><ul><li>本地与远程冲突：git pull</li><li>error: The following untracked working tree files would be overwritten by ch： 大概也是因为未拉取。</li><li>Branch ‘dev-test2’ set up to track remote branch ‘dev-test2’ from ‘origin’.：<ul><li>1.可以使用：git status 查看什么情况，</li><li>2.原因可能是这些变化没有提交，根据git status 的提醒，可以提交，然后就可以切换分支了。</li><li>3.git checkout 要切换的分支。</li></ul></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> Git </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Git </tag>
             
         </tags>
       
@@ -132,7 +207,7 @@
       
       <categories>
           
-          <category> JS </category>
+          <category> JavaScript </category>
           
       </categories>
       
@@ -141,7 +216,7 @@
             
             <tag> 基础回顾 </tag>
             
-            <tag> JS </tag>
+            <tag> JavaScript </tag>
             
         </tags>
       
@@ -340,6 +415,31 @@
     
     
     <entry>
+      <title>新建分支后与本地git建立联系</title>
+      <link href="posts/c35f114b/"/>
+      <url>posts/c35f114b/</url>
+      
+        <content type="html"><![CDATA[<ol><li>先查看所有分支：</li></ol><pre><code>git branch -a    </code></pre><p>​          </p><ol start="2"><li>获取所有分支，这时就可以看到新的分支出现了。</li></ol><pre><code>git fetch     </code></pre><p>​         </p><ol start="3"><li>新建&amp;切换分支：</li></ol><pre><code> git checkout -b XXX              </code></pre><ol start="4"><li>和远程分支建立联系：</li></ol><pre><code>git branch -u origin/XXX XXX</code></pre><p>​              </p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Git </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>各类居中&amp;定位</title>
       <link href="posts/a561de53/"/>
       <url>posts/a561de53/</url>
@@ -432,6 +532,56 @@
         <tags>
             
             <tag> CSS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>删除已推送的某个文件</title>
+      <link href="posts/f85ba3a7/"/>
+      <url>posts/f85ba3a7/</url>
+      
+        <content type="html"><![CDATA[<ol><li>查看当前分支：</li></ol><pre><code>git branch -a</code></pre><ol start="2"><li>切换分支：</li></ol><pre><code>git checkout 想切换的分支</code></pre><p>​     3.1 在本地仓库删除文件：</p><pre><code>git rm 文件名      </code></pre><ol start="3"><li>2 在本地仓库删除文件夹：</li></ol><pre><code>git rm -r 文件夹名   </code></pre><p>​           </p><ol start="4"><li>提交：</li></ol><pre><code>git commit -m &quot;xxx&quot;  </code></pre><p>​            </p><ol start="5"><li>推送：</li></ol><pre><code>git push origin 要推送的分支              </code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> Git </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Git推送部分文件</title>
+      <link href="posts/65f9be6e/"/>
+      <url>posts/65f9be6e/</url>
+      
+        <content type="html"><![CDATA[<p><strong>步骤</strong>：</p><p><span style="color: #0091ff">1.</span> <span style="color: #FFB700">git status</span>                                查看未提交文件及其路径</p><p><span style="color: #0091ff">2.</span> <span style="color: #FFB700">git add 文件路径 </span>                   按需暂存文件，文件路径使用git status的结果</p><p><span style="color: #0091ff">3.</span> <span style="color: #FFB700">git stash -u -k</span>                         忽略未被暂存的文件，以免影响后续commit。</p><p><span style="color: #0091ff">4.</span> <span style="color: #FFB700">git commit -m “update”</span>          后续正常推送流程</p><p><span style="color: #0091ff">5.</span> <span style="color: #FFB700">git push</span></p><p><span style="color: #0091ff">6.</span> <span style="color: #FFB700">git stash pop</span>                恢复被忽略文件。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Git </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Git </tag>
             
         </tags>
       
