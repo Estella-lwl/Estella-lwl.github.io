@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="各类居中&amp;定位, HTML,CSS,JavaScript,JQuery,React,Vue.js">
+    <meta name="keywords" content="字符，编码，乱码问题, HTML,CSS,JavaScript,JQuery,React,Vue.js">
     <meta name="description" content="前端进阶之旅">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>各类居中&amp;定位 | polariis</title>
+    <title>字符，编码，乱码问题 | polariis</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -252,12 +252,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">各类居中&amp;定位</h1>
+                    <h1 class="description center-align post-title">字符，编码，乱码问题</h1>
                 </div>
             </div>
         </div>
@@ -373,8 +373,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/CSS/">
-                                <span class="chip bg-color">CSS</span>
+                            <a href="/tags/%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/">
+                                <span class="chip bg-color">基础回顾</span>
+                            </a>
+                        
+                            <a href="/tags/HTML/">
+                                <span class="chip bg-color">HTML</span>
                             </a>
                         
                     </div>
@@ -385,8 +389,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/CSS/" class="post-category">
-                                CSS
+                            <a href="/categories/HTML/" class="post-category">
+                                HTML
                             </a>
                         
                     </div>
@@ -398,21 +402,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-09-27
+                    2020-03-30
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-10-05
+                    2023-02-07
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    414
+                    114
                 </div>
                 
 
@@ -434,40 +438,39 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="图片的各类居中"><a href="#图片的各类居中" class="headerlink" title="图片的各类居中"></a>图片的各类居中</h2><ul>
-<li>想让图片水平居中：<ul>
-<li>让其父元素margin: 0 auto;    <u>有宽度的情况下</u>。</li>
-<li>让其父元素text-align: center;</li>
+                </br>
+
+</br>
+
+<p>1.字符：文字，符号 空符字符：&amp;nbsp</p>
+</br>
+
+<p>2.字符集：字符的集合</p>
+</br>
+
+<p>3.编码：将字符和二进制码对应起来</p>
+<p>ASCⅡ：数字、英文字母、符号进行编码</p>
+<p>GB2313: 简体中文</p>
+<p>Unicode：所有语言</p>
+<p>UTF-8：所有语言，占用空间更小</p>
+</br>
+
+<h6 id="4-乱码问题："><a href="#4-乱码问题：" class="headerlink" title="4.乱码问题："></a>4.乱码问题：</h6><ul>
+<li><input disabled="" type="checkbox"> 源文件保存时的编码</li>
+<li><input disabled="" type="checkbox"> 源文件标签里的声明： meta charset = “编码模式”</li>
 </ul>
-</li>
-<li>如果是小图标，可以用背景图的方法：<ul>
-<li>然后加background-position属性改变位置；</li>
-<li>有文本的话再改一下间距，不然重叠一起了。</li>
-</ul>
-</li>
-</ul>
-<h2 id="定位的扩展"><a href="#定位的扩展" class="headerlink" title="定位的扩展"></a>定位的扩展</h2><h3 id="1-绝对定位的盒子居中"><a href="#1-绝对定位的盒子居中" class="headerlink" title="1. 绝对定位的盒子居中"></a>1. 绝对定位的盒子居中</h3><p>加了绝对定位的盒子不能通过<span style="color: #CC0000">margin: 0 auto;</span> 水平居中，但是可以通过以下计算方式实现。</p>
-<pre><code>position: absolute;
-left: 50%;
-margin-left: 盒子宽度的一半;
-// 这是水平居中，垂直居中同理。
-</code></pre>
-<p>​              </p>
-<ul>
-<li><strong>优点</strong>：屏幕变小，依旧居中。</li>
-<li>固定定位也可以使用。</li>
-</ul>
-<h3 id="2-定位特殊特性"><a href="#2-定位特殊特性" class="headerlink" title="2. 定位特殊特性"></a>2. 定位特殊特性</h3><p>绝对定位和固定定位也和浮动类似。</p>
-<p><strong>1.</strong> 行内元素添加绝对定位或者固定定位，可以直接设置高度和宽度。（行内元素本身是不能设置宽高的）</p>
-<p><strong>2.</strong> 块级元素添加绝对或固定定位，如果不给宽度或高度，默认大小是内容的大小。</p>
-<h3 id="3-脱标（标准流）的盒子不会触发外边距塌陷"><a href="#3-脱标（标准流）的盒子不会触发外边距塌陷" class="headerlink" title="3. 脱标（标准流）的盒子不会触发外边距塌陷"></a>3. 脱标（标准流）的盒子不会触发外边距塌陷</h3><p>浮动元素、绝对定位（固定定位）元素的都不会出发外边距合并的问题。</p>
-<h3 id="4-绝对-固定定位会完全压住盒子"><a href="#4-绝对-固定定位会完全压住盒子" class="headerlink" title="4. 绝对/固定定位会完全压住盒子"></a>4. 绝对/固定定位会完全压住盒子</h3><ul>
-<li>和浮动元素不同，只会压住下面标准流的盒子，不会压住下面标准流盒子里的图片和文字。<ul>
-<li>浮动最初就是为了文字环绕效果，所以不会压住图片和文字。</li>
-</ul>
-</li>
-<li>而绝对/固定定位会压住下面标准流的所有内容。</li>
-</ul>
+<p>以上两个不一致，就会出现乱码。</p>
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
+
+</br>
 
                 
             </div>
@@ -494,7 +497,7 @@ margin-left: 盒子宽度的一半;
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://polariis.gitee.io/posts/a561de53/">https://polariis.gitee.io/posts/a561de53/</a>
+                    <a href="https://polariis.gitee.io/posts/1ce900cc/">https://polariis.gitee.io/posts/1ce900cc/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -532,8 +535,12 @@ margin-left: 盒子宽度的一半;
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/CSS/">
-                                    <span class="chip bg-color">CSS</span>
+                                <a href="/tags/%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/">
+                                    <span class="chip bg-color">基础回顾</span>
+                                </a>
+                            
+                                <a href="/tags/HTML/">
+                                    <span class="chip bg-color">HTML</span>
                                 </a>
                             
                         </div>
@@ -970,13 +977,13 @@ margin-left: 盒子宽度的一半;
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/c35f114b/">
+                <a href="/posts/66ad3928/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="新建分支后与本地git建立联系">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="图像格式和路径">
                         
-                        <span class="card-title">新建分支后与本地git建立联系</span>
+                        <span class="card-title">图像格式和路径</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -987,14 +994,14 @@ margin-left: 盒子宽度的一半;
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-28
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-30
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Git/" class="post-category">
-                                    Git
+                            <a href="/categories/HTML/" class="post-category">
+                                    HTML
                                 </a>
                             
                             
@@ -1004,8 +1011,12 @@ margin-left: 盒子宽度的一半;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Git/">
-                        <span class="chip bg-color">Git</span>
+                    <a href="/tags/%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/">
+                        <span class="chip bg-color">基础回顾</span>
+                    </a>
+                    
+                    <a href="/tags/HTML/">
+                        <span class="chip bg-color">HTML</span>
                     </a>
                     
                 </div>
@@ -1016,16 +1027,16 @@ margin-left: 盒子宽度的一半;
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/posts/b6e8d24f/">
+                <a href="/posts/1ce900cc/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="边框图片的使用">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="字符，编码，乱码问题">
                         
-                        <span class="card-title">边框图片的使用</span>
+                        <span class="card-title">字符，编码，乱码问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1036,25 +1047,30 @@ margin-left: 盒子宽度的一半;
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-26
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-30
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CSS/" class="post-category">
-                                    CSS
+                            <a href="/categories/HTML/" class="post-category">
+                                    HTML
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CSS/">
-                        <span class="chip bg-color">CSS</span>
+                    <a href="/tags/%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/">
+                        <span class="chip bg-color">基础回顾</span>
+                    </a>
+                    
+                    <a href="/tags/HTML/">
+                        <span class="chip bg-color">HTML</span>
                     </a>
                     
                 </div>
@@ -1210,7 +1226,7 @@ margin-left: 盒子宽度的一半;
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2021-2022</span>
+                <span id="year">2021-2023</span>
             
             <span id="year">2021</span>
             <a href="/about" target="_blank">polariis</a>
@@ -1219,7 +1235,7 @@ margin-left: 盒子宽度的一半;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">30.3k</span>&nbsp;字
+                class="white-color">12.4k</span>&nbsp;字
             
             
             
