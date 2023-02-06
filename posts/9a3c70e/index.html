@@ -1,0 +1,1778 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Vue条件渲染&amp;列表渲染&amp;列表过滤排序&amp;监测原理, HTML,CSS,JavaScript,JQuery,React,Vue.js">
+    <meta name="description" content="前端进阶之旅">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Vue条件渲染&amp;列表渲染&amp;列表过滤排序&amp;监测原理 | polariis</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+		<script src="/libs/jquery/jquery.min.js"></script>
+    
+		<!-- 添加动态诗词 -->
+		<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+
+
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="polariis" type="application/atom+xml">
+</head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">polariis</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">polariis</div>
+        <div class="logo-desc">
+            
+            前端进阶之旅
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Vue条件渲染&amp;列表渲染&amp;列表过滤排序&amp;监测原理</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Vue/">
+                                <span class="chip bg-color">Vue</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%8E%92%E7%89%88%E5%BE%85%E4%BC%98%E5%8C%96/">
+                                <span class="chip bg-color">排版待优化</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Vue/" class="post-category">
+                                Vue
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-01-30
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2023-02-07
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    3.2k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    12 分
+                </div>
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h2 id="1-条件渲染v-if、v-show"><a href="#1-条件渲染v-if、v-show" class="headerlink" title="1. 条件渲染v-if、v-show"></a>1. 条件渲染v-if、v-show</h2><ul>
+<li>v-show控制display显示隐藏，v-if控制节点是否存在。</li>
+<li>当变化很频繁建议使用v-show，防止v-if反复删除添加节点。</li>
+<li>当使用v-if和v-else-if或v-else时，所在的模板代码精致被打断，必须这几行写一起。</li>
+<li>template不会破坏结构，但是只能和v-if配合使用，v-show不行。</li>
+</ul>
+<h2 id="2-列表渲染v-for"><a href="#2-列表渲染v-for" class="headerlink" title="2. 列表渲染v-for"></a>2. 列表渲染v-for</h2><ul>
+<li>使用v-for一定要搭配 :key，它相当于遍历每一项当中的唯一标识。</li>
+<li>除了可以遍历数组类型，还可以遍历对象、遍历字符串（很少）、遍历指定次数（更少）。</li>
+</ul>
+<h2 id="3-key的作用与原理"><a href="#3-key的作用与原理" class="headerlink" title="3. key的作用与原理"></a>3. key的作用与原理</h2><p>视频讲解：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Zy4y1K7SH?p=30&amp;t=620.3">https://www.bilibili.com/video/BV1Zy4y1K7SH?p=30&amp;t=620.3</a></p>
+<p>当遍历中的index作为key，流程图解：</p>
+<p>  <img src="https://s2.loli.net/2022/10/05/QFhjls4NwgUJpES.png" alt="image-index作为key"></p>
+<p><strong>两者流程对比对比：</strong></p>
+<p>当节点自己的id作为key，流程图解：</p>
+<p><img src="https://s2.loli.net/2022/10/05/TCNvDWuXU63A8Kp.png" alt="image-对比id作为key"></p>
+<p>注：绿色框里的是复用过来的，红色框是diff算法对比后发现没有新生成的。</p>
+<p><strong>１、虚拟DOM中key的作用：</strong></p>
+<p>key是虚拟DOM对象的标识，当状态中的数据发生变化时，Vue会根据<strong>新数据生成新的虚拟DOM</strong>，随后Vue进行<strong>新虚拟DOM与旧虚拟DOM的差异比较</strong>，比较规则如下：</p>
+<p><strong>2. 对比规则：</strong></p>
+<ul>
+<li>旧虚拟DOM中找到了与旧虚拟DOM相同的key:<ul>
+<li>若虚拟DOM中内容没变，直接复用之前的真实DOM；</li>
+<li>若虚拟DOM中内容变了，则生成心的真实DOM，然后替换页面中之前的真实DOM。</li>
+</ul>
+</li>
+<li>旧虚拟DOM中未找到与新虚拟DOM相同的key：<ul>
+<li>创建新的真是DOM，然后渲染到页面。</li>
+</ul>
+</li>
+</ul>
+<p><strong>3. 用index作为key可能会引发的问题：</strong></p>
+<ol>
+<li>若对数据进行：逆序添加、逆序删除等破坏了顺序的操作：<ol>
+<li>会产生没必要的真实DOM更新 =》界面效果没问题，但效率低。</li>
+</ol>
+</li>
+<li>若结构中还包含输入类的DOM（input框）：<ol>
+<li>会产生错误的DOM更新 =》界面有问题。</li>
+</ol>
+</li>
+</ol>
+<p><strong>4. 开发中怎么选择key：</strong></p>
+<ol>
+<li>最好使用每条数据的唯一表示作为key，比如id、手机号、身份证号、学号等唯一值。</li>
+<li>若不存在对数据的逆序添加/删除等破坏顺序的操作，仅用于渲染列表，使用index作为key没有问题。</li>
+</ol>
+<h2 id="4-列表过滤"><a href="#4-列表过滤" class="headerlink" title="4. 列表过滤"></a>4. 列表过滤</h2><h3 id="4-1-用watch实现"><a href="#4-1-用watch实现" class="headerlink" title="4.1 用watch实现"></a>4.1 用watch实现</h3><p>分析：</p>
+<ul>
+<li>step1.获取用户输入；step2. 给列表过滤。</li>
+<li>可以用v-model。</li>
+<li>当数据发生改变时就再次过滤，怎么知道数据改变？用watch。</li>
+</ul>
+<p>模板代码：</p>
+<pre><code>    &lt;h2&gt;人员列表&lt;/h2&gt;
+    &lt;input type=&quot;text&quot; placeholder=&quot;请输入名字&quot; v-model=&quot;keyWord&quot;&gt;
+    &lt;ul&gt;
+      &lt;!-- 这里相应的也要改成filPersonList： --&gt;
+      &lt;li v-for=&quot;(p, index) in filPersonList&quot; :key=&quot;index&quot;&gt;
+        &#123;&#123;p.name&#125;&#125; - &#123;&#123;p.age&#125;&#125; - &#123;&#123;p.sex&#125;&#125;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+</code></pre>
+<p>​            </p>
+<p>script：</p>
+<pre><code>      data: &#123;
+        keyWord: &#39;&#39;,
+        personList: [
+          &#123; id: &#39;001&#39;, name: &#39;沈眉庄&#39;, age: 19, sex: &#39;女&#39; &#125;,
+          &#123; id: &#39;001&#39;, name: &#39;安小鸟&#39;, age: 18, sex: &#39;女&#39; &#125;,
+          &#123; id: &#39;001&#39;, name: &#39;温子仁&#39;, age: 25, sex: &#39;男&#39; &#125;,
+          &#123; id: &#39;001&#39;, name: &#39;果郡王&#39;, age: 22, sex: &#39;男&#39; &#125;,
+        ],
+        // 过滤出来的东西放在这里 以防数据被过滤丢失：
+        filPersonList: []
+      &#125;,
+      
+      watch: &#123;
+        // 传过来的newValue和oldVlue,这里只需要newValue。
+        keyWord: &#123;
+          immediate: true,
+          handler(val) &#123;
+            // filter不会改变原数组，会返回一个新的数组。所以这个新的数组应该被用上。
+            // 而且这时会出现个问题：过滤之后旧的数据被丢了，越搜索越少。
+            this.filPersonList = this.personList.filter((p) =&gt; &#123;
+              // 判断一个字符串里是否包含指定的字符：若包含：返回-1；不包含返回它在第几位。
+              return p.name.indexOf(val) !== -1;
+            &#125;)
+          &#125;
+        &#125;
+      &#125;
+</code></pre>
+<p>​           </p>
+<p><strong>一个关键点：</strong></p>
+<ul>
+<li>用indexOf判断一个字符串里是否包含一个空字符串，它会返回0，0代表它在字符串中第一位。</li>
+<li>所以一开始为空输入然后删掉后会出现每一项，因为删掉后输入框还存在个空串，一旦空串被过滤，列表里每一项都被展示出来。</li>
+<li>所以handler前加个immediate为true，这样一开始没等输入就执行匹配的是空串，每一项会在一开始被展示出来！</li>
+<li>（一个矛盾点：若一开始为空会有空串那为啥输入再删掉和不输入有区别？？ </li>
+<li>懂了：一开始未输入就没有空串。一开始未输入就什么都没匹配，自然什么都不展示。而删掉后输入框就有了变动且有了空串导致每一项被展示。）</li>
+</ul>
+<h3 id="4-2-用computed实现"><a href="#4-2-用computed实现" class="headerlink" title="4.2 用computed实现"></a>4.2 用computed实现</h3><pre><code>computed: &#123;
+  filPersonList() &#123;
+      // 这里return是计算属性规定的：
+      return this.personList.filter((p) =&gt; &#123;
+      // 里面的逻辑和watch中的一样，但这里不能用watch返回的新旧value了，所以改为keyWord。
+      // 这里return是filter规定的，要给它返回去。
+      return p.name.indexOf(this.keyWord) !== -1; 
+    &#125;)
+  &#125;
+&#125;
+</code></pre>
+<p>​           </p>
+<p><strong>对比：</strong></p>
+<ul>
+<li>computed是通过keyWord变化后重新计算一遍，watch是监听有没有变化。在这里用computed写代码更精简些。</li>
+</ul>
+<h2 id="5-列表排序"><a href="#5-列表排序" class="headerlink" title="5. 列表排序"></a>5. 列表排序</h2><p><strong>需求</strong>：给三个按钮按钮，分别实现列表的：升序、降序、原顺序。</p>
+<p><strong>分析</strong>：</p>
+<ol>
+<li>排序是在过滤后的基础上排。</li>
+<li>要区分开用户点的是哪种排序：新增一个属性来存储。</li>
+<li>展示出来的列表依赖于filPersonList，所以只要维护好filPersonList就可以过滤好，想要排序就维护好filPersonList过滤好的。</li>
+<li>所以过滤好的先别让它返回。给个数组来接收到过滤好的列表，然后判断一下是否需要排序，进行排序相关操作后返回。</li>
+</ol>
+<pre><code>&lt;button @click=&quot;sortType === 2&quot;&gt;年龄升序&lt;/button&gt;
+&lt;button @click=&quot;sortType === 1&quot;&gt;年龄降序&lt;/button&gt;
+&lt;button @click=&quot;sortType === 0&quot;&gt;原顺序&lt;/button&gt;
+</code></pre>
+<p>​    </p>
+<pre><code>// 新增字段来存储，默认为原顺序：
+sortType: 0,   // 0原顺序；1降序；2升序。
+</code></pre>
+<p>​           </p>
+<p>放在<strong>computed</strong>里：</p>
+<pre><code>computed: &#123;
+  filPersonList() &#123;
+    // 这里return是给计算属性的：
+    const arr = this.personList.filter((p) =&gt; &#123;
+      // 里面的逻辑和watch中的一样：
+      // 但这里不能用watch返回的新旧value了，所以改为keyWord。
+      return p.name.indexOf(this.keyWord) !== -1; // 这里return是给filter规的，要给它返回去。
+    &#125;)
+    // 判断一下是否需要排序: 读sortType就可以了。
+    // 并且不用先判断sortType的值，直接让它为真的时候（值不是0时）才进入判断：
+    if(this.sortType) &#123;
+      // 拿到过滤好的数据再来用数组api排序：
+      // sort方法会给两个参数（前一项&amp;后一项）：
+      arr.sort((p1, p2) =&gt; &#123;
+        // 三元表达式判断需要哪种排序，然后使用不同的数组排序方式：
+        // 若降序则p2-p1使其降序，否则p1-p2使其升序：
+        // （注意：这里的p1、p2是一个对象，所以.age：）
+        return this.sortType === 1 ? p2.age - p1.age : p1.age - p2.age;
+      &#125;)
+    &#125;
+    // 最后一定要将返回给arr数组的返回值在返回给函数filPersonList，否则filPersonList还是拿不到结果：
+    return arr;
+  &#125;
+&#125;
+</code></pre>
+<p>​            </p>
+<p>PS：复习一下数组的<strong>sort</strong>方法：（<strong>两个参数</strong>：前一项、后一项。）</p>
+<p><img src="https://s2.loli.net/2022/10/05/1ki4ae8CMbwyR7D.png" alt="image-数组的sort方法"></p>
+<pre><code>    // sort是改变原数组的。
+    let arr = [1,3,5,6,2,7,8];
+    // 当想让数组升序：前-后；反之降序：后-前。
+    arr.sort((a, b) =&gt; &#123;
+      return a-b;
+    &#125;);
+    console.log(arr);
+</code></pre>
+<h2 id="6-Vue监测数据改变的原理"><a href="#6-Vue监测数据改变的原理" class="headerlink" title="6. Vue监测数据改变的原理"></a>6. Vue监测数据改变的原理</h2><p><strong>总结：</strong></p>
+<ol>
+<li><p>Vue会监视data中所有层次的数据。</p>
+</li>
+<li><p>如何监测<strong>对象</strong>中的数据：</p>
+<p>通过setter实现监视，且要在new Vue时就传入要监测的数据。</p>
+<ul>
+<li><ol>
+<li>对象中后追加的属性，Vue默认不做响应式处理。</li>
+<li>如需给后添加属性做响应式，使用以下API：<ol>
+<li>Vue.set(target, propertyName/index, value)，或</li>
+<li>vm.$set(target, propertyName/index, value)</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p>如何监测<strong>数组</strong>中的数据：</p>
+</li>
+</ol>
+<p>​     通过包裹数组更新元素的方法实现，本质上做了两件事：</p>
+<ul>
+<li><ol>
+<li>调用原生对应的方法对数组进行更新。</li>
+<li>重新解析模板，进而更新页面。</li>
+</ol>
+</li>
+</ul>
+<p>​     在Vue修改数组中的某个元素一定要用以下方法：</p>
+<ul>
+<li><ol>
+<li>使用这些API：push()、pop()、shift()、unshift()、splice()、sort()、reverse()。</li>
+<li>Vue.set() 或 vm.$set。</li>
+</ol>
+</li>
+</ul>
+<ol start="4">
+<li><strong>注意</strong>：<strong>Vue.set() 和 vm.$set() 不能给 vm 或 vm 的根数据对象添加属性！！！</strong></li>
+</ol>
+<h3 id="6-1-Vue监测数据改变的原理——对象"><a href="#6-1-Vue监测数据改变的原理——对象" class="headerlink" title="6.1 Vue监测数据改变的原理——对象"></a>6.1 Vue监测数据改变的原理——对象</h3><ul>
+<li>Vue中会有默认的监视，当data中数据发生变化，它就会去找用到的地方去更新。至于watch，是Vue提供出来被配置使用的。而两者的原理是一样的。</li>
+</ul>
+<p><strong>PS：</strong>列表排序是一种破坏顺序的行为，v-for遍历时绑定的key应该改为列表每一项中自己的id。</p>
+<h4 id="1-一种情况："><a href="#1-一种情况：" class="headerlink" title="1. 一种情况："></a>1. 一种情况：</h4><p>在点击事件的函数里这样修改列表中的数据：（是无效的，Vue监测不到变化。）</p>
+<pre><code>this.personList[0] = &#123;id:&#39;001&#39;, name:&#39;罗老师&#39;, age:&#39;40&#39;, sex:&#39;男&#39;&#125;
+</code></pre>
+<p><strong>原因</strong>：直接操作了数组的索引值通过赋值的方式改，而这数组中的某一项是个对象，没有给它的                 getter、setter。</p>
+<p><strong>正确方式：</strong></p>
+<pre><code>this.persons.splice(0, 1, &#39;&#123;id:&#39;001&#39;, name:&#39;罗老师&#39;, age:&#39;40&#39;, sex:&#39;男&#39;&#125;&#39;);
+</code></pre>
+<p>​      </p>
+<ul>
+<li>红色框里的被Vue管理了，所以就不再是正常原型对象上的push了。Vue里的push做了两件事：1. 调了正常数组上的方法；2. 重新解析模板 生成虚拟DOM等一系列操作。</li>
+<li>也就是说<strong>Vue对数组的监测靠的是包装数组上常用的修改数组的方法实现的</strong>。</li>
+</ul>
+<p>​    <img src="https://s2.loli.net/2022/10/05/lXZHMDQ7ULdaNjY.png" alt="image-png"></p>
+<h4 id="2-复习一下数据代理："><a href="#2-复习一下数据代理：" class="headerlink" title="2. 复习一下数据代理："></a>2. 复习一下数据代理：</h4><p>​    <img src="https://s2.loli.net/2022/10/05/n2SJtCkAuXZlMjz.png" alt="image-数据代理"></p>
+<p>第一步中加工data是为了实现响应式，也就能实现对对象里的属性的监视。改了data中的就会引起setter的调用来重新解析模板。</p>
+<h4 id="3-Vue监测原理："><a href="#3-Vue监测原理：" class="headerlink" title="3. Vue监测原理："></a>3. Vue监测原理：</h4><h5 id="3-1-先举个反例-amp-引出原理："><a href="#3-1-先举个反例-amp-引出原理：" class="headerlink" title="3.1 先举个反例&amp;引出原理："></a>3.1 先举个反例&amp;引出原理：</h5><p>​    <img src="https://s2.loli.net/2022/10/05/f8DoHKvxUjhYAEq.png" alt="image-反例"></p>
+<p>这种代码会一直递归导致栈溢出。原因是读取数据就调getter执行红色框，接着执行到绿色框读到data.name就又跑去调getter，这样不停调不停读是个死循环。同理，setter也是。一旦data.name被修改就去调setter，执行赋值就又出发了setter。</p>
+<h5 id="3-2-模拟一个数据监测："><a href="#3-2-模拟一个数据监测：" class="headerlink" title="3.2 模拟一个数据监测："></a>3.2 模拟一个数据监测：</h5><p><del>它里面写了个构造函数，</del></p>
+<pre><code>    let data = &#123;
+      name: &#39;天天&#39;,
+      address: &#39;软件园二期&#39;
+    &#125;
+
+    // Observer是构造函数得用new去调用，然后让obs接收到Observer实例对象。
+    // 创建一个监视的实例对象，用于监视data中属性的变化：
+    const obs = new Observer(data);
+
+    // 准备一个vm实例对象：
+    let vm = &#123;&#125;;
+    // 写好的obs给data，再给_data：
+    vm._data = data = obs;
+
+    // Observer构造函数可以：创建一个监视的实例对象。它能收到一个对象作为参数。
+    function Observer(obj) &#123;
+      // STEP1. 拿到这个对象后：汇总对象中所有的属性形成一个数组。
+      const keys = Object.keys(obj) // 可以利用这个api形成数组。
+      console.log(keys); // 会发现name，address都在。
+      // 遍历：
+      //遍历拿到的每一个可以用k来当形参：
+      keys.forEach((k) =&gt; &#123;
+        // 这里用到的技巧，它不会直接去动data，而是加在this上，而this是Observer的实例对象并不是data。然后读取k的值。
+        Object.defineProperty(this,k, &#123;
+          get() &#123;
+            return obj[k];
+          &#125;,
+          // 会收到修改的值：
+          set(val) &#123;
+            // 然后写个模板字符串打印下：
+            console.log(`$&#123;k&#125;被改了`);
+            // 然后把传入的对象里的k给改了：
+            obj[k] = val;
+          &#125;
+        &#125;)
+      &#125;)
+    &#125;
+</code></pre>
+<p>​       </p>
+<p>这里只是个大概，Vue中写的很完善，无论嵌套了几层对象它都可以找到而且数组中的对象也可以。</p>
+<h3 id="6-2-Vue-set的使用"><a href="#6-2-Vue-set的使用" class="headerlink" title="6.2 Vue.set的使用"></a>6.2 Vue.set的使用</h3><ul>
+<li>Vue.set() 给传<strong>三个参数</strong>：target（往谁身上追加属性）、key（追加什么属性）、value（属性值）。</li>
+<li>它<strong>只能给data里追加，不能再在某个嵌套里</strong>。也就是说第一个参数不允许是vm或vm里的数据对象data。</li>
+</ul>
+<p>官方文档中：</p>
+<p><img src="https://s2.loli.net/2022/10/05/XBKle7aSyRZtCsT.png" alt="image-官方文档中"></p>
+<p><strong>与$set的区别：</strong></p>
+<ul>
+<li>用法一模一样。</li>
+<li>但它不在Vue身上，它在vm上。</li>
+</ul>
+<p>例：</p>
+<pre><code>  methods: &#123;
+    addSex() &#123;
+      // 写法1.
+      Vue.set(this.student, &#39;sex&#39;, &#39;男&#39;);
+      // 写法2.
+      this.$set(this.student, &#39;sex&#39;, &#39;男&#39;);
+    &#125;
+  &#125;
+</code></pre>
+<h3 id="6-3-Vue监测数据改变的原理——数组"><a href="#6-3-Vue监测数据改变的原理——数组" class="headerlink" title="6.3 Vue监测数据改变的原理——数组"></a>6.3 Vue监测数据改变的原理——数组</h3><ol>
+<li>使用数组API；</li>
+<li>用Vue.set() ，用的不多。</li>
+</ol>
+<p>可以直接去看上面的总结 &amp; 代码笔记的 7.1-7.3。（这里没记全）</p>
+<p><strong>补充</strong>：</p>
+<p><img src="https://s2.loli.net/2022/10/05/xqEC7orFsuULh8g.png" alt="image-官方文档中"></p>
+<p>另外关于数据劫持：</p>
+<p>若有人改了data中某个数值，setter就像劫持一样马上出面然后拿着这些数据去做两件事：</p>
+<ol>
+<li><p>拿着接收到的数据去改数据；</p>
+</li>
+<li><p>重新解析模板。</p>
+</li>
+</ol>
+<p><strong>PS：它和数据代理都离不开Object.defineProperty。</strong></p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">polariis</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://polariis.gitee.io/posts/9a3c70e/">https://polariis.gitee.io/posts/9a3c70e/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">polariis</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Vue/">
+                                    <span class="chip bg-color">Vue</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%8E%92%E7%89%88%E5%BE%85%E4%BC%98%E5%8C%96/">
+                                    <span class="chip bg-color">排版待优化</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+        <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #4cbf30;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table, th, td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table, th, td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n), thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div class="comment_headling" style="font-size: 20px; font-weight: 700; position: relative; padding-left: 20px; top: 15px; padding-bottom: 5px;">
+        <i class="fas fa-comments fa-fw" aria-hidden="true"></i>
+        <span>评论</span>
+    </div>
+    <div id="vcomments" class="card-content" style="display: grid">
+    </div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        appId: 'LxeaHCXJeMqSuHqShlVPEA1u-MdYXbMMI',
+        appKey: 'FjkVtTpDz9Y6EkhIPYinUWqQ',
+        notify: 'false' === 'true',
+        verify: 'false' === 'true',
+        visitor: 'true' === 'true',
+        avatar: 'mm',
+        pageSize: '10',
+        lang: 'zh-cn',
+        placeholder: 'just go go'
+    });
+</script>
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/posts/876a38c0/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="axios封装">
+                        
+                        <span class="card-title">axios封装</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-02-26
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Axios/" class="post-category">
+                                    Axios
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Axios/">
+                        <span class="chip bg-color">Axios</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9B%B4%E6%96%B0%E4%B8%AD/">
+                        <span class="chip bg-color">更新中</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/80ca1d96/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Web服务器">
+                        
+                        <span class="card-title">Web服务器</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-18
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Web/" class="post-category">
+                                    Web
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Web/">
+                        <span class="chip bg-color">Web</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('3'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+<!-- 2022-8-10新增以下代码块相关的设置： -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+<!-- 代码语言 -->
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+<!-- 代码块复制 -->
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+<script type="text/javascript" src="/libs/codeBlock/clipboard.min.js"></script>
+<!-- 代码块收缩 -->
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+<!-- 代码块折行 -->
+<style type="text/css">
+    code[class*="language-"],
+    pre[class*="language-"] {
+        white-space: pre !important;
+    }
+</style>
+
+    <footer class="page-footer bg-color">
+    
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2021-2023</span>
+            
+            <span id="year">2021</span>
+            <a href="/about" target="_blank">polariis</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                class="white-color">30.5k</span>&nbsp;字
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2021";
+                    var startMonth = "4";
+                    var startDate = "4";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Estella-lwl" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:polariis@163.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+			
+		<!--动态线条背景，自己后加的-->
+		<script type="text/javascript"
+		color="122 103 238" opacity='0.7' zIndex="-2" count="200" src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+		</script>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
