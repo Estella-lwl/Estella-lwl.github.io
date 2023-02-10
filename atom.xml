@@ -6,7 +6,7 @@
   <link href="https://polariis.gitee.io/atom.xml" rel="self"/>
   
   <link href="https://polariis.gitee.io/"/>
-  <updated>2023-02-06T18:43:24.673Z</updated>
+  <updated>2023-02-10T16:00:22.471Z</updated>
   <id>https://polariis.gitee.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于TS中描述Object类型的两种方式（类型签名和Record）</title>
+    <link href="https://polariis.gitee.io/posts/61dca9cf/"/>
+    <id>https://polariis.gitee.io/posts/61dca9cf/</id>
+    <published>2023-02-10T15:57:24.621Z</published>
+    <updated>2023-02-10T16:00:22.471Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>前言</strong>：由于Object的范围很大，对象中属性可能是任意类型，而这时区分不出一个Object具体是什么类型。</p><p>所以一般不在TS中直接使用Object类型，而是以下两种方式描述对象：</p><ol><li><strong>class / constructor</strong>；</li><li><strong>type</strong>或<strong>interface</strong>，推荐用这种，更灵活。</li></ol><p><strong>方式一：类型签名</strong></p><p>举例1：</p><p>type Obj = {    [K: string]: number  //代表Obj中有一个字符串类型属性（具体属性名可以随便取只要是字符串就可），其属性值是数字。 }</p><ul><li><ul><li>使用上有个共识，如果是泛型使用大写K；若非泛型，是用小写k。</li></ul></li></ul><p>上例基础上举例2：</p><p>type Obj = {    [K: string]: number  } const a: Obj = {    name: 1    123： 6  //虽然使用type规定了属性名为string，而这里写了数字，但会编译通过。 }</p><ul><li><ul><li>例子中属性名的命名为数字编译会通过，是因为在JS层面：所有属性名最终被都是字符串形式。</li></ul></li></ul><p>由例2引申的例3：JS中<strong>一个矛盾的情况</strong>。 （👈🏻看下面的总结，number类型也可以）</p><p>type Obj = {    [K: number]: number   //注意看这里，给属性名规定为number类型。 } const a: Obj = {    name: 1   //这里无法编译通过，因为JS中所有key都是字符串（string或symbol）。    123： 6   //奇怪的在这行，既然key只能字符串但这里number居然编译通过了！！！！！ }</p><ul><li><ul><li><strong>PS</strong>：<strong>当symbol作为key</strong>，必须<strong>用中括号包</strong>一下。</li><li>这篇文章中提到了这个情况：<a href="https://jkchao.github.io/typescript-book-chinese/typings/indexSignatures.html#typescript-%E7%B4%A2%E5%BC%95%E7%AD%BE%E5%90%8D">深入理解TS——签名索引</a></li><li></li></ul></li></ul><p>综上，<strong>总结</strong>：</p><ul><li><p>对象中key的类型可以不是string吗？</p></li><li><ul><li>还可以是symbol或number。</li></ul></li></ul><p><strong>方式二：Record</strong></p><p>record：记录</p><p>其余待整理</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;strong&gt;前言&lt;/strong&gt;：由于Object的范围很大，对象中属性可能是任意类型，而这时区分不出一个Object具体是什么类型。&lt;/p&gt;
+&lt;p&gt;所以一般不在TS中直接使用Object类型，而是以下两种方式描述对象：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;cl</summary>
+      
+    
+    
+    
+    <category term="TypeScript" scheme="https://polariis.gitee.io/categories/TypeScript/"/>
+    
+    
+    <category term="TypeScript" scheme="https://polariis.gitee.io/tags/TypeScript/"/>
+    
+  </entry>
   
   <entry>
     <title>JS获取视频任意进度</title>
@@ -524,32 +551,6 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>CSS三角的制作</title>
-    <link href="https://polariis.gitee.io/posts/433aec41/"/>
-    <id>https://polariis.gitee.io/posts/433aec41/</id>
-    <published>2021-11-27T01:45:19.000Z</published>
-    <updated>2023-02-06T18:43:24.660Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="1-等腰三角形"><a href="#1-等腰三角形" class="headerlink" title="1. 等腰三角形"></a>1. 等腰三角形</h2><p>使用场景：悬停到导航栏的某个li</p><p>原理：</p><pre><code>// 宽高必须是0 ！！！.box1 &#123;    width: 0;    height: 0;    border: 10px solid transparent;    // 只改某一边的颜色：    border-top-color: blue；    // 兼容低版本浏览器：    line-height: 0;    font-size: 0;&#125;</code></pre><p>transparent: 透明的。</p><h2 id="2-直角三角形"><a href="#2-直角三角形" class="headerlink" title="2. 直角三角形"></a>2. 直角三角形</h2><p>使用场景：制作梯形时，例：</p><p>  <img src="https://s2.loli.net/2022/10/05/pwfxo1imyKztODA.png" alt="image-20221005085722720"></p><p>原理：    和上面类似，图解：</p><p>​    <img src="https://s2.loli.net/2022/10/05/EAzkygNa9QG23i8.png" alt="image-20221005085758685"></p><pre><code>.box2 &#123;    width: 0;    height: 0;    // 上边框取高点，撑起盒子高度：    border-top: 100px solid transparent;    border-right: 50px solod skyblue;    // 下面这行可以让一个正方形的4个三角变为3个：    // 左边和下边的边框宽度必须为0：    border-bottom: 0 solod blue;   border-left: 0 solod green;&#125;</code></pre><p>​           </p><p>上面的代码简写为：</p><pre><code>.box2 &#123;    width: 0;    height: 0;    border-color: transparent skyblue transparent transparent;    border-style: solid;    border-width: 100px 50px 0 0;    &#125;</code></pre><p>​       </p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;1-等腰三角形&quot;&gt;&lt;a href=&quot;#1-等腰三角形&quot; class=&quot;headerlink&quot; title=&quot;1. 等腰三角形&quot;&gt;&lt;/a&gt;1. 等腰三角形&lt;/h2&gt;&lt;p&gt;使用场景：悬停到导航栏的某个li&lt;/p&gt;
-&lt;p&gt;原理：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// 宽高</summary>
-      
-    
-    
-    
-    <category term="CSS" scheme="https://polariis.gitee.io/categories/CSS/"/>
-    
-    
-    <category term="CSS" scheme="https://polariis.gitee.io/tags/CSS/"/>
     
   </entry>
   
