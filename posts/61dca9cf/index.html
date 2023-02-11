@@ -373,6 +373,10 @@
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/%E6%9B%B4%E6%96%B0%E4%B8%AD/">
+                                <span class="chip bg-color">更新中</span>
+                            </a>
+                        
                             <a href="/tags/TypeScript/">
                                 <span class="chip bg-color">TypeScript</span>
                             </a>
@@ -412,7 +416,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    410
+                    417
                 </div>
                 
 
@@ -434,15 +438,17 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>前言</strong>：由于Object的范围很大，对象中属性可能是任意类型，而这时区分不出一个Object具体是什么类型。</p>
+                <p><strong>前言</strong> ：由于Object的范围很大，对象中属性可能是任意类型，而这时区分不出一个Object具体是什么类型。</p>
 <p>所以一般不在TS中直接使用Object类型，而是以下两种方式描述对象：</p>
 <ol>
 <li><strong>class / constructor</strong>；</li>
 <li><strong>type</strong>或<strong>interface</strong>，推荐用这种，更灵活。</li>
 </ol>
-<p><strong>方式一：类型签名</strong></p>
-<p>举例1：</p>
-<p>type Obj = {    [K: string]: number  //代表Obj中有一个字符串类型属性（具体属性名可以随便取只要是字符串就可），其属性值是数字。 }</p>
+<h2 id="方式一：类型签名"><a href="#方式一：类型签名" class="headerlink" title="方式一：类型签名"></a>方式一：类型签名</h2><p>举例1：</p>
+<pre><code>type Obj = &#123;
+    [K: string]: number  //代表Obj中有一个字符串类型属性（具体属性名可以随便取只要是字符串就可），其属性值是数字。
+&#125;
+</code></pre>
 <ul>
 <li><ul>
 <li>使用上有个共识，如果是泛型使用大写K；若非泛型，是用小写k。</li>
@@ -450,22 +456,38 @@
 </li>
 </ul>
 <p>上例基础上举例2：</p>
-<p>type Obj = {    [K: string]: number  } const a: Obj = {    name: 1    123： 6  //虽然使用type规定了属性名为string，而这里写了数字，但会编译通过。 }</p>
+<pre><code>type Obj = &#123;
+    [K: string]: number 
+&#125;
+
+const a: Obj = &#123;
+    name: 1
+    123： 6  //虽然使用type规定了属性名为string，而这里写了数字，但会编译通过。
+&#125;
+</code></pre>
 <ul>
 <li><ul>
 <li>例子中属性名的命名为数字编译会通过，是因为在JS层面：所有属性名最终被都是字符串形式。</li>
 </ul>
 </li>
 </ul>
-<p>由例2引申的例3：JS中<strong>一个矛盾的情况</strong>。 （👈🏻看下面的总结，number类型也可以）</p>
-<p>type Obj = {    [K: number]: number   //注意看这里，给属性名规定为number类型。 } const a: Obj = {    name: 1   //这里无法编译通过，因为JS中所有key都是字符串（string或symbol）。    123： 6   //奇怪的在这行，既然key只能字符串但这里number居然编译通过了！！！！！ }</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="C:/Users/%E5%A4%B1%E9%A2%91%E6%9C%AC%E4%BA%BA/AppData/Roaming/Typora/typora-user-images/image-20230211093401215.png" alt="image-20230211093401215"></h2><p>由例2引申的例3：JS中<strong>一个矛盾的情况</strong>。 （👈🏻看下面的总结，number类型也可以）</p>
+<pre><code>type Obj = &#123;
+    [K: number]: number   //注意看这里，给属性名规定为number类型。
+&#125;
+
+const a: Obj = &#123;
+    name: 1   //这里无法编译通过，因为JS中所有key都是字符串（string或symbol）。
+    123： 6   //奇怪的在这行，既然key只能字符串但这里number居然编译通过了！！！！！
+&#125;
+</code></pre>
 <ul>
 <li><ul>
 <li><strong>PS</strong>：<strong>当symbol作为key</strong>，必须<strong>用中括号包</strong>一下。</li>
 <li>这篇文章中提到了这个情况：<a target="_blank" rel="noopener" href="https://jkchao.github.io/typescript-book-chinese/typings/indexSignatures.html#typescript-%E7%B4%A2%E5%BC%95%E7%AD%BE%E5%90%8D">深入理解TS——签名索引</a></li>
-<li></li>
 </ul>
 </li>
+<li></li>
 </ul>
 <p>综上，<strong>总结</strong>：</p>
 <ul>
@@ -477,7 +499,6 @@
 </li>
 </ul>
 <p><strong>方式二：Record</strong></p>
-<p>record：记录</p>
 <p>其余待整理</p>
 
                 
@@ -542,6 +563,10 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
+                            
+                                <a href="/tags/%E6%9B%B4%E6%96%B0%E4%B8%AD/">
+                                    <span class="chip bg-color">更新中</span>
+                                </a>
                             
                                 <a href="/tags/TypeScript/">
                                     <span class="chip bg-color">TypeScript</span>
@@ -1016,6 +1041,10 @@
 
                 
                 <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%9B%B4%E6%96%B0%E4%B8%AD/">
+                        <span class="chip bg-color">更新中</span>
+                    </a>
                     
                     <a href="/tags/TypeScript/">
                         <span class="chip bg-color">TypeScript</span>
