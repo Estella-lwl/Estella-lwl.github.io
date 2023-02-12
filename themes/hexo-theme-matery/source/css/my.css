@@ -1,0 +1,26 @@
+/* Here is your custom css styles. */
+
+.dt-p {
+background-color: white;
+border: 1px solid #333;
+border-radius: 45px;
+width: auto;
+height: auto;
+padding: 9px 45px 9px 45px;
+text-align: center;
+display: inline; /*后面无换行，宽度随内容变化*/
+}
+
+.dt-p:hover {
+        background-color: black;
+    }
+
+    #dt-a {
+        text-decoration:none !important; /*去掉超链接下划线*/
+
+    }
+
+    #dt-span {
+        color: white;
+        mix-blend-mode: difference;  /*颜色反相*/
+    }
