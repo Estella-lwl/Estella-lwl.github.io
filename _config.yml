@@ -118,6 +118,6 @@ theme: hexo-theme-matery
 deploy:
   type: git
   repo:
-    gitee: git@gitee.com:polariis/polariis.git
     github: git@github.com:Estella-lwl/Estella-lwl.github.io.git
+    gitee: git@gitee.com:polariis/polariis.git
   branch: master
