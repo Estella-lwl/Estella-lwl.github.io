@@ -2,12 +2,12 @@
 layout:
   - post
 title: 类class（JS & TS）
-abbrlink: #会自动填充，别写
+abbrlink: ba1dc77a
 author: polariis
 top: true
-cover: false #是否放入首页轮播
-toc: true #是否开启目录
-mathjax: false #是否有数学公式
+cover: false
+toc: true
+mathjax: false
 tags:
   - TypeScript
   - JavaScript
