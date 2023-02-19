@@ -214,7 +214,7 @@ clicklove:
 # 在”关于”页面中配置个人信息，包括头像、职业和个人介绍.
 profile:
   avatar: /medias/avatar.jpg
-  career: 一枚程序媛接班人
+  career: 今天你学习了吗？
   introduction: ¨̮ ᴴᴬᵛᴱ ᴬ ᴳᴼᴼᴰ ᵀᴵᴹᴱ 	|      这是一条平平无奇的个人介绍~   |𓆝𓆟𓆜𓆞𓆝𓆟𓆜𓆞𓆝𓆟𓆜𓆞𓆝𓆟𓆜𓆞
 
 # config my projects informations in about page.

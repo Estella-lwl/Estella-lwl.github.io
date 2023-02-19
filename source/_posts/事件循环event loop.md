@@ -19,8 +19,8 @@ password:
 summary:
 ---
 
-- 从浏览器多进程到 JS 单线程，JS 运行机制最全面的一次梳理：https://segmentfault.com/a/1190000012925872#articleHeader17
-- 参考自：晓舟的系列视频 [前端面试题：JavaScript 运行机制（一）单线程\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1gB4y1K7bD?share_source=copy_web&vd_source=72dc2b34128eeca7f0729ade125cd412)
+> - 从浏览器多进程到 JS 单线程，JS 运行机制最全面的一次梳理：https://segmentfault.com/a/1190000012925872#articleHeader17
+> - 参考自：晓舟的系列视频 [前端面试题：JavaScript 运行机制（一）单线程\_哔哩哔哩\_bilibili](https://www.bilibili.com/video/BV1gB4y1K7bD?share_source=copy_web&vd_source=72dc2b34128eeca7f0729ade125cd412)
 
 ---
 
@@ -29,7 +29,7 @@ summary:
 - JavaScript 从一开始就是<span style="color: #0091ff">单线程</span>，**原因**：这与它的<span style="color: #0091ff">v</span>有关，JavaScript 作为一个浏览器脚本语言，<span style="color: #0091ff">偏向于用户侧的交互，为了降低复杂性</span>，这决定了它只能是单线程，否则会带来很复杂的同步问题。
 - HTML5 提出 Web Worker 标准，允许 JavaScript 脚本创建多个线程，但是子线程完全受主线程控制，且不得操作 DOM。
 
-### 1.1 同步 & 异步：
+### 1.1 同步 & 异步
 
 <span style="color: #3850b8">**场景**</span>：当遇到一个非常耗时的任务，而这时又需要响应用户的操作。为了避免页面出现“假死”的状态，**避免主线程的阻塞**，JavaScript 有了 **同步** 和 **异步** 的概念。
 
@@ -54,13 +54,13 @@ summary:
 - 主线程继续运行，打印 2。
 - 在主线程的任务运行完成之后，会再轮询任务队列，打印出 1。
 
-### 1.2 任务队列：
+### 1.2 任务队列
 
 - 单线程就意味着所有任务需要排队。如果前一个任务耗时很长，后一个任务就等着。
 - 很多时候 CPU 是闲着的，因为 IO 设备很慢（**比如**Ajax 操作从网络读取数据），必须要等着结果出来，再往下执行。所以 JavaScript 语言的设计者意识到，这时主线程完全可以不管 IO 设备，挂起处于等待中的任务，先运行排在后面的任务。等到 IO 设备返回了结果，再回过头，把挂起的任务继续执行下去。
 - （ I/O 设备就是可以将数据输入到计算机，或者可以接收计算机输出数据的外部设备，属于计算机中硬件部件。）
 
-### 1.3 执行流程 & 图解：
+### 1.3 执行流程 & 图解
 
 1. 所有同步任务都在<span style="color: #3850b8">主线程</span>上执行，形成一个<span style="color: #3850b8">**执行栈**</span>（execution context stack）。
 2. <span style="color: #3850b8">主线程</span>之外，还存在一个“<span style="color: #3850b8">**任务队列**</span>”（task queue）。只要异步任务有了运行结果，就在“任务队列”之中放置一个事件。
@@ -74,7 +74,7 @@ summary:
 
 <img src="https://s2.loli.net/2022/10/05/ETdfwMcaNrmpxCH.png" alt="image-20221005152751007" style="zoom: 50%;" />
 
-### 1.4 事件循环的三种类型：
+### 1.4 事件循环的三种类型
 
 1. <span style="color: #3850b8">Window 事件循环</span>
 
@@ -96,7 +96,7 @@ summary:
 > - 在多进程浏览器中多个窗口碰巧共享了同一个进程。
 > - 具体细节可能因浏览器而异，取决于它们的实现方式。
 
-## **2. 宏任务 &** 微任务：
+## 2. 宏任务 & 微任务
 
 - <span style="color: #3850b8">**异步任务队列**</span>：<span style="color: #0091ff">**宏任务**</span>(macro-task)和<span style="color: #0091ff">**微任务**</span>(micro-task)。
 - **执行顺序**：执行栈在<span style="color: #3850b8;background-color: #f2f4f5;">执行完同步任务后，查看执行栈是否为空，如果执行栈为空</span> =》执行宏任务。<span style="color: #3850b8">每次</span>宏任务执行完毕后，检查微任务队列是否为空，如果不为空 =》按照<span style="color: #3850b8">先入先出</span>的规则全部执行完微任务 =》设置微任务队列为 null =》再执行宏任务，如此循环。
@@ -131,8 +131,7 @@ summary:
 
 - **打印顺序**：2 4 3 1
 - **原因**：
-
-- - 1.
+  - 1.
   - 2.
 
 ## 3. Promise
