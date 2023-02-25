@@ -29,9 +29,9 @@ summary:
 ### 1.1 使用 class 封装 axios
 
 - 这个类用作一种类型约束，在封装 X 时可以使用。
-- 使**用 class 封装的原因**：
+- 使用**class 封装的原因**：
 
-- - class 有更强的封装性； [类 class](./类 class（JS & TS）.md)
+  - class 有更强的封装性； [类 class](./类 class（JS & TS）.md)
   - constructor 每次执行是一个新的；
 
 request/index.ts：
@@ -48,7 +48,7 @@ export class SelfAxios {
 
 - 其中<span style="background-color: #ebf5ff;">**instance**</span>属性的 ts 类型由 Axios 提供：**`AxiosInstance`**。
 
-- - 每个由 axios 创建出的**实例**，都会有 AxiosInstance 类型。
+  - 每个由 axios 创建出的**实例**，都会有 AxiosInstance 类型。
 
 - 而 instance 实例传进的<span style="background-color: #ebf5ff;">**config 参数**</span>也有类型：**`AxiosRequestConfig`**。
 
@@ -71,7 +71,7 @@ export class SelfAxios {
 
 - 在实例中添加`baseURL、timeout`等信息。
 
-- - `baseURL`可以根据环境变量来决定。
+  - `baseURL`可以根据环境变量来决定。
 
 新建文件 api/common/config.ts： （根据环境切换 baseurl）
 
@@ -155,15 +155,15 @@ export class SelfAxios {
 
 - 之后在划分模块时，一定会有一些**公有的逻辑** =》可以将它们封装在请求中，写进拦截器中。
 
-- - 比如<span style="color: #0091ff">携带 token</span>、<span style="color: #0091ff">loading 加载</span>。
+  - 比如<span style="color: #0091ff">携带 token</span>、<span style="color: #0091ff">loading 加载</span>。
   - 除了上面的基本配置，在创建实例时**还可以传进一些 hooks**。
 
 - <span style="color: #CC0000">**注意**</span>：但不能直接传 hook，因为这里 config 要求传进的是<span style="color: #8c7be9">`AxiosRequestConfig`</span>类型（这个类型里没有 hook 属性），所以<span style="color: #8c7be9">要自定义 hook </span>👇🏻。
 
 新建 request/types.ts：
 
-- 1. 对原本的 config 类型<span style="color: #8c7be9">`AxiosRequestConfig`</span>**做扩展**；
-  2. 定义好传入哪些拦截器。
+1. 对原本的 config 类型<span style="color: #8c7be9">`AxiosRequestConfig`</span>**做扩展**；
+2. 定义好传入哪些拦截器。
 
 ```
 import { AxiosRequestConfig, AxiosResponse } from "axios";
@@ -345,7 +345,7 @@ export class SelfAxios {
 
 - request 方法的 config 参数类型需要做转化，
 
-- - 方式 1. 转化 config 参数
+  - 方式 1. 转化 config 参数
   - 方式 2. 判断当有请求拦截器传入时，使用 config.interceptors.requestInterceptor 的方式转化。
 
 ```
@@ -374,7 +374,7 @@ export class SelfAxios {
 
 **最终添加完拦截器的** api/request/index.ts：
 
-- - 其中声明的类型已单独新建&放进 ./types.ts 中（在上面已记录）。
+- 其中声明的类型已单独新建&放进 ./types.ts 中（在上面已记录）。
 
 ```
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
@@ -462,32 +462,29 @@ export class SelfAxios {
 
 1. **封装 axios**：
 
-2. 1. 注意 instance 的类型和 request 方法的参数 config 的类型。
+   1. 注意 instance 的类型和 request 方法的参数 config 的类型。
    2. 根据需要给类型做扩展，在之后的使用中直接使用扩展好的。
 
-3. **封装拦截器**： （以下可 3 中可以都封装进去）
+2. **封装拦截器**： （以下可 3 中可以都封装进去）
 
-4. 1. 每个<span style="color: #678f00">**实例单独的拦截器**</span>：
+   - 每个<span style="color: #678f00">**实例单独的拦截器**</span>：
 
-   2. 1. 原先封装时的`constructor`**默认**只能传 **`AxiosRequestConfig` 类型**，但需要考虑到传递`hooks`的情况（拦截器） =》可以自定义个 class 再利用`extends`继承`AxiosRequestConfig`，**实现对它的扩展**。
+     - 原先封装时的`constructor`**默认**只能传 **`AxiosRequestConfig` 类型**，但需要考虑到传递`hooks`的情况（拦截器） =》可以自定义个 class 再利用`extends`继承`AxiosRequestConfig`，**实现对它的扩展**。
+     - 然后在封装 axios 中替换为 👆🏻 新的 class，这样每个实例可以有不同的拦截器。
+       - PS：需要注意，由于拦截器是可选的，在实例中使用时应该写为<span style="color: #8c7be9">**可选链**</span>形式。
 
-      2. 然后在封装 axios 中替换为 👆🏻 新的 class，这样每个实例可以有不同的拦截器。
+   - <span style="color: #678f00">**全局所有实例的拦截器**</span>：
 
-      3. 1. PS：需要注意，由于拦截器是可选的，在实例中使用时应该写为<span style="color: #8c7be9">**可选链**</span>形式。
+     - PS：请求拦截是后添加的先执行；响应拦截是先添加的先响应。
 
-   3. <span style="color: #678f00">**全局所有实例的拦截器**</span>：
+   - **请求单独的拦截器**：
 
-   4. 1. PS：请求拦截是后添加的先执行；响应拦截是先添加的先响应。
+     1. 这时封装 axios 实例时 request 的 config 参数不能使用默认的`AxiosRequestConfig`类型，而是为其做了拓展的`SelfRequestConfig`。
+     2.
+     3. PS：一般单个请求的拦截不会拦截 error。
 
-   5. **请求单独的拦截器**：
-
-   6. 1. 这时封装 axios 实例时 request 的 config 参数不能使用默认的`AxiosRequestConfig`类型，而是为其做了拓展的`SelfRequestConfig`。
-      2.
-      3. PS：一般单个请求的拦截不会拦截 error。
-
-- - 举例：
-
-  - - 封装的地方：
+   - 举例：
+     - 封装的地方：
 
 ```
 ...外层代码略...
@@ -542,7 +539,7 @@ export function loginRequest(account: IAccount) {
 
 控制台结果打印：
 
-​ ![image-20230218153030722](C:/Users/%E5%A4%B1%E9%A2%91%E6%9C%AC%E4%BA%BA/AppData/Roaming/Typora/typora-user-images/image-20230218153030722.png)
+![image-20230218153030722](C:/Users/%E5%A4%B1%E9%A2%91%E6%9C%AC%E4%BA%BA/AppData/Roaming/Typora/typora-user-images/image-20230218153030722.png)
 
 此处待整理：
 
@@ -623,11 +620,10 @@ export function loginRequest(account: IAccount) {
 ```
 
 - <span style="color: #CC0000">**注意**</span>：
-
-- - 如果某一接口将 loading 设置为 false 了，要<span style="color: #FFB700">在它后面设回 true 才可以在进入下一个页面后正常出现 loading</span>👇🏻。
+  - 如果某一接口将 loading 设置为 false 了，要<span style="color: #FFB700">在它后面设回 true 才可以在进入下一个页面后正常出现 loading</span>👇🏻。
   - 同时，也要注意 catch err 后的 loading 状态。
 
-​ ![image-20230218153523649](C:/Users/%E5%A4%B1%E9%A2%91%E6%9C%AC%E4%BA%BA/AppData/Roaming/Typora/typora-user-images/image-20230218153523649.png)
+![image-20230218153523649](C:/Users/%E5%A4%B1%E9%A2%91%E6%9C%AC%E4%BA%BA/AppData/Roaming/Typora/typora-user-images/image-20230218153523649.png)
 
 ### 4.3 封装完善 & 响应拦截的类型完善
 
@@ -683,23 +679,22 @@ request.request<DataType>({
 
 4. 使用 Promise 后要把 res 结果 `resolve` 返回出去：`resolve(res);` ；以及 `reject` 也是。
 
-- - <span style="color: #ff0001">**引出的问题**</span>：提示<span style="color: #0091ff">要求 res 是 `AxiosResponse` 类型</span>，<span style="color: #ff0001">而这里是 `<T>`</span>（res 的类型是跟着 request 的）。
+   - <span style="color: #ff0001">**引出的问题**</span>：提示<span style="color: #0091ff">要求 res 是 `AxiosResponse` 类型</span>，<span style="color: #ff0001">而这里是 `<T>`</span>（res 的类型是跟着 request 的）。
 
 ![image-20230218154538075](C:/Users/%E5%A4%B1%E9%A2%91%E6%9C%AC%E4%BA%BA/AppData/Roaming/Typora/typora-user-images/image-20230218154538075.png)
 
-- - <span style="color: #0091ff">**解决**</span>：<span style="background-color: #ebf5ff;">既然被推导错了，则<span style="color: #3850b8">直接指定 request 为 <any, T></span></span>（指定时需要注意要求有两个泛型）。
+- <span style="color: #0091ff">**解决**</span>：<span style="background-color: #ebf5ff;">既然被推导错了，则<span style="color: #3850b8">直接指定 request 为 <any, T></span></span>（指定时需要注意要求有两个泛型）。
+  - **PS**：由于 AxiosResponse 要从<span style="color: #3850b8">`.data`</span>中获取数据，而之前对 AxiosResponse 类型做过转化 → 赋值已是<span style="color: #3850b8">`res.data`</span>，所以此时 instance 实例的 request 类型根本不是提示中的 AxiosResponse 类型了，这里被<span style="color: #ff0001">推导错了</span>，应该就是 `<T>` 。
 
-  - - **PS**：由于 AxiosResponse 要从<span style="color: #3850b8">`.data`</span>中获取数据，而之前对 AxiosResponse 类型做过转化 → 赋值已是<span style="color: #3850b8">`res.data`</span>，所以此时 instance 实例的 request 类型根本不是提示中的 AxiosResponse 类型了，这里被<span style="color: #ff0001">推导错了</span>，应该就是 `<T>` 。
+![image-20230218154928398](C:/Users/%E5%A4%B1%E9%A2%91%E6%9C%AC%E4%BA%BA/AppData/Roaming/Typora/typora-user-images/image-20230218154928398.png)
 
-​ ![image-20230218154928398](C:/Users/%E5%A4%B1%E9%A2%91%E6%9C%AC%E4%BA%BA/AppData/Roaming/Typora/typora-user-images/image-20230218154928398.png)
+<span style="color: #CC0000">**注意**</span>：request 的泛型中有<span style="color: #CC0000">两个</span>：`T、AxiosResponse<T>`👇🏻，要改的是后者。
 
-​ <span style="color: #CC0000">**注意**</span>：request 的泛型中有<span style="color: #CC0000">两个</span>：`T、AxiosResponse<T>`👇🏻，要改的是后者。
+![0](https://note.youdao.com/yws/res/24754/WEBRESOURCEcd1d5151294312cd7f2c6d9bf9188bce)
 
-​ ![0](https://note.youdao.com/yws/res/24754/WEBRESOURCEcd1d5151294312cd7f2c6d9bf9188bce)
+- （**临时，S2 中已改**）上面图中提到被注释的那行有问题， 暂时将响应拦截器类型改为 any👇🏻：
 
-- - - （**临时，S2 中已改**）上面图中提到被注释的那行有问题， 暂时将响应拦截器类型改为 any👇🏻：
-
-    - - utils/request/type.ts：
+  - utils/request/type.ts：
 
 ```
 // responseInterceptor?: (res: AxiosResponse) => AxiosResponse; //由于request类型被推导后为其指定了泛型，为处理res的那行代码正常使用所以本行暂时改为：
@@ -742,9 +737,9 @@ export interface AxiosRequestInterceptors<T = AxiosResponse> {
 
 2. 再结合**S1.** 中提到的`res的T类型与要求的AxiosResponse不符`，要做的是使 AxiosResponse 类型改为 T 类型。<span style="color: #ff0001">**改的方法是**</span>：
 
-- - 将 T 类型传至`SelfRequestConfig`接口中，再由它传至`AxiosRequestInterceptors`的类型中（因为`SelfRequestConfig`的`interceptors`属性使用了该接口），这时 `AxiosResponse` 类型就被改为 `T` 类型了。
+   - 将 T 类型传至`SelfRequestConfig`接口中，再由它传至`AxiosRequestInterceptors`的类型中（因为`SelfRequestConfig`的`interceptors`属性使用了该接口），这时 `AxiosResponse` 类型就被改为 `T` 类型了。
 
-​ ![image-20230218155822404](C:/Users/%E5%A4%B1%E9%A2%91%E6%9C%AC%E4%BA%BA/AppData/Roaming/Typora/typora-user-images/image-20230218155822404.png)
+![image-20230218155822404](C:/Users/%E5%A4%B1%E9%A2%91%E6%9C%AC%E4%BA%BA/AppData/Roaming/Typora/typora-user-images/image-20230218155822404.png)
 
 - <span style="color: #CC0000">**总之关键点在于**</span>：将`request`的参数`config`的类型`SelfRequestConfig`也加上泛型`<T>`，使其逐步传递至嵌套的接口中最后被识别为 T 泛型，因为 👇🏻 使用的就是 T 类型：
 
@@ -752,89 +747,96 @@ export interface AxiosRequestInterceptors<T = AxiosResponse> {
 res = config.interceptors.responseInterceptor(res);
 ```
 
-- - 这时**该泛型传递的顺序**：<span style="color: #FFB700">SelfRequestConfig  </span>=》<span style="color: #FFB700">SelfRequestConfig</span> =》<span style="color: #FFB700">SelfRequestConfig 中的 interceptors</span> =》<span style="color: #FFB700">AxiosRequestInterceptors 中的 responseInterceptor </span>。
+- 这时**该泛型传递的顺序**：<span style="color: #FFB700">SelfRequestConfig  </span>=》<span style="color: #FFB700">SelfRequestConfig</span> =》<span style="color: #FFB700">SelfRequestConfig 中的 interceptors</span> =》<span style="color: #FFB700">AxiosRequestInterceptors 中的 responseInterceptor </span>。
 
-  - **最后这一块的代码**：
-
-  - - utils/request.index：
-
-```
-request<T>(config: SelfRequestConfig<T>): Promise<T> {
-    //改用return Promise的方式；注意不再是void类型而是promise👆🏻。
-    // 注意：promise拿到结果的类型应该是由请求者决定，所以使用泛型👆🏻。
-    return new Promise((resolve, reject) => {
-      //config类型要先换成扩展后的
-      // // 方式1. 将config这里转化一下(transformRequest是本来就有提供的)：
-      // this.instance.request({ ...config, transformRequest }).then((res) => {
-      //   console.log("res", res);
-      // });
-
-      // 方式2. 当👇🏻存在时，使用config.interceptors.requestInterceptor的方式转化：
-      if (config.interceptors?.requestInterceptor) {
-        config = config.interceptors.requestInterceptor(config);
-      }
-      // 判断是否需要显示loading：
-      if (config.showLoading === false) {
-        this.showLoading = config.showLoading;
-      }
-      this.instance
-        .request<any, T>(config)
-        .then((res) => {
-          // 也可以对响应结果做处理：
-          //  1. 单个请求对数据的处理：
-          if (config.interceptors?.responseInterceptor) {
-            // 转换res:
-            res = config.interceptors.responseInterceptor(res);
+- **最后这一块的代码**：
+  
+  - utils/request.index：
+  
+    ```
+    request<T>(config: SelfRequestConfig<T>): Promise<T> {
+        //改用return Promise的方式；注意不再是void类型而是promise👆🏻。
+        // 注意：promise拿到结果的类型应该是由请求者决定，所以使用泛型👆🏻。
+        return new Promise((resolve, reject) => {
+          //config类型要先换成扩展后的
+          // // 方式1. 将config这里转化一下(transformRequest是本来就有提供的)：
+          // this.instance.request({ ...config, transformRequest }).then((res) => {
+          //   console.log("res", res);
+          // });
+    
+          // 方式2. 当👇🏻存在时，使用config.interceptors.requestInterceptor的方式转化：
+          if (config.interceptors?.requestInterceptor) {
+            config = config.interceptors.requestInterceptor(config);
           }
-          // 将showLoading设置为true，避免影响下一个请求：
-          this.showLoading = true;
-          console.log("res", res);
-          resolve(res);
-        })
-        .catch((err) => {
-          // 将showLoading设置为true，避免影响下一个请求：
-          this.showLoading = true;
-          reject(err);
-          return err;
+          // 判断是否需要显示loading：
+          if (config.showLoading === false) {
+            this.showLoading = config.showLoading;
+          }
+          this.instance
+            .request<any, T>(config)
+            .then((res) => {
+              // 也可以对响应结果做处理：
+              //  1. 单个请求对数据的处理：
+              if (config.interceptors?.responseInterceptor) {
+                // 转换res:
+                res = config.interceptors.responseInterceptor(res);
+              }
+              // 将showLoading设置为true，避免影响下一个请求：
+              this.showLoading = true;
+              console.log("res", res);
+              resolve(res);
+            })
+            .catch((err) => {
+              // 将showLoading设置为true，避免影响下一个请求：
+              this.showLoading = true;
+              reject(err);
+              return err;
+            });
         });
-    });
+      }
+    ```
+  
+  - utils/request/types：
+  
+  ```
+  export interface AxiosRequestInterceptors<T = AxiosResponse> {
+    // 可以有四个interceptor:
+    //  当interceptor传进来后，会被放进request实例中(看17行的使用)；拦截器参数config的类型就是AxiosRequestConfig，其返回值也是AxiosRequestConfig。
+    requestInterceptor?: (config: AxiosRequestConfig) => AxiosRequestConfig;
+    requestInterceptorCatch?: (err: any) => any; //错误拦截；any类型
+  
+    //  响应拦截：
+    // responseInterceptor?: (res: AxiosResponse) => AxiosResponse; //由于request类型被推导后为其指定了泛型，为处理res的那行代码正常使用所以本行暂时改为下一行：
+    // responseInterceptor?: (res: any) => any;   // 临时更改；最后改为下一行：
+    responseInterceptor?: (res: T) => T;
+    responseInterceptorCatch?: (err: any) => any; //错误拦截；any类型
   }
-```
-
-- - - utils/request/types：
-
-```
-export interface AxiosRequestInterceptors<T = AxiosResponse> {
-  // 可以有四个interceptor:
-  //  当interceptor传进来后，会被放进request实例中(看17行的使用)；拦截器参数config的类型就是AxiosRequestConfig，其返回值也是AxiosRequestConfig。
-  requestInterceptor?: (config: AxiosRequestConfig) => AxiosRequestConfig;
-  requestInterceptorCatch?: (err: any) => any; //错误拦截；any类型
-
-  //  响应拦截：
-  // responseInterceptor?: (res: AxiosResponse) => AxiosResponse; //由于request类型被推导后为其指定了泛型，为处理res的那行代码正常使用所以本行暂时改为下一行：
-  // responseInterceptor?: (res: any) => any;   // 临时更改；最后改为下一行：
-  responseInterceptor?: (res: T) => T;
-  responseInterceptorCatch?: (err: any) => any; //错误拦截；any类型
-}
-
-// 对原本的AxiosRequestConfig做扩展，使其可以做到传递一些hooks拦截器：
-// 很多地方使用到了SelfRequestConfig，可能会被单独使用到，最好给它也指定泛型和默认值：
-export interface SelfRequestConfig<T = AxiosResponse>
-  extends AxiosRequestConfig {
-  interceptors?: AxiosRequestInterceptors<T>; //继承AxiosRequestConfig后，给它添加一个interceptor扩展。
-  showLoading?: boolean;
-}
-```
+  
+  // 对原本的AxiosRequestConfig做扩展，使其可以做到传递一些hooks拦截器：
+  // 很多地方使用到了SelfRequestConfig，可能会被单独使用到，最好给它也指定泛型和默认值：
+  export interface SelfRequestConfig<T = AxiosResponse>
+    extends AxiosRequestConfig {
+    interceptors?: AxiosRequestInterceptors<T>; //继承AxiosRequestConfig后，给它添加一个interceptor扩展。
+    showLoading?: boolean;
+  }
+  ```
+  
+  
 
 ### 4.4 其它完善 （略）
 
 - 在请求时可能不只有 request 形式的，或许会有 get、post 等。
 
-- - 所以继续在封装处添加 👇🏻： （本段未写在项目代码中...）
+  - 所以继续在封装处添加 👇🏻： （本段未写在项目代码中...）
 
-- ![image-20230218160230231](C:/Users/%E5%A4%B1%E9%A2%91%E6%9C%AC%E4%BA%BA/AppData/Roaming/Typora/typora-user-images/image-20230218160230231.png)
+    ![image-20230218160230231](C:/Users/%E5%A4%B1%E9%A2%91%E6%9C%AC%E4%BA%BA/AppData/Roaming/Typora/typora-user-images/image-20230218160230231.png)
 
-- - 由于**4.3 小节 S2.** 中对 SelfRequestConfig 类型加了，所以此处也要加上 👇🏻：
+  - 由于**4.3 小节 S2.** 中对 SelfRequestConfig 类型加了，所以此处也要加上 👇🏻：
+
+    ![image-20230219115404141](C:/Users/%E5%A4%B1%E9%A2%91%E6%9C%AC%E4%BA%BA/AppData/Roaming/Typora/typora-user-images/image-20230219115404141.png)
+
+
+
 
 ## 5. 划分模块
 
