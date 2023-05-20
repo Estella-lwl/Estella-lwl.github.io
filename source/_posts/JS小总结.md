@@ -3,14 +3,14 @@ title: JS小总结
 abbrlink: ac58b7ea
 author: polariis
 top: true
-cover: true
-toc: true
+cover: false #是否放入首页轮播
+toc: true  #是否开启目录
 mathjax: false
 categories: JavaScript
 tags:
   - JavaScript
   - 基础回顾
-date:
+date: 2021-09-11 13:56:33
 img:
 coverImg:
 password:
