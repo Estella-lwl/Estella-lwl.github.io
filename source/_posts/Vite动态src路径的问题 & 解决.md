@@ -2,16 +2,16 @@
 layout:
   - post
 title: Vite无法使用动态src路径的问题 & 解决
-abbrlink:             #会自动填充，别写
+abbrlink: 6a3db6b3
 author: polariis
-top: true     
-cover: false        #是否放入首页轮播
-toc: true        #是否开启目录
-mathjax: false    #是否有数学公式
+top: true
+cover: false
+toc: true
+mathjax: false
 tags:
   - Vite
 categories: Vite
-date: 2023-02-27 14:48
+date: '2023-02-27 14:48'
 img:
 coverImg:
 password:
