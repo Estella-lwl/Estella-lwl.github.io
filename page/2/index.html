@@ -304,6 +304,400 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/posts/3136a465/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="JS深拷贝">
+                            
+                            <span class="card-title">JS深拷贝</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                拷贝的对象可能是多层级的，要确保深层嵌套也一样，可以使用递归，所以：
+
+如果是原始类型 =》 直接返回，无需继续拷贝。
+如果是引用类型 =》 创建新对象，遍历要克隆的对象&amp;将对象属性深拷贝后依次放入新对象中。
+
+完善过程：（最终版拉
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-17
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/JavaScript/" class="post-category">
+                                    JavaScript
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/JavaScript/">
+                            <span class="chip bg-color">JavaScript</span>
+                        </a>
+                        
+                        <a href="/tags/%E6%9B%B4%E6%96%B0%E4%B8%AD/">
+                            <span class="chip bg-color">更新中</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/posts/2606f5b3/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Vue3生命周期的变更">
+                            
+                            <span class="card-title">Vue3生命周期的变更</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+销毁的概念改为卸载（unmounted），更名：
+
+
+beforeDestroy 改名为 beforeUnmounted。
+destroyed 改名为 unmounted。
+
+
+vue2 中的两次判断改为一次。
+
+
+​ 
+
+Vue3 提供
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-07
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Vue3/" class="post-category">
+                                    Vue3
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Vue3/">
+                            <span class="chip bg-color">Vue3</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/posts/2b061dbf/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="如何终止多层循环">
+                            
+                            <span class="card-title">如何终止多层循环</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                1. 使用for的情况下
+给外层和内层循环分别使用标签语句起个名字   (红宝书P167，3.6.7章节。)
+通过 break 标签语句    的形式选择中止哪一层循环。
+
+具体代码示例：
+
+其他方法：外层循环条件表达式里加一个布尔值与运算
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-07
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/JavaScript/" class="post-category">
+                                    JavaScript
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/JavaScript/">
+                            <span class="chip bg-color">JavaScript</span>
+                        </a>
+                        
+                        <a href="/tags/%E6%9B%B4%E6%96%B0%E4%B8%AD/">
+                            <span class="chip bg-color">更新中</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/posts/263d655f/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="reactive不能解构">
+                            
+                            <span class="card-title">reactive不能解构</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+当使用reactive定义一个对象，不能使用解构（数据不能修改成功）。
+
+举例：
+const obj = reactive(&#123;
+    a: &#39;polaris&#39;,
+    b: 20
+&#125;)
+
+obj.b
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-09
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Axios/" class="post-category">
+                                    Axios
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Vue3/">
+                            <span class="chip bg-color">Vue3</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/posts/9badfa3f/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="ref &amp; reactive &amp; 响应式差异">
+                            
+                            <span class="card-title">ref &amp; reactive &amp; 响应式差异</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                1. Ref
+作用：定义一个响应式的数据。
+
+语法：const xxx = ref(initValue)
+
+
+创建一个包含响应式数据的引用对象（reference 对象）。
+模板中使用引用对象不用后面加.value，而 setup 中使用该
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-07-05
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Vue3/" class="post-category">
+                                    Vue3
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Vue3/">
+                            <span class="chip bg-color">Vue3</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/posts/61ebbe5a/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="事件循环event loop">
+                            
+                            <span class="card-title">事件循环event loop</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                
+
+从浏览器多进程到 JS 单线程，JS 运行机制最全面的一次梳理：https://segmentfault.com/a/1190000012925872#articleHeader17
+参考自：晓舟的系列视频 前端面试题：JavaScri
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-06
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/JavaScript/" class="post-category">
+                                    JavaScript
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/JavaScript/">
+                            <span class="chip bg-color">JavaScript</span>
+                        </a>
+                        
+                        <a href="/tags/%E6%9B%B4%E6%96%B0%E4%B8%AD/">
+                            <span class="chip bg-color">更新中</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/posts/5b39b356/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Promise总结">
+                            
+                            <span class="card-title">Promise总结</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                关联笔记：Promise补充    事件循环event loop
+
+1. 一些需要知道的前置内容1.1 实例对象与函数对象
+实例对象：new函数产生的对象，称为实例对象，简称对象。
+函数对象：将函数作为对象使用时，简称函数对象。
+
+看以下对
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-27
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/JavaScript/" class="post-category">
+                                    JavaScript
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/JavaScript/">
+                            <span class="chip bg-color">JavaScript</span>
+                        </a>
+                        
+                        <a href="/tags/%E6%9B%B4%E6%96%B0%E4%B8%AD/">
+                            <span class="chip bg-color">更新中</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/posts/876a38c0/">
                         <div class="card-image">
                             
@@ -375,10 +769,10 @@ axios(&#123;
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1. 条件渲染v-if、v-show
-v-show控制display显示隐藏，v-if控制节点是否存在。
-当变化很频繁建议使用v-show，防止v-if反复删除添加节点。
-当使用v-if和v-else-if或v-else时，所在的模板代码精
+                                1. 条件渲染 v-if、v-show
+v-show 控制 display 显示隐藏，v-if 控制节点是否存在。
+当变化很频繁建议使用 v-show，防止 v-if 反复删除添加节点。
+当使用 v-if 和 v-else-if 或 v-e
                             
                         </div>
                         <div class="publish-info">
@@ -480,7 +874,7 @@ Web服务器一般指网站服务器，是指
                             
                                 1. SEO1. SEO：Search Engine Optimization，译为 搜索引擎优化，是一种利用搜索引擎的规则提高网站在有关搜索引擎内自然排名的方式。
 
-SEO的目的是：对网站进行深度优化，从而帮助网站获取免费的流量，进而在搜
+SEO 的目的是：对网站进行深度优化，从而帮助网站获取免费的流量，进而在
                             
                         </div>
                         <div class="publish-info">
@@ -562,367 +956,6 @@ git checkout t
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/posts/7a4077d8/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="关于移动端CSS">
-                            
-                            <span class="card-title">关于移动端CSS</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                总结： 兼容移动端主流浏览器，处理Webkit内核浏览器即可。
-查看设备网站：https://material.io/devices/
-1. 移动端调试方法
-chrome浏览器的模拟手机；
-搭建本地服务器，手机和服务器在一个局域网内，通过手
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-11
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/CSS/" class="post-category">
-                                    CSS
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/CSS/">
-                            <span class="chip bg-color">CSS</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/posts/ac58b7ea/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="JS小总结">
-                            
-                            <span class="card-title">JS小总结</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                1. 函数：
-在实际开发中，经常会使用一个变量来接收函数返回的结果。
-return 有终止函数的作用，return后的语句不会被执行。
-return只能返回一个值。（有多个时返回最后一个）
-所以当要return返回多个时，可以使用数组：
-
-
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-11
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/JavaScript/" class="post-category">
-                                    JavaScript
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/">
-                            <span class="chip bg-color">基础回顾</span>
-                        </a>
-                        
-                        <a href="/tags/JavaScript/">
-                            <span class="chip bg-color">JavaScript</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/posts/3eeb/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Hello World">
-                            
-                            <span class="card-title">Hello World</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-11
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-user fa-fw"></i>
-                                polariis
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/posts/433aec41/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="CSS三角的制作">
-                            
-                            <span class="card-title">CSS三角的制作</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                1. 等腰三角形使用场景：悬停到导航栏的某个li
-原理：
-// 宽高必须是0 ！！！
-.box1 &#123;
-    width: 0;
-    height: 0;
-    border: 10px solid transparent;
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-27
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/CSS/" class="post-category">
-                                    CSS
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/CSS/">
-                            <span class="chip bg-color">CSS</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/posts/73843be1/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Less">
-                            
-                            <span class="card-title">Less</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                CSS的弊端：
-
-
-
-Less1. Less介绍
-Leaner Style Sheets，是一门CSS扩展语言，也称为CSS预处理器。
-作为CSS的一种形式的扩展，在现有的CSS语法上为CSS加入程序式的特性。
-它在CSS的语法上，引入了变
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-25
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/CSS/" class="post-category">
-                                    CSS
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/CSS/">
-                            <span class="chip bg-color">CSS</span>
-                        </a>
-                        
-                        <a href="/tags/Less/">
-                            <span class="chip bg-color">Less</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/posts/7b1d00b1/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="swiper自定义分页器&amp;自定义切换按钮">
-                            
-                            <span class="card-title">swiper自定义分页器&amp;自定义切换按钮</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                1. swiper自定义分页器：js部分：
-pagination: &#123;
-  el: &#39;.swiper-pagination&#39;,
-  type: &#39;custom&#39;,
-  renderCustom: f
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-12
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E6%8F%92%E4%BB%B6-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" class="post-category">
-                                    插件&工具使用
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E6%8F%92%E4%BB%B6-%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/">
-                            <span class="chip bg-color">插件&amp;工具使用</span>
-                        </a>
-                        
-                        <a href="/tags/swiper/">
-                            <span class="chip bg-color">swiper</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/posts/553bfec9/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="border、padding与margin">
-                            
-                            <span class="card-title">border、padding与margin</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                场景：鼠标悬停出现内边框，位置不是写死的，所以导致li上下动。
-解决：添加padding。且padding值 = -border里的数字。
-border: #00FFFF 5px inset;
-margin: -5px;
-
-PS：如果是外边
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-10
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/CSS/" class="post-category">
-                                    CSS
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/CSS/">
-                            <span class="chip bg-color">CSS</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
@@ -940,7 +973,7 @@ PS：如果是外边
             
         </div>
         <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">2 / 4</div>
+            <div class="center-align b-text-gray">2 / 5</div>
         </div>
         <div class="col s6 m4 l4">
             
@@ -971,7 +1004,7 @@ PS：如果是外边
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">30.9k</span>&nbsp;字
+                class="white-color">39.6k</span>&nbsp;字
             
             
             

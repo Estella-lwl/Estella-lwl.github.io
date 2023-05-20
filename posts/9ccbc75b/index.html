@@ -297,6 +297,8 @@
     .toc-widget {
         width: 345px;
         padding-left: 20px;
+        height: 88%;
+        overflow-y: auto;
     }
 
     .toc-widget .toc-title {
@@ -321,7 +323,8 @@
     }
 
     #toc-content ol li {
-        padding-left: 10px;
+        /* 目录可能溢出暂时注释 */
+        /* padding-left: 10px; */
     }
 
     #toc-content .toc-link:hover {
@@ -1015,13 +1018,13 @@ btn.onclick = async() =&gt; &#123;
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/f85ba3a7/">
+                <a href="/posts/ac58b7ea/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="删除已推送的某个文件">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="JS小总结">
                         
-                        <span class="card-title">删除已推送的某个文件</span>
+                        <span class="card-title">JS小总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1032,14 +1035,14 @@ btn.onclick = async() =&gt; &#123;
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-16
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-11
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Git/" class="post-category">
-                                    Git
+                            <a href="/categories/JavaScript/" class="post-category">
+                                    JavaScript
                                 </a>
                             
                             
@@ -1049,8 +1052,12 @@ btn.onclick = async() =&gt; &#123;
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Git/">
-                        <span class="chip bg-color">Git</span>
+                    <a href="/tags/%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/">
+                        <span class="chip bg-color">基础回顾</span>
+                    </a>
+                    
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
                     </a>
                     
                 </div>
@@ -1157,7 +1164,7 @@ btn.onclick = async() =&gt; &#123;
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('3'),
+            collapseDepth: Number('6'),
             headingSelector: 'h2, h3, h4'
         });
 
@@ -1264,7 +1271,7 @@ btn.onclick = async() =&gt; &#123;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">30.9k</span>&nbsp;字
+                class="white-color">39.6k</span>&nbsp;字
             
             
             

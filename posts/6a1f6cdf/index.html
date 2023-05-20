@@ -297,6 +297,8 @@
     .toc-widget {
         width: 345px;
         padding-left: 20px;
+        height: 88%;
+        overflow-y: auto;
     }
 
     .toc-widget .toc-title {
@@ -321,7 +323,8 @@
     }
 
     #toc-content ol li {
-        padding-left: 10px;
+        /* 目录可能溢出暂时注释 */
+        /* padding-left: 10px; */
     }
 
     #toc-content .toc-link:hover {
@@ -377,10 +380,6 @@
                                 <span class="chip bg-color">CSS</span>
                             </a>
                         
-                            <a href="/tags/%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/">
-                                <span class="chip bg-color">基础回顾</span>
-                            </a>
-                        
                     </div>
                     
                 </div>
@@ -409,7 +408,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-24
+                    2023-05-20
                 </div>
                 
 
@@ -580,10 +579,6 @@ a:active         //链接被点击时的样式
                             
                                 <a href="/tags/CSS/">
                                     <span class="chip bg-color">CSS</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/">
-                                    <span class="chip bg-color">基础回顾</span>
                                 </a>
                             
                         </div>
@@ -1170,7 +1165,7 @@ a:active         //链接被点击时的样式
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('3'),
+            collapseDepth: Number('6'),
             headingSelector: 'h2, h3, h4'
         });
 
@@ -1277,7 +1272,7 @@ a:active         //链接被点击时的样式
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">30.9k</span>&nbsp;字
+                class="white-color">39.6k</span>&nbsp;字
             
             
             

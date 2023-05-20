@@ -297,6 +297,8 @@
     .toc-widget {
         width: 345px;
         padding-left: 20px;
+        height: 88%;
+        overflow-y: auto;
     }
 
     .toc-widget .toc-title {
@@ -321,7 +323,8 @@
     }
 
     #toc-content ol li {
-        padding-left: 10px;
+        /* 目录可能溢出暂时注释 */
+        /* padding-left: 10px; */
     }
 
     #toc-content .toc-link:hover {
@@ -398,14 +401,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-08-10
+                    2022-07-05
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-25
+                    2023-05-20
                 </div>
                 
 
@@ -437,28 +440,28 @@
                 <h2 id="1-Ref"><a href="#1-Ref" class="headerlink" title="1. Ref"></a>1. Ref</h2><ul>
 <li><p><strong>作用</strong>：定义一个响应式的数据。</p>
 </li>
-<li><p><strong>语法</strong>：const xxx = ref(initValue)  </p>
+<li><p><strong>语法</strong>：const xxx = ref(initValue)</p>
 </li>
 <li><ul>
-<li>创建一个包含响应式数据的引用对象（reference对象）。</li>
-<li>模板中使用引用对象不用后面加.value，而setup中使用该值时需要加.value。</li>
+<li>创建一个包含响应式数据的引用对象（reference 对象）。</li>
+<li>模板中使用引用对象不用后面加.value，而 setup 中使用该值时需要加.value。</li>
 </ul>
 </li>
 <li><p><strong>接收的数据</strong>：</p>
 </li>
 <li><ul>
 <li>可以是：基本类型、对象类型。</li>
-<li>ref处理 <strong>基本类型： 响应式</strong>依旧使用是<strong>defineProperty</strong> ，以set &amp; get数据劫持的方式。</li>
-<li>而处理 <strong>对象类型</strong>时使用<strong>proxy</strong>实现的（proxy是封装在reactive函数中的，ref内部会自动通过reactive转为代理对象）。</li>
-<li>补充：使用ref数据要 .value 是因为Object.defineProperty本身无法作用于基本数据类型，所以通过对象做了一层转化。</li>
+<li>ref 处理 <strong>基本类型： 响应式</strong>依旧使用是<strong>defineProperty</strong> ，以 set &amp; get 数据劫持的方式。</li>
+<li>而处理 <strong>对象类型</strong>时使用<strong>proxy</strong>实现的（proxy 是封装在 reactive 函数中的，ref 内部会自动通过 reactive 转为代理对象）。</li>
+<li>补充：使用 ref 数据要 .value 是因为 Object.defineProperty 本身无法作用于基本数据类型，所以通过对象做了一层转化。</li>
 </ul>
 </li>
-<li><p><strong>使用ref获取节点</strong>：</p>
+<li><p><strong>使用 ref 获取节点</strong>：</p>
 </li>
-<li><p><strong>注意</strong>：如果要在setup中拿到DOM元素，声明的变量名必须与元素中写的ref<strong>一致</strong>。</p>
+<li><p><strong>注意</strong>：如果要在 setup 中拿到 DOM 元素，声明的变量名必须与元素中写的 ref<strong>一致</strong>。</p>
 </li>
 </ul>
-<p><template>  <div id="countBox" ref="countupRef">    <span class="countSpan"></span>  </div> </template></p>
+<p><template> <div id="countBox" ref="countupRef"> <span class="countSpan"></span> </div> </template></p>
 <ul>
 <li><p>在<strong>onMounted</strong>中可以拿到节点：</p>
 <pre><code>  setup() &#123;
@@ -479,45 +482,45 @@
 </li>
 </ul>
 <h2 id="2-reactive："><a href="#2-reactive：" class="headerlink" title="2. reactive："></a><strong>2. reactive：</strong></h2><ul>
-<li><p><strong>作用</strong>：定义一个<strong>对象/数组类型</strong>的响应式数据（基本类型别用，要用ref函数）。</p>
+<li><p><strong>作用</strong>：定义一个<strong>对象/数组类型</strong>的响应式数据（基本类型别用，要用 ref 函数）。</p>
 </li>
-<li><p><strong>语法</strong>：const 代理对象 = reactive(源对象);  接收一个对象或数组，返回一个<strong>代理对象</strong>（Proxy的实例对象，简称proxy对象）。</p>
+<li><p><strong>语法</strong>：const 代理对象 = reactive(源对象); 接收一个对象或数组，返回一个<strong>代理对象</strong>（Proxy 的实例对象，简称 proxy 对象）。</p>
 </li>
 <li><ul>
 <li>绿色框里的就是源对象，粉色的是代理对象：</li>
 </ul>
 </li>
 </ul>
-<p> <img src="C:\Users\失频本人\Desktop\blog修改历史\blog\source_posts\image-20220810035136457-16600746990031.png" alt="image-20220810035136457"></p>
+<p><img src="C:\Users\失频本人\Desktop\blog修改历史\blog\source_posts\image-20220810035136457-16600746990031.png" alt="image-20220810035136457"></p>
 <ul>
-<li>reactive定义的响应式数据是”深层次的“。</li>
-<li>内部基于ES6的Proxy实现，通过代理对象操作源对象内部的数据。</li>
+<li>reactive 定义的响应式数据是”深层次的“。</li>
+<li>内部基于 ES6 的 Proxy 实现，通过代理对象操作源对象内部的数据。</li>
 </ul>
-<h2 id="3-ref对比reactive总结"><a href="#3-ref对比reactive总结" class="headerlink" title="3. ref对比reactive总结"></a><strong>3. ref对比reactive总结</strong></h2><ul>
+<h2 id="3-ref-对比-reactive-总结"><a href="#3-ref-对比-reactive-总结" class="headerlink" title="3. ref 对比 reactive 总结"></a><strong>3. ref 对比 reactive 总结</strong></h2><ul>
 <li><p><strong>从定义数据据角度对比</strong>：</p>
 </li>
 <li><ul>
-<li>ref定义：基本类型数据。</li>
-<li>reactive定义：对象/数组类型数据。</li>
-<li>注意：ref也可以定义对象/数组类型数据，它内部会自动通过reactive转为代理对象。</li>
+<li>ref 定义：基本类型数据。</li>
+<li>reactive 定义：对象/数组类型数据。</li>
+<li>注意：ref 也可以定义对象/数组类型数据，它内部会自动通过 reactive 转为代理对象。</li>
 </ul>
 </li>
 <li><p><strong>从原理角度对比</strong>：</p>
 </li>
 <li><ul>
-<li>ref：通过Object.defineProperty()的get和set实现响应式（数据劫持）。</li>
-<li>reactive：通过使用Proxy实现响应式（数据劫持），并通过Reflect操作源对象内部的数据。</li>
+<li>ref：通过 Object.defineProperty()的 get 和 set 实现响应式（数据劫持）。</li>
+<li>reactive：通过使用 Proxy 实现响应式（数据劫持），并通过 Reflect 操作源对象内部的数据。</li>
 </ul>
 </li>
 <li><p><strong>从使用角度对比</strong>：</p>
 </li>
 <li><ul>
-<li>ref定义的数据：操作数据需要.value，读取数据时模板会直接读取不用.value。</li>
-<li>reactive定义的数据：操作数据与读取数据均不需要.value。</li>
+<li>ref 定义的数据：操作数据需要.value，读取数据时模板会直接读取不用.value。</li>
+<li>reactive 定义的数据：操作数据与读取数据均不需要.value。</li>
 </ul>
 </li>
 </ul>
-<h2 id="4-响应式原理对比"><a href="#4-响应式原理对比" class="headerlink" title="4. 响应式原理对比"></a><strong>4. 响应式原理对比</strong></h2><h2 id="4-1-Vue2的响应式"><a href="#4-1-Vue2的响应式" class="headerlink" title="4.1 Vue2的响应式"></a><strong>4.1 Vue2的响应式</strong></h2><ul>
+<h2 id="4-响应式原理对比"><a href="#4-响应式原理对比" class="headerlink" title="4. 响应式原理对比"></a><strong>4. 响应式原理对比</strong></h2><h2 id="4-1-Vue2-的响应式"><a href="#4-1-Vue2-的响应式" class="headerlink" title="4.1 Vue2 的响应式"></a><strong>4.1 Vue2 的响应式</strong></h2><ul>
 <li><p><strong>实现原理</strong>：</p>
 </li>
 <li><ul>
@@ -526,12 +529,12 @@
 <li><p><strong>数组类型</strong>：通过<strong>重写更新数组的方法实现拦截</strong>。</p>
 </li>
 <li><ul>
-<li><p>比如：调用push方法，其实调用的是vue2二次封装后的push。</p>
+<li><p>比如：调用 push 方法，其实调用的是 vue2 二次封装后的 push。</p>
 </li>
-<li><p>这个push里做了两件事：</p>
+<li><p>这个 push 里做了两件事：</p>
 </li>
 <li><ul>
-<li>\1. 帮助正常调用push方法。</li>
+<li>\1. 帮助正常调用 push 方法。</li>
 <li>\2. 帮助更新界面。</li>
 </ul>
 </li>
@@ -564,26 +567,26 @@ this.xxx.splice(0, 1, &#39;&#39;);
 </li>
 <li><ul>
 <li>读取和修改有<strong>get</strong>和<strong>set</strong>方法，但是添加和删除是捕获不到的。</li>
-<li><strong>configurable</strong>配置项：能否使用delete删除属性，默认值为false。</li>
+<li><strong>configurable</strong>配置项：能否使用 delete 删除属性，默认值为 false。</li>
 </ul>
 </li>
 </ul>
-<h3 id="4-2-Vue3的响应式"><a href="#4-2-Vue3的响应式" class="headerlink" title="4.2 Vue3的响应式"></a><strong>4.2 Vue3的响应式</strong></h3><h4 id="4-2-1实现原理："><a href="#4-2-1实现原理：" class="headerlink" title="4.2.1实现原理："></a><strong>4.2.1实现原理：</strong></h4><ul>
+<h3 id="4-2-Vue3-的响应式"><a href="#4-2-Vue3-的响应式" class="headerlink" title="4.2 Vue3 的响应式"></a><strong>4.2 Vue3 的响应式</strong></h3><h4 id="4-2-1-实现原理："><a href="#4-2-1-实现原理：" class="headerlink" title="4.2.1 实现原理："></a><strong>4.2.1 实现原理：</strong></h4><ul>
 <li><p>通过<strong>Proxy</strong>（代理）：拦截对象中任意属性的变化，<strong>包括</strong>：属性的读写 、添加、删除 等。</p>
 </li>
 <li><p>通过<strong>Reflect</strong>（反射）：对源对象（被代理）的属性进行操作。</p>
 </li>
-<li><p>MDN文档中描述的<strong>Proxy</strong>与<strong>Reflect</strong>：</p>
+<li><p>MDN 文档中描述的<strong>Proxy</strong>与<strong>Reflect</strong>：</p>
 </li>
 <li><ul>
-<li><strong>Proxy</strong>：window上内置的，接收<strong>两个参数</strong>（必填）：<strong>1</strong>.target(代理对谁的操作)；<strong>2.</strong> 对象，至少要有个空对象占位。</li>
+<li><strong>Proxy</strong>：window 上内置的，接收<strong>两个参数</strong>（必填）：<strong>1</strong>.target(代理对谁的操作)；<strong>2.</strong> 对象，至少要有个空对象占位。</li>
 <li><strong>Reflect</strong>：<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Reflect</a></li>
 </ul>
 </li>
-<li><p>vue2和vue3响应时原理对比的补充：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7001999813344493581">https://juejin.cn/post/7001999813344493581</a></p>
+<li><p>vue2 和 vue3 响应时原理对比的补充：<a target="_blank" rel="noopener" href="https://juejin.cn/post/7001999813344493581">https://juejin.cn/post/7001999813344493581</a></p>
 </li>
 <li><ul>
-<li><strong>模拟Vue3中实现响应式</strong>：（不完整，看下面的<strong>reflect</strong>。）</li>
+<li><strong>模拟 Vue3 中实现响应式</strong>：（不完整，看下面的<strong>reflect</strong>。）</li>
 </ul>
 </li>
 </ul>
@@ -592,53 +595,53 @@ this.xxx.splice(0, 1, &#39;&#39;);
     // 读取某个属性时调用此方法：接收两个参数：源对象&amp;当前属性名
     get(target, propName) &#123;
         console.log(`$&#123;propName&#125;属性被读取~`);
-        return target[pcropName];    
+        return target[pcropName];
     &#125;,
     // 修改/增加某个属性时调用此方法：接收两个参数：比get多收到一个value值。
     set(target, propName, value) &#123;
         console.log(`$&#123;propName&#125;属性被修改，准备更新界面`);
-        target[propName] = value;    
+        target[propName] = value;
     &#125;,
     // 删除某个属性时调用此方法：
     deleteProperty(target, propName) &#123;
         console.log(`$&#123;propName&#125;属性被修改，准备更新界面`);
         // delete target[propName]  最好是把真实结果给他返回：
-        return delete target[propName]   
+        return delete target[propName]
     &#125;
 &#125;)
 </code></pre>
 <p>绿色框在真正修改源数据：</p>
 <p><img src="C:\Users\失频本人\Desktop\blog修改历史\blog\source_posts\image-20220810035353361-16600748348953.png" alt="image-20220810035353361"></p>
-<h4 id="4-2-2-响应式中Reflect的应用："><a href="#4-2-2-响应式中Reflect的应用：" class="headerlink" title="4.2.2. 响应式中Reflect的应用："></a>4.2.2. 响应式中Reflect的应用：</h4><ul>
-<li><strong>ES6</strong>，<strong>Windows内置</strong>。</li>
+<h4 id="4-2-2-响应式中-Reflect-的应用："><a href="#4-2-2-响应式中-Reflect-的应用：" class="headerlink" title="4.2.2. 响应式中 Reflect 的应用："></a>4.2.2. 响应式中 Reflect 的应用：</h4><ul>
+<li><strong>ES6</strong>，<strong>Windows 内置</strong>。</li>
 <li>增删改查<strong>用法</strong>：reflect.get、reflect.set、 reflect.delete。</li>
-<li>reflect里也有defineProperty方法，且有返回值（若不返回的话就不知道是否操作成功，因为它不报错。返回值是布尔值）。</li>
+<li>reflect 里也有 defineProperty 方法，且有返回值（若不返回的话就不知道是否操作成功，因为它不报错。返回值是布尔值）。</li>
 </ul>
-<p><strong>与Object.definProperty<strong><strong>对比</strong></strong>：</strong></p>
+<p><strong>与 Object.definProperty**<strong>对比*</strong>*：</strong></p>
 <ul>
-<li><p><strong>在做封装的时候，Object.definProperty捕获错误只能通过try catch。若使用reflect就可以避免。</strong><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Zy4y1K7SH?p=147&amp;t=672.1">https://www.bilibili.com/video/BV1Zy4y1K7SH?p=147&amp;t=672.1</a></p>
+<li><p><strong>在做封装的时候，Object.definProperty 捕获错误只能通过 try catch。若使用 reflect 就可以避免。</strong><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Zy4y1K7SH?p=147&amp;t=672.1">https://www.bilibili.com/video/BV1Zy4y1K7SH?p=147&amp;t=672.1</a></p>
 </li>
-<li><p> <strong>模拟Vue3中实现响应式</strong>（使用<strong>reflect</strong>改进后）：</p>
+<li><p><strong>模拟 Vue3 中实现响应式</strong>（使用<strong>reflect</strong>改进后）：</p>
 </li>
 <li><ul>
-<li><p>用到了proxy代理对象，及reflect反射对象。</p>
+<li><p>用到了 proxy 代理对象，及 reflect 反射对象。</p>
 <pre><code>        // 模拟Vue3中实现响应式：
         const p = new Proxy(person,  &#123;
     // 读取某个属性时调用此方法：接收两个参数：源对象&amp;当前属性名
     get(target, propName) &#123;
         console.log(`$&#123;propName&#125;属性被读取~`);
-        return Reflect.get(target, propName);    
+        return Reflect.get(target, propName);
     &#125;,
     // 修改/增加某个属性时调用此方法：接收两个参数：比get多收到一个value值。
     set(target, propName, value) &#123;
         console.log(`$&#123;propName&#125;属性被修改，准备更新界面`);
-        Reflect.set(target, propName, value);    
+        Reflect.set(target, propName, value);
     &#125;,
     // 删除某个属性时调用此方法：
     deleteProperty(target, propName) &#123;
         console.log(`$&#123;propName&#125;属性被修改，准备更新界面`);
         // delete target[propName]  最好是把真是结果给他返回：
-        return Reflect.deleteProperty(target, propName); 
+        return Reflect.deleteProperty(target, propName);
     &#125;
 &#125;)
 </code></pre>
@@ -649,7 +652,7 @@ this.xxx.splice(0, 1, &#39;&#39;);
 <hr>
 <p><strong>toRef</strong></p>
 <ul>
-<li>toRef可以创建一个ref，其的value值可以指向令一个对象的属性。</li>
+<li>toRef 可以创建一个 ref，其的 value 值可以指向令一个对象的属性。</li>
 </ul>
 <p><strong>举例</strong>：</p>
 <pre><code>const obj = &#123;
@@ -1171,13 +1174,13 @@ return &#123;
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/3136a465/">
+                <a href="/posts/263d655f/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="JS深拷贝">
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="reactive不能解构">
                         
-                        <span class="card-title">JS深拷贝</span>
+                        <span class="card-title">reactive不能解构</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1188,8 +1191,57 @@ return &#123;
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-17
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-09
                         </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Axios/" class="post-category">
+                                    Axios
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Vue3/">
+                        <span class="chip bg-color">Vue3</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/posts/61ebbe5a/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="事件循环event loop">
+                        
+                        <span class="card-title">事件循环event loop</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-05-06
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1211,55 +1263,6 @@ return &#123;
                     
                     <a href="/tags/%E6%9B%B4%E6%96%B0%E4%B8%AD/">
                         <span class="chip bg-color">更新中</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/posts/2606f5b3/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Vue3生命周期的变更">
-                        
-                        <span class="card-title">Vue3生命周期的变更</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-08-10
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Vue3/" class="post-category">
-                                    Vue3
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Vue3/">
-                        <span class="chip bg-color">Vue3</span>
                     </a>
                     
                 </div>
@@ -1317,7 +1320,7 @@ return &#123;
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('3'),
+            collapseDepth: Number('6'),
             headingSelector: 'h2, h3, h4'
         });
 
@@ -1424,7 +1427,7 @@ return &#123;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">30.9k</span>&nbsp;字
+                class="white-color">39.6k</span>&nbsp;字
             
             
             

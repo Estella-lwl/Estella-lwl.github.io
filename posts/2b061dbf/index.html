@@ -297,6 +297,8 @@
     .toc-widget {
         width: 345px;
         padding-left: 20px;
+        height: 88%;
+        overflow-y: auto;
     }
 
     .toc-widget .toc-title {
@@ -321,7 +323,8 @@
     }
 
     #toc-content ol li {
-        padding-left: 10px;
+        /* 目录可能溢出暂时注释 */
+        /* padding-left: 10px; */
     }
 
     #toc-content .toc-link:hover {
@@ -972,7 +975,7 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-10
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-07
                         </span>
                         <span class="publish-author">
                             
@@ -1097,7 +1100,7 @@
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('3'),
+            collapseDepth: Number('6'),
             headingSelector: 'h2, h3, h4'
         });
 
@@ -1204,7 +1207,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">30.9k</span>&nbsp;字
+                class="white-color">39.6k</span>&nbsp;字
             
             
             

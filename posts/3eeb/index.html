@@ -297,6 +297,8 @@
     .toc-widget {
         width: 345px;
         padding-left: 20px;
+        height: 88%;
+        overflow-y: auto;
     }
 
     .toc-widget .toc-title {
@@ -321,7 +323,8 @@
     }
 
     #toc-content ol li {
-        padding-left: 10px;
+        /* 目录可能溢出暂时注释 */
+        /* padding-left: 10px; */
     }
 
     #toc-content .toc-link:hover {
@@ -385,14 +388,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-12-11
+                    2021-04-04
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-24
+                    2023-05-20
                 </div>
                 
 
@@ -932,13 +935,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/ac58b7ea/">
+                <a href="/posts/d0bdcfbc/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="JS小总结">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="HTTP与Axios">
                         
-                        <span class="card-title">JS小总结</span>
+                        <span class="card-title">HTTP与Axios</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -949,14 +952,14 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-11
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-17
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/JavaScript/" class="post-category">
-                                    JavaScript
+                            <a href="/categories/Axios/" class="post-category">
+                                    Axios
                                 </a>
                             
                             
@@ -966,12 +969,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%9F%BA%E7%A1%80%E5%9B%9E%E9%A1%BE/">
-                        <span class="chip bg-color">基础回顾</span>
+                    <a href="/tags/HTTP/">
+                        <span class="chip bg-color">HTTP</span>
                     </a>
                     
-                    <a href="/tags/JavaScript/">
-                        <span class="chip bg-color">JavaScript</span>
+                    <a href="/tags/Axios/">
+                        <span class="chip bg-color">Axios</span>
                     </a>
                     
                 </div>
@@ -985,13 +988,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/433aec41/">
+                <a href="/posts/hexo-gitee/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="CSS三角的制作">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Hexo+Gitee搭建博客踩坑总结">
                         
-                        <span class="card-title">CSS三角的制作</span>
+                        <span class="card-title">Hexo+Gitee搭建博客踩坑总结</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1002,14 +1005,14 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-04-04
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CSS/" class="post-category">
-                                    CSS
+                            <a href="/categories/hexo/" class="post-category">
+                                    hexo
                                 </a>
                             
                             
@@ -1019,8 +1022,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CSS/">
-                        <span class="chip bg-color">CSS</span>
+                    <a href="/tags/hexo/">
+                        <span class="chip bg-color">hexo</span>
+                    </a>
+                    
+                    <a href="/tags/gitee/">
+                        <span class="chip bg-color">gitee</span>
                     </a>
                     
                 </div>
@@ -1078,7 +1085,7 @@
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('3'),
+            collapseDepth: Number('6'),
             headingSelector: 'h2, h3, h4'
         });
 
@@ -1185,7 +1192,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">30.9k</span>&nbsp;字
+                class="white-color">39.6k</span>&nbsp;字
             
             
             

@@ -297,6 +297,8 @@
     .toc-widget {
         width: 345px;
         padding-left: 20px;
+        height: 88%;
+        overflow-y: auto;
     }
 
     .toc-widget .toc-title {
@@ -321,7 +323,8 @@
     }
 
     #toc-content ol li {
-        padding-left: 10px;
+        /* 目录可能溢出暂时注释 */
+        /* padding-left: 10px; */
     }
 
     #toc-content .toc-link:hover {
@@ -402,21 +405,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-02-10
+                    2022-12-10
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-11
+                    2023-05-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    417
+                    422
                 </div>
                 
 
@@ -438,26 +441,26 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><strong>前言</strong> ：由于Object的范围很大，对象中属性可能是任意类型，而这时区分不出一个Object具体是什么类型。</p>
-<p>所以一般不在TS中直接使用Object类型，而是以下两种方式描述对象：</p>
+                <p><strong>前言</strong> ：由于 Object 的范围很大，对象中属性可能是任意类型，而这时区分不出一个 Object 具体是什么类型。</p>
+<p>所以一般不在 TS 中直接使用 Object 类型，而是以下两种方式描述对象：</p>
 <ol>
 <li><strong>class / constructor</strong>；</li>
 <li><strong>type</strong>或<strong>interface</strong>，推荐用这种，更灵活。</li>
 </ol>
-<h2 id="方式一：类型签名"><a href="#方式一：类型签名" class="headerlink" title="方式一：类型签名"></a>方式一：类型签名</h2><p>举例1：</p>
+<h2 id="方式一：类型签名"><a href="#方式一：类型签名" class="headerlink" title="方式一：类型签名"></a>方式一：类型签名</h2><p>举例 1：</p>
 <pre><code>type Obj = &#123;
     [K: string]: number  //代表Obj中有一个字符串类型属性（具体属性名可以随便取只要是字符串就可），其属性值是数字。
 &#125;
 </code></pre>
 <ul>
 <li><ul>
-<li>使用上有个共识，如果是泛型使用大写K；若非泛型，是用小写k。</li>
+<li>使用上有个共识，如果是泛型使用大写 K；若非泛型，是用小写 k。</li>
 </ul>
 </li>
 </ul>
-<p>上例基础上举例2：</p>
+<p>上例基础上举例 2：</p>
 <pre><code>type Obj = &#123;
-    [K: string]: number 
+    [K: string]: number
 &#125;
 
 const a: Obj = &#123;
@@ -467,11 +470,11 @@ const a: Obj = &#123;
 </code></pre>
 <ul>
 <li><ul>
-<li>例子中属性名的命名为数字编译会通过，是因为在JS层面：所有属性名最终被都是字符串形式。</li>
+<li>例子中属性名的命名为数字编译会通过，是因为在 JS 层面：所有属性名最终被都是字符串形式。</li>
 </ul>
 </li>
 </ul>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="C:/Users/%E5%A4%B1%E9%A2%91%E6%9C%AC%E4%BA%BA/AppData/Roaming/Typora/typora-user-images/image-20230211093401215.png" alt="image-20230211093401215"></h2><p>由例2引申的例3：JS中<strong>一个矛盾的情况</strong>。 （👈🏻看下面的总结，number类型也可以）</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="C:/Users/%E5%A4%B1%E9%A2%91%E6%9C%AC%E4%BA%BA/AppData/Roaming/Typora/typora-user-images/image-20230211093401215.png" alt="image-20230211093401215"></h2><p>由例 2 引申的例 3：JS 中<strong>一个矛盾的情况</strong>。 （👈🏻 看下面的总结，number 类型也可以）</p>
 <pre><code>type Obj = &#123;
     [K: number]: number   //注意看这里，给属性名规定为number类型。
 &#125;
@@ -483,23 +486,22 @@ const a: Obj = &#123;
 </code></pre>
 <ul>
 <li><ul>
-<li><strong>PS</strong>：<strong>当symbol作为key</strong>，必须<strong>用中括号包</strong>一下。</li>
-<li>这篇文章中提到了这个情况：<a target="_blank" rel="noopener" href="https://jkchao.github.io/typescript-book-chinese/typings/indexSignatures.html#typescript-%E7%B4%A2%E5%BC%95%E7%AD%BE%E5%90%8D">深入理解TS——签名索引</a></li>
+<li><strong>PS</strong>：<strong>当 symbol 作为 key</strong>，必须<strong>用中括号包</strong>一下。</li>
+<li>这篇文章中提到了这个情况：<a target="_blank" rel="noopener" href="https://jkchao.github.io/typescript-book-chinese/typings/indexSignatures.html#typescript-%E7%B4%A2%E5%BC%95%E7%AD%BE%E5%90%8D">深入理解 TS——签名索引</a></li>
 </ul>
 </li>
-<li></li>
 </ul>
+<p>-</p>
 <p>综上，<strong>总结</strong>：</p>
 <ul>
-<li><p>对象中key的类型可以不是string吗？</p>
+<li><p>对象中 key 的类型可以不是 string 吗？</p>
 </li>
 <li><ul>
-<li>还可以是symbol或number。</li>
+<li>还可以是 symbol 或 number。</li>
 </ul>
 </li>
 </ul>
-<p><strong>方式二：Record</strong></p>
-<p>其余待整理</p>
+<h2 id="方式二：Record"><a href="#方式二：Record" class="headerlink" title="方式二：Record"></a>方式二：Record</h2><p>其余待整理</p>
 
                 
             </div>
@@ -1002,18 +1004,17 @@ const a: Obj = &#123;
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/61dca9cf/">
+                <a href="/posts/e96745cc/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="关于TS中描述Object类型的两种方式（类型签名和Record）">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="使用TS封装axios">
                         
-                        <span class="card-title">关于TS中描述Object类型的两种方式（类型签名和Record）</span>
+                        <span class="card-title">使用TS封装axios</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1023,9 +1024,9 @@ const a: Obj = &#123;
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-02-10
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-12-11
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1038,16 +1039,19 @@ const a: Obj = &#123;
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%9B%B4%E6%96%B0%E4%B8%AD/">
-                        <span class="chip bg-color">更新中</span>
+                    <a href="/tags/Axios/">
+                        <span class="chip bg-color">Axios</span>
                     </a>
                     
                     <a href="/tags/TypeScript/">
                         <span class="chip bg-color">TypeScript</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%B0%81%E8%A3%85/">
+                        <span class="chip bg-color">封装</span>
                     </a>
                     
                 </div>
@@ -1061,13 +1065,13 @@ const a: Obj = &#123;
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/5ced3654/">
+                <a href="/posts/ba1dc77a/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="JS获取视频任意进度">
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="类class（JS &amp; TS）">
                         
-                        <span class="card-title">JS获取视频任意进度</span>
+                        <span class="card-title">类class（JS &amp; TS）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1078,7 +1082,7 @@ const a: Obj = &#123;
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-16
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-11-12
                             </span>
                         <span class="publish-author">
                             
@@ -1097,6 +1101,14 @@ const a: Obj = &#123;
                     
                     <a href="/tags/JavaScript/">
                         <span class="chip bg-color">JavaScript</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9B%B4%E6%96%B0%E4%B8%AD/">
+                        <span class="chip bg-color">更新中</span>
+                    </a>
+                    
+                    <a href="/tags/TypeScript/">
+                        <span class="chip bg-color">TypeScript</span>
                     </a>
                     
                 </div>
@@ -1154,7 +1166,7 @@ const a: Obj = &#123;
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('3'),
+            collapseDepth: Number('6'),
             headingSelector: 'h2, h3, h4'
         });
 
@@ -1261,7 +1273,7 @@ const a: Obj = &#123;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">30.9k</span>&nbsp;字
+                class="white-color">39.6k</span>&nbsp;字
             
             
             

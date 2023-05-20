@@ -297,6 +297,8 @@
     .toc-widget {
         width: 345px;
         padding-left: 20px;
+        height: 88%;
+        overflow-y: auto;
     }
 
     .toc-widget .toc-title {
@@ -321,7 +323,8 @@
     }
 
     #toc-content ol li {
-        padding-left: 10px;
+        /* 目录可能溢出暂时注释 */
+        /* padding-left: 10px; */
     }
 
     #toc-content .toc-link:hover {
@@ -409,7 +412,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-12-04
+                    2023-02-15
                 </div>
                 
 
@@ -438,47 +441,47 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="一、搭建过程如下："><a href="#一、搭建过程如下：" class="headerlink" title="一、搭建过程如下："></a>一、搭建过程如下：</h2><h3 id="阶段1：-本地搭建"><a href="#阶段1：-本地搭建" class="headerlink" title="阶段1： 本地搭建"></a>阶段1： 本地搭建</h3><p>1.下载安装node.js </p>
-<p>2.下载安装git </p>
-<p>3.使用命令行(win+r,输入cmd)下载淘宝镜像：    </p>
+                <h2 id="一、搭建过程如下："><a href="#一、搭建过程如下：" class="headerlink" title="一、搭建过程如下："></a>一、搭建过程如下：</h2><h3 id="阶段-1：-本地搭建"><a href="#阶段-1：-本地搭建" class="headerlink" title="阶段 1： 本地搭建"></a>阶段 1： 本地搭建</h3><p>1.下载安装 node.js</p>
+<p>2.下载安装 git</p>
+<p>3.使用命令行(win+r,输入 cmd)下载淘宝镜像：</p>
 <pre><code>npm install -g cnpm --registry=https://.npm.taobao.org
 </code></pre>
-<p>4.使用命令行下载hexo :    （git bash和cmd都可以）</p>
+<p>4.使用命令行下载 hexo : （git bash 和 cmd 都可以）</p>
 <pre><code>npm install -g hexo-cli
 </code></pre>
 <p>5.建立空文件夹 ：</p>
 <pre><code>md blog
 </code></pre>
 <p>6.进入建好的文件夹：</p>
-<pre><code>cd blog 
+<pre><code>cd blog
 </code></pre>
 <p>7.启动服务：</p>
 <pre><code>hexo s
 </code></pre>
-<p>8.停一下：ctrl c再按y </p>
-<p>9.新建文章： hexo n “标题” </p>
-<p>10.看这时在哪个目录下，然后cd进入 </p>
-<p>11.确认新建的文章是否成功：dir </p>
-<p>12.给博文加内容：这里我用typora写。用vim的方法是：vim 标题.md。然后保存退出：先按esc，再输入    wq(w保存，q退出)。 </p>
-<p>13.文件退两层： cd../.. (到了blog目录) </p>
-<p>14.win下写博文从文件夹用typora打开文章，然后保存刷新页面，不用重新启动hexo。 </p>
+<p>8.停一下：ctrl c 再按 y</p>
+<p>9.新建文章： hexo n “标题”</p>
+<p>10.看这时在哪个目录下，然后 cd 进入</p>
+<p>11.确认新建的文章是否成功：dir</p>
+<p>12.给博文加内容：这里我用 typora 写。用 vim 的方法是：vim 标题.md。然后保存退出：先按 esc，再输入 wq(w 保存，q 退出)。</p>
+<p>13.文件退两层： cd../.. (到了 blog 目录)</p>
+<p>14.win 下写博文从文件夹用 typora 打开文章，然后保存刷新页面，不用重新启动 hexo。</p>
 <p>15.清理 :</p>
-<pre><code>hexo clean 
+<pre><code>hexo clean
 </code></pre>
 <p>16.生成:</p>
-<pre><code>hexo g 
+<pre><code>hexo g
 </code></pre>
-<h3 id="阶段2：部署到Gitee"><a href="#阶段2：部署到Gitee" class="headerlink" title="阶段2：部署到Gitee"></a>阶段2：部署到Gitee</h3><p>1.装一个git的部署插件cnpm install –save hexo-deployer-git(win用npm install) </p>
-<p>2.注册登录Gitee账号，新建仓库，设置仓库名（一定要和用户名一样，否则可能会有无法预料结果）。</p>
-<p>3.设置根目录的_config.yml文件，用typore打开，拉到最底下设置deploy的值：</p>
+<h3 id="阶段-2：部署到-Gitee"><a href="#阶段-2：部署到-Gitee" class="headerlink" title="阶段 2：部署到 Gitee"></a>阶段 2：部署到 Gitee</h3><p>1.装一个 git 的部署插件 cnpm install –save hexo-deployer-git(win 用 npm install)</p>
+<p>2.注册登录 Gitee 账号，新建仓库，设置仓库名（一定要和用户名一样，否则可能会有无法预料结果）。</p>
+<p>3.设置根目录的_config.yml 文件，用 typore 打开，拉到最底下设置 deploy 的值：</p>
 <pre><code>deploy:
   type: git
   repo: 你的仓库地址（去Gitee复制）
   branch: master
 </code></pre>
-<p>注意冒号和值之间一定要有空格，type后面有单引号的话可以直接删了。</p>
-<p>4.这样就随时可以用电脑/手机访问了，地址可以直接复制仓库名访问。接下来就是换主题和自定义主题为满意的样式，我用的是Matery，网上有很多，Hexo官网也有。</p>
-<h2 id="二、需要注意的地方："><a href="#二、需要注意的地方：" class="headerlink" title="二、需要注意的地方："></a>二、需要注意的地方：</h2><p>1.主题名别忘了在_config.ym中更改，这种配置文件一定要严格按照格式！否则一言不合就报错！</p>
+<p>注意冒号和值之间一定要有空格，type 后面有单引号的话可以直接删了。</p>
+<p>4.这样就随时可以用电脑/手机访问了，地址可以直接复制仓库名访问。接下来就是换主题和自定义主题为满意的样式，我用的是 Matery，网上有很多，Hexo 官网也有。</p>
+<h2 id="二、需要注意的地方："><a href="#二、需要注意的地方：" class="headerlink" title="二、需要注意的地方："></a>二、需要注意的地方：</h2><p>1.主题名别忘了在_config.ym 中更改，这种配置文件一定要严格按照格式！否则一言不合就报错！</p>
 <p>2.下载的主题在解压缩后不要更改</p>
 <p>3.注意有没有漏下的插件，检查所有插件及版本号的指令：</p>
 <pre><code>npm list
@@ -487,27 +490,27 @@
 <pre><code>npm uninstall 插件名@版本号
 </code></pre>
 <p>5.怕出错想找回改动前的文件：可以提前复制粘贴一份在桌面，方便随时对照/改动。</p>
-<p>6.Typora可以选择是否显示目录，设置toc: true，如果某篇文章不显示目录了，可以查看文章最上方的设置是否正确。</p>
+<p>6.Typora 可以选择是否显示目录，设置 toc: true，如果某篇文章不显示目录了，可以查看文章最上方的设置是否正确。</p>
 <h2 id="三、踩坑-amp-解决："><a href="#三、踩坑-amp-解决：" class="headerlink" title="三、踩坑&amp;解决："></a>三、踩坑&amp;解决：</h2><p>1.报错：FATAL err:[Error: EBUSY: resource busy or locked, rmdir ‘C:\User...]</p>
 <p>网上搜索了一下，关闭软件重启电脑，果然有奇效。</p>
-<p>2.我的页面刚开始一直404，我百思不得其解，大佬们的各路招数试了个遍，然而它的纹丝不动仿佛在告诉我不要浪费时间。</p>
-<p>最后！我在Gitee Page页面看到了一个更新的按钮，我一脸疑惑的点了一下。接着，大不一样，顿时体会到柳暗花明又一村天无绝人之路。没错，我想了一下，大概是因为我的git一键部署功能出错了。总之，现在是记了，    每次终端部署完之后，在这个页面再点更新就好了。</p>
-<p>3.我发现我的主题，在设置成功之后无法在网站中更新，在尝试了很多方法之后，我发现把根目录的config yml文件的repo由SSH的地址变换为HTTPS的位置，这样就可以成功解决，不过还有一个问题就是这样的话，每次重新部署都要输入用户名和密码。</p>
-<p>然后我就尝试在网上搜集一些办法，但是没有什么用。这时我就想，如果我把repo. 再换成SSH的地址。这样换了之后我看会有什么变化变化，结果发现。重新部署之后是可以的，页面刷新也没有完全问题。</p>
-<p>4.我在所选的主题下找到了read me，开始按照里面的提示来配置我的主题文件夹。其中有一个是配置评论的表情的。我在配置过后发现你发现在本地运行的时候都会报错，后来在网上查找，提示说检查Jason文件格式，一般情况下，他都是一对花括号是首尾。后来我把最上面那行Json删了也把最外层的中括号删了。结果发现依旧报    错，接着我又尝试把中括号加上，运行一下再也没有红色字段，就Json这四个字母导致了运行报错。</p>
-<p>​    5.修改根目录配置文件时，注意缩进，有报错的情况！</p>
-<p>​    6.卸载了<a href="mailto:&#104;&#x69;&#x67;&#104;&#108;&#x69;&#x67;&#x68;&#x74;&#x2e;&#106;&#x73;&#64;&#x31;&#x30;&#x2e;&#55;&#46;&#49;">&#104;&#x69;&#x67;&#104;&#108;&#x69;&#x67;&#x68;&#x74;&#x2e;&#106;&#x73;&#64;&#x31;&#x30;&#x2e;&#55;&#46;&#49;</a>：npm uninstall <a href="mailto:&#x68;&#x65;&#120;&#111;&#45;&#113;&#105;&#x6e;&#105;&#117;&#x2d;&#x73;&#121;&#110;&#99;&#x40;&#x31;&#46;&#x34;&#x2e;&#x37;">&#x68;&#x65;&#120;&#111;&#45;&#113;&#105;&#x6e;&#105;&#117;&#x2d;&#x73;&#121;&#110;&#99;&#x40;&#x31;&#46;&#x34;&#x2e;&#x37;</a> （相关的配置我暂时未删，试了一下已    经好了）</p>
-<p>​    7.设置文章永久链接，下载指令：</p>
+<p>2.我的页面刚开始一直 404，我百思不得其解，大佬们的各路招数试了个遍，然而它的纹丝不动仿佛在告诉我不要浪费时间。</p>
+<p>最后！我在 Gitee Page 页面看到了一个更新的按钮，我一脸疑惑的点了一下。接着，大不一样，顿时体会到柳暗花明又一村天无绝人之路。没错，我想了一下，大概是因为我的 git 一键部署功能出错了。总之，现在是记了， 每次终端部署完之后，在这个页面再点更新就好了。</p>
+<p>3.我发现我的主题，在设置成功之后无法在网站中更新，在尝试了很多方法之后，我发现把根目录的 config yml 文件的 repo 由 SSH 的地址变换为 HTTPS 的位置，这样就可以成功解决，不过还有一个问题就是这样的话，每次重新部署都要输入用户名和密码。</p>
+<p>然后我就尝试在网上搜集一些办法，但是没有什么用。这时我就想，如果我把 repo. 再换成 SSH 的地址。这样换了之后我看会有什么变化变化，结果发现。重新部署之后是可以的，页面刷新也没有完全问题。</p>
+<p>4.我在所选的主题下找到了 read me，开始按照里面的提示来配置我的主题文件夹。其中有一个是配置评论的表情的。我在配置过后发现你发现在本地运行的时候都会报错，后来在网上查找，提示说检查 Jason 文件格式，一般情况下，他都是一对花括号是首尾。后来我把最上面那行 Json 删了也把最外层的中括号删了。结果发现依旧报 错，接着我又尝试把中括号加上，运行一下再也没有红色字段，就 Json 这四个字母导致了运行报错。</p>
+<p>​ 5.修改根目录配置文件时，注意缩进，有报错的情况！</p>
+<p>​ 6.卸载了<a href="mailto:&#x68;&#x69;&#x67;&#104;&#108;&#x69;&#103;&#x68;&#116;&#46;&#x6a;&#115;&#64;&#x31;&#48;&#46;&#x37;&#46;&#x31;">&#x68;&#x69;&#x67;&#104;&#108;&#x69;&#103;&#x68;&#116;&#46;&#x6a;&#115;&#64;&#x31;&#48;&#46;&#x37;&#46;&#x31;</a>：npm uninstall <a href="mailto:&#x68;&#101;&#x78;&#111;&#x2d;&#x71;&#x69;&#110;&#105;&#x75;&#x2d;&#x73;&#x79;&#110;&#x63;&#64;&#x31;&#46;&#x34;&#x2e;&#x37;">&#x68;&#101;&#x78;&#111;&#x2d;&#x71;&#x69;&#110;&#105;&#x75;&#x2d;&#x73;&#x79;&#110;&#x63;&#64;&#x31;&#46;&#x34;&#x2e;&#x37;</a> （相关的配置我暂时未删，试了一下已 经好了）</p>
+<p>​ 7.设置文章永久链接，下载指令：</p>
 <pre><code>npm install hexo-abbrlink --save
 </code></pre>
-<p>​    设置修改<code>_config.yml</code>文件中的配置项（记得把原来的<code>permalink:</code>删除掉）:</p>
+<p>​ 设置修改<code>_config.yml</code>文件中的配置项（记得把原来的<code>permalink:</code>删除掉）:</p>
 <pre><code>#设置永久链接
 permalink: posts/:abbrlink.html  # 此处可以自己设置，也可以直接使用 :/abbrlink
 abbrlink:
     alg: crc16   #算法： crc16(default) and crc32
     rep: dec     #进制： dec(default) and hex
 </code></pre>
-<p>​    8.npm resource busy or locked报错解决：</p>
+<p>​ 8.npm resource busy or locked 报错解决：</p>
 <pre><code>npm cache verify
 </code></pre>
 
@@ -1016,13 +1019,13 @@ abbrlink:
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/d0bdcfbc/">
+                <a href="/posts/3eeb/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="HTTP与Axios">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Hello World">
                         
-                        <span class="card-title">HTTP与Axios</span>
+                        <span class="card-title">Hello World</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1033,31 +1036,15 @@ abbrlink:
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-05-17
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-04-04
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/Axios/" class="post-category">
-                                    Axios
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            polariis
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/HTTP/">
-                        <span class="chip bg-color">HTTP</span>
-                    </a>
-                    
-                    <a href="/tags/Axios/">
-                        <span class="chip bg-color">Axios</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -1166,7 +1153,7 @@ abbrlink:
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('3'),
+            collapseDepth: Number('6'),
             headingSelector: 'h2, h3, h4'
         });
 
@@ -1273,7 +1260,7 @@ abbrlink:
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">30.9k</span>&nbsp;字
+                class="white-color">39.6k</span>&nbsp;字
             
             
             

@@ -297,6 +297,8 @@
     .toc-widget {
         width: 345px;
         padding-left: 20px;
+        height: 88%;
+        overflow-y: auto;
     }
 
     .toc-widget .toc-title {
@@ -321,7 +323,8 @@
     }
 
     #toc-content ol li {
-        padding-left: 10px;
+        /* 目录可能溢出暂时注释 */
+        /* padding-left: 10px; */
     }
 
     #toc-content .toc-link:hover {
@@ -398,21 +401,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-08-10
+                    2022-08-07
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-25
+                    2023-05-20
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    98
+                    103
                 </div>
                 
 
@@ -438,32 +441,32 @@
 <li><p>销毁的概念改为<strong>卸载</strong>（unmounted），更名：</p>
 </li>
 <li><ul>
-<li>beforeDestroy改名为beforeUnmounted。</li>
-<li>destroyed改名为unmounted。</li>
+<li>beforeDestroy 改名为 beforeUnmounted。</li>
+<li>destroyed 改名为 unmounted。</li>
 </ul>
 </li>
-<li><p>vue2中的两次判断改为一次。</p>
+<li><p>vue2 中的两次判断改为一次。</p>
 </li>
 </ul>
-<p>​    <img src="C:\Users\失频本人\Desktop\blog修改历史\blog\source_posts\image-20220810030613459.png" alt="image-20220810030613459"></p>
+<p>​ <img src="C:\Users\失频本人\Desktop\blog修改历史\blog\source_posts\image-20220810030613459.png" alt="image-20220810030613459"></p>
 <ul>
-<li><p>Vue3提供的<strong>Composition API</strong>形式对比：</p>
+<li><p>Vue3 提供的<strong>Composition API</strong>形式对比：</p>
 </li>
 <li><ul>
-<li>beforeCreate     =&gt;     <strong>setup()</strong></li>
-<li>created     =&gt;     <strong>setup()</strong></li>
-<li>beforeMount     =&gt;     <strong>onBeforeMount</strong></li>
-<li>mounted         =&gt;     <strong>onMounted</strong></li>
-<li>beforeUpdate      =&gt;     <strong>onBeforeUpdate</strong></li>
-<li>updated         =&gt;     <strong>onUpdated</strong></li>
-<li>beforeUnmounted     =&gt;     <strong>onBeforeUnmounted</strong></li>
-<li>unmounted     =&gt;     <strong>OnUnmounted</strong></li>
+<li>beforeCreate =&gt; <strong>setup()</strong></li>
+<li>created =&gt; <strong>setup()</strong></li>
+<li>beforeMount =&gt; <strong>onBeforeMount</strong></li>
+<li>mounted =&gt; <strong>onMounted</strong></li>
+<li>beforeUpdate =&gt; <strong>onBeforeUpdate</strong></li>
+<li>updated =&gt; <strong>onUpdated</strong></li>
+<li>beforeUnmounted =&gt; <strong>onBeforeUnmounted</strong></li>
+<li>unmounted =&gt; <strong>OnUnmounted</strong></li>
 </ul>
 </li>
-<li><p>组合式API的vue2生命钩子的<strong>优先级：</strong></p>
+<li><p>组合式 API 的 vue2 生命钩子的<strong>优先级：</strong></p>
 </li>
 <li><ul>
-<li><p>下图打印结果可以看到：setup中的组合式API优先级更高。</p>
+<li><p>下图打印结果可以看到：setup 中的组合式 API 优先级更高。</p>
 <p><img src="C:\Users\失频本人\Desktop\blog修改历史\blog\source_posts\image-20220810034139355-16600741018631.png" alt="image-20220810034139355"></p>
 </li>
 </ul>
@@ -971,13 +974,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/9badfa3f/">
+                <a href="/posts/3136a465/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="ref &amp; reactive &amp; 响应式差异">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="JS深拷贝">
                         
-                        <span class="card-title">ref &amp; reactive &amp; 响应式差异</span>
+                        <span class="card-title">JS深拷贝</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -988,14 +991,14 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-10
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-08-17
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Vue3/" class="post-category">
-                                    Vue3
+                            <a href="/categories/JavaScript/" class="post-category">
+                                    JavaScript
                                 </a>
                             
                             
@@ -1005,8 +1008,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Vue3/">
-                        <span class="chip bg-color">Vue3</span>
+                    <a href="/tags/JavaScript/">
+                        <span class="chip bg-color">JavaScript</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9B%B4%E6%96%B0%E4%B8%AD/">
+                        <span class="chip bg-color">更新中</span>
                     </a>
                     
                 </div>
@@ -1117,7 +1124,7 @@
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('3'),
+            collapseDepth: Number('6'),
             headingSelector: 'h2, h3, h4'
         });
 
@@ -1224,7 +1231,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">30.9k</span>&nbsp;字
+                class="white-color">39.6k</span>&nbsp;字
             
             
             

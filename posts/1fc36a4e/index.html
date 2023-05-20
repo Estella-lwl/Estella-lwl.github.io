@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="需要留意的可置换元素, HTML,CSS,JavaScript,JQuery,React,Vue.js">
+    <meta name="keywords" content="CSS需要留意的可置换元素, HTML,CSS,JavaScript,JQuery,React,Vue.js">
     <meta name="description" content="前端进阶之旅">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>需要留意的可置换元素 | polariis</title>
+    <title>CSS需要留意的可置换元素 | polariis</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -252,12 +252,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/7.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">需要留意的可置换元素</h1>
+                    <h1 class="description center-align post-title">CSS需要留意的可置换元素</h1>
                 </div>
             </div>
         </div>
@@ -297,6 +297,8 @@
     .toc-widget {
         width: 345px;
         padding-left: 20px;
+        height: 88%;
+        overflow-y: auto;
     }
 
     .toc-widget .toc-title {
@@ -321,7 +323,8 @@
     }
 
     #toc-content ol li {
-        padding-left: 10px;
+        /* 目录可能溢出暂时注释 */
+        /* padding-left: 10px; */
     }
 
     #toc-content .toc-link:hover {
@@ -405,14 +408,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-07
+                    2023-02-15
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    346
+                    350
                 </div>
                 
 
@@ -434,28 +437,28 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="block，inline和inlinke-block细节对比："><a href="#block，inline和inlinke-block细节对比：" class="headerlink" title="block，inline和inlinke-block细节对比："></a>block，inline和inlinke-block细节对比：</h2><p> inline-block看上去值名inline-block是一个混合产物，实际上确是如此，将元素显示为行内块状元素，设置该属性后，其他的行内块级元素会排列在同一行。比如我们li元素一个inline-block，使其既有block的宽度高度特性，又有inline的同行特性，在同一行内有不同高度内容的元素时，通常要设置对齐方式如vertical-align: top;来使元素顶部对齐。</p>
+                <h2 id="block，inline-和-inlinke-block-细节对比："><a href="#block，inline-和-inlinke-block-细节对比：" class="headerlink" title="block，inline 和 inlinke-block 细节对比："></a>block，inline 和 inlinke-block 细节对比：</h2><p>inline-block 看上去值名 inline-block 是一个混合产物，实际上确是如此，将元素显示为行内块状元素，设置该属性后，其他的行内块级元素会排列在同一行。比如我们 li 元素一个 inline-block，使其既有 block 的宽度高度特性，又有 inline 的同行特性，在同一行内有不同高度内容的元素时，通常要设置对齐方式如 vertical-align: top;来使元素顶部对齐。</p>
 <blockquote>
 <p>原文：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/rdchen/p/14025566.html">https://www.cnblogs.com/rdchen/p/14025566.html</a></p>
 </blockquote>
 <h3 id="1-vertical-align-属性"><a href="#1-vertical-align-属性" class="headerlink" title="1. vertical-align 属性"></a>1. vertical-align 属性</h3><p>设置行内元素的垂直对齐方式。</p>
 <blockquote>
-<p>​    vertical：竖的；垂直的。</p>
+<p>​ vertical：竖的；垂直的。</p>
 </blockquote>
-<p><strong>属性值bottom和text-bottom区别</strong>：前者是根据盒子底部对齐，后者根据文本底部对齐。</p>
-<p>​    在线演示：<a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tiy/t.asp?f=eg_csse_vertical-align">https://www.w3school.com.cn/tiy/t.asp?f=eg_csse_vertical-align</a></p>
+<p><strong>属性值 bottom 和 text-bottom 区别</strong>：前者是根据盒子底部对齐，后者根据文本底部对齐。</p>
+<p>​ 在线演示：<a target="_blank" rel="noopener" href="https://www.w3school.com.cn/tiy/t.asp?f=eg_csse_vertical-align">https://www.w3school.com.cn/tiy/t.asp?f=eg_csse_vertical-align</a></p>
 <p><strong>解决图片底部默认空白缝隙现象：</strong></p>
 <p><strong>原因</strong>：行内块元素会和文字的基线对齐。</p>
 <p><strong>两种解决方法</strong>：</p>
 <ol>
-<li> 给图片加<span style="color: #ff0001">vertical-align: middle | top | bottom</span>  等。（建议）</li>
+<li> 给图片加<span style="color: #ff0001">vertical-align: middle | top | bottom</span> 等。（建议）</li>
 <li> 把图片转换为块级元素 <span style="color: #ff0001">display: block;</span></li>
 </ol>
 <h3 id="2-为什么-input-元素能用-width-属性？"><a href="#2-为什么-input-元素能用-width-属性？" class="headerlink" title="2.为什么 input 元素能用 width 属性？"></a>2.为什么 input 元素能用 width 属性？</h3><p>因为是<span style="color: #ff0001"><strong>可置换元素</strong></span>，<strong>拥有</strong><span style="color: #FFB700"><strong>内在尺寸</strong></span>。比如 <u>img，也属于可置换元素（Replaced element）</u>。</p>
 <blockquote>
 <p>一个解释：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/20495297">https://www.zhihu.com/question/20495297</a></p>
 <p>另一个解释：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaofenguo/p/6086488.html">https://www.cnblogs.com/xiaofenguo/p/6086488.html</a></p>
-<p>另外关于haslayout详解：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaohuochai/p/4845314.html">https://www.cnblogs.com/xiaohuochai/p/4845314.html</a></p>
+<p>另外关于 haslayout 详解：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/xiaohuochai/p/4845314.html">https://www.cnblogs.com/xiaohuochai/p/4845314.html</a></p>
 </blockquote>
 
                 
@@ -1101,7 +1104,7 @@
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('3'),
+            collapseDepth: Number('6'),
             headingSelector: 'h2, h3, h4'
         });
 
@@ -1208,7 +1211,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">30.9k</span>&nbsp;字
+                class="white-color">39.6k</span>&nbsp;字
             
             
             

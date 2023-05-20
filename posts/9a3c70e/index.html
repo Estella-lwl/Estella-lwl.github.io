@@ -297,6 +297,8 @@
     .toc-widget {
         width: 345px;
         padding-left: 20px;
+        height: 88%;
+        overflow-y: auto;
     }
 
     .toc-widget .toc-title {
@@ -321,7 +323,8 @@
     }
 
     #toc-content ol li {
-        padding-left: 10px;
+        /* 目录可能溢出暂时注释 */
+        /* padding-left: 10px; */
     }
 
     #toc-content .toc-link:hover {
@@ -409,7 +412,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-07
+                    2023-05-20
                 </div>
                 
 
@@ -438,58 +441,60 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-条件渲染v-if、v-show"><a href="#1-条件渲染v-if、v-show" class="headerlink" title="1. 条件渲染v-if、v-show"></a>1. 条件渲染v-if、v-show</h2><ul>
-<li>v-show控制display显示隐藏，v-if控制节点是否存在。</li>
-<li>当变化很频繁建议使用v-show，防止v-if反复删除添加节点。</li>
-<li>当使用v-if和v-else-if或v-else时，所在的模板代码精致被打断，必须这几行写一起。</li>
-<li>template不会破坏结构，但是只能和v-if配合使用，v-show不行。</li>
+                <h2 id="1-条件渲染-v-if、v-show"><a href="#1-条件渲染-v-if、v-show" class="headerlink" title="1. 条件渲染 v-if、v-show"></a>1. 条件渲染 v-if、v-show</h2><ul>
+<li>v-show 控制 display 显示隐藏，v-if 控制节点是否存在。</li>
+<li>当变化很频繁建议使用 v-show，防止 v-if 反复删除添加节点。</li>
+<li>当使用 v-if 和 v-else-if 或 v-else 时，所在的模板代码被打断，必须这几行写一起。</li>
+<li>template 不会破坏结构，但是只能和 v-if 配合使用，v-show 不行。</li>
 </ul>
-<h2 id="2-列表渲染v-for"><a href="#2-列表渲染v-for" class="headerlink" title="2. 列表渲染v-for"></a>2. 列表渲染v-for</h2><ul>
-<li>使用v-for一定要搭配 :key，它相当于遍历每一项当中的唯一标识。</li>
+<h2 id="2-列表渲染-v-for"><a href="#2-列表渲染-v-for" class="headerlink" title="2. 列表渲染 v-for"></a>2. 列表渲染 v-for</h2><ul>
+<li>使用 v-for 一定要搭配 :key，它相当于遍历每一项当中的唯一标识。</li>
 <li>除了可以遍历数组类型，还可以遍历对象、遍历字符串（很少）、遍历指定次数（更少）。</li>
 </ul>
-<h2 id="3-key的作用与原理"><a href="#3-key的作用与原理" class="headerlink" title="3. key的作用与原理"></a>3. key的作用与原理</h2><p>视频讲解：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Zy4y1K7SH?p=30&amp;t=620.3">https://www.bilibili.com/video/BV1Zy4y1K7SH?p=30&amp;t=620.3</a></p>
-<p>当遍历中的index作为key，流程图解：</p>
-<p>  <img src="https://s2.loli.net/2022/10/05/QFhjls4NwgUJpES.png" alt="image-index作为key"></p>
+<h2 id="3-key-的作用与原理"><a href="#3-key-的作用与原理" class="headerlink" title="3. key 的作用与原理"></a>3. key 的作用与原理</h2><blockquote>
+<p>视频讲解：<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Zy4y1K7SH?p=30&amp;t=620.3">https://www.bilibili.com/video/BV1Zy4y1K7SH?p=30&amp;t=620.3</a></p>
+</blockquote>
+<p>当遍历中的 index 作为 key，流程图解：</p>
+<p><img src="https://s2.loli.net/2022/10/05/QFhjls4NwgUJpES.png" alt="image-index作为key"></p>
 <p><strong>两者流程对比对比：</strong></p>
-<p>当节点自己的id作为key，流程图解：</p>
+<p>当节点自己的 id 作为 key，流程图解：</p>
 <p><img src="https://s2.loli.net/2022/10/05/TCNvDWuXU63A8Kp.png" alt="image-对比id作为key"></p>
-<p>注：绿色框里的是复用过来的，红色框是diff算法对比后发现没有新生成的。</p>
-<p><strong>１、虚拟DOM中key的作用：</strong></p>
-<p>key是虚拟DOM对象的标识，当状态中的数据发生变化时，Vue会根据<strong>新数据生成新的虚拟DOM</strong>，随后Vue进行<strong>新虚拟DOM与旧虚拟DOM的差异比较</strong>，比较规则如下：</p>
+<p>注：绿色框里的是复用过来的，红色框是 diff 算法对比后发现没有新生成的。</p>
+<p><strong>１、虚拟 DOM 中 key 的作用：</strong></p>
+<p>key 是虚拟 DOM 对象的标识，当状态中的数据发生变化时，Vue 会根据<strong>新数据生成新的虚拟 DOM</strong>，随后 Vue 进行<strong>新虚拟 DOM 与旧虚拟 DOM 的差异比较</strong>，比较规则如下：</p>
 <p><strong>2. 对比规则：</strong></p>
 <ul>
-<li>旧虚拟DOM中找到了与旧虚拟DOM相同的key:<ul>
-<li>若虚拟DOM中内容没变，直接复用之前的真实DOM；</li>
-<li>若虚拟DOM中内容变了，则生成心的真实DOM，然后替换页面中之前的真实DOM。</li>
+<li>旧虚拟 DOM 中找到了与旧虚拟 DOM 相同的 key:<ul>
+<li>若虚拟 DOM 中内容没变，直接复用之前的真实 DOM；</li>
+<li>若虚拟 DOM 中内容变了，则生成心的真实 DOM，然后替换页面中之前的真实 DOM。</li>
 </ul>
 </li>
-<li>旧虚拟DOM中未找到与新虚拟DOM相同的key：<ul>
-<li>创建新的真是DOM，然后渲染到页面。</li>
+<li>旧虚拟 DOM 中未找到与新虚拟 DOM 相同的 key：<ul>
+<li>创建新的真是 DOM，然后渲染到页面。</li>
 </ul>
 </li>
 </ul>
-<p><strong>3. 用index作为key可能会引发的问题：</strong></p>
+<p><strong>3. 用 index 作为 key 可能会引发的问题：</strong></p>
 <ol>
 <li>若对数据进行：逆序添加、逆序删除等破坏了顺序的操作：<ol>
-<li>会产生没必要的真实DOM更新 =》界面效果没问题，但效率低。</li>
+<li>会产生没必要的真实 DOM 更新 =》界面效果没问题，但效率低。</li>
 </ol>
 </li>
-<li>若结构中还包含输入类的DOM（input框）：<ol>
-<li>会产生错误的DOM更新 =》界面有问题。</li>
+<li>若结构中还包含输入类的 DOM（input 框）：<ol>
+<li>会产生错误的 DOM 更新 =》界面有问题。</li>
 </ol>
 </li>
 </ol>
-<p><strong>4. 开发中怎么选择key：</strong></p>
+<p><strong>4. 开发中怎么选择 key：</strong></p>
 <ol>
-<li>最好使用每条数据的唯一表示作为key，比如id、手机号、身份证号、学号等唯一值。</li>
-<li>若不存在对数据的逆序添加/删除等破坏顺序的操作，仅用于渲染列表，使用index作为key没有问题。</li>
+<li>最好使用每条数据的唯一表示作为 key，比如 id、手机号、身份证号、学号等唯一值。</li>
+<li>若不存在对数据的逆序添加/删除等破坏顺序的操作，仅用于渲染列表，使用 index 作为 key 没有问题。</li>
 </ol>
-<h2 id="4-列表过滤"><a href="#4-列表过滤" class="headerlink" title="4. 列表过滤"></a>4. 列表过滤</h2><h3 id="4-1-用watch实现"><a href="#4-1-用watch实现" class="headerlink" title="4.1 用watch实现"></a>4.1 用watch实现</h3><p>分析：</p>
+<h2 id="4-列表过滤"><a href="#4-列表过滤" class="headerlink" title="4. 列表过滤"></a>4. 列表过滤</h2><h3 id="4-1-用-watch-实现"><a href="#4-1-用-watch-实现" class="headerlink" title="4.1 用 watch 实现"></a>4.1 用 watch 实现</h3><p>分析：</p>
 <ul>
 <li>step1.获取用户输入；step2. 给列表过滤。</li>
-<li>可以用v-model。</li>
-<li>当数据发生改变时就再次过滤，怎么知道数据改变？用watch。</li>
+<li>可以用 v-model。</li>
+<li>当数据发生改变时就再次过滤，怎么知道数据改变？用 watch。</li>
 </ul>
 <p>模板代码：</p>
 <pre><code>    &lt;h2&gt;人员列表&lt;/h2&gt;
@@ -501,7 +506,6 @@
       &lt;/li&gt;
     &lt;/ul&gt;
 </code></pre>
-<p>​            </p>
 <p>script：</p>
 <pre><code>      data: &#123;
         keyWord: &#39;&#39;,
@@ -514,7 +518,7 @@
         // 过滤出来的东西放在这里 以防数据被过滤丢失：
         filPersonList: []
       &#125;,
-      
+
       watch: &#123;
         // 传过来的newValue和oldVlue,这里只需要newValue。
         keyWord: &#123;
@@ -530,48 +534,44 @@
         &#125;
       &#125;
 </code></pre>
-<p>​           </p>
 <p><strong>一个关键点：</strong></p>
 <ul>
-<li>用indexOf判断一个字符串里是否包含一个空字符串，它会返回0，0代表它在字符串中第一位。</li>
+<li>用 indexOf 判断一个字符串里是否包含一个空字符串，它会返回 0，0 代表它在字符串中第一位。</li>
 <li>所以一开始为空输入然后删掉后会出现每一项，因为删掉后输入框还存在个空串，一旦空串被过滤，列表里每一项都被展示出来。</li>
-<li>所以handler前加个immediate为true，这样一开始没等输入就执行匹配的是空串，每一项会在一开始被展示出来！</li>
-<li>（一个矛盾点：若一开始为空会有空串那为啥输入再删掉和不输入有区别？？ </li>
+<li>所以 handler 前加个 immediate 为 true，这样一开始没等输入就执行匹配的是空串，每一项会在一开始被展示出来！</li>
+<li>（一个矛盾点：若一开始为空会有空串那为啥输入再删掉和不输入有区别？？</li>
 <li>懂了：一开始未输入就没有空串。一开始未输入就什么都没匹配，自然什么都不展示。而删掉后输入框就有了变动且有了空串导致每一项被展示。）</li>
 </ul>
-<h3 id="4-2-用computed实现"><a href="#4-2-用computed实现" class="headerlink" title="4.2 用computed实现"></a>4.2 用computed实现</h3><pre><code>computed: &#123;
+<h3 id="4-2-用-computed-实现"><a href="#4-2-用-computed-实现" class="headerlink" title="4.2 用 computed 实现"></a>4.2 用 computed 实现</h3><pre><code>computed: &#123;
   filPersonList() &#123;
       // 这里return是计算属性规定的：
       return this.personList.filter((p) =&gt; &#123;
       // 里面的逻辑和watch中的一样，但这里不能用watch返回的新旧value了，所以改为keyWord。
       // 这里return是filter规定的，要给它返回去。
-      return p.name.indexOf(this.keyWord) !== -1; 
+      return p.name.indexOf(this.keyWord) !== -1;
     &#125;)
   &#125;
 &#125;
 </code></pre>
-<p>​           </p>
 <p><strong>对比：</strong></p>
 <ul>
-<li>computed是通过keyWord变化后重新计算一遍，watch是监听有没有变化。在这里用computed写代码更精简些。</li>
+<li>computed 是通过 keyWord 变化后重新计算一遍，watch 是监听有没有变化。在这里用 computed 写代码更精简些。</li>
 </ul>
-<h2 id="5-列表排序"><a href="#5-列表排序" class="headerlink" title="5. 列表排序"></a>5. 列表排序</h2><p><strong>需求</strong>：给三个按钮按钮，分别实现列表的：升序、降序、原顺序。</p>
+<h2 id="5-列表排序"><a href="#5-列表排序" class="headerlink" title="5. 列表排序"></a>5. 列表排序</h2><p><strong>场景</strong>：给三个按钮按钮，分别实现列表的：升序、降序、原顺序。</p>
 <p><strong>分析</strong>：</p>
 <ol>
 <li>排序是在过滤后的基础上排。</li>
 <li>要区分开用户点的是哪种排序：新增一个属性来存储。</li>
-<li>展示出来的列表依赖于filPersonList，所以只要维护好filPersonList就可以过滤好，想要排序就维护好filPersonList过滤好的。</li>
+<li>展示出来的列表依赖于 filPersonList，所以只要维护好 filPersonList 就可以过滤好，想要排序就维护好 filPersonList 过滤好的。</li>
 <li>所以过滤好的先别让它返回。给个数组来接收到过滤好的列表，然后判断一下是否需要排序，进行排序相关操作后返回。</li>
 </ol>
 <pre><code>&lt;button @click=&quot;sortType === 2&quot;&gt;年龄升序&lt;/button&gt;
 &lt;button @click=&quot;sortType === 1&quot;&gt;年龄降序&lt;/button&gt;
 &lt;button @click=&quot;sortType === 0&quot;&gt;原顺序&lt;/button&gt;
 </code></pre>
-<p>​    </p>
 <pre><code>// 新增字段来存储，默认为原顺序：
 sortType: 0,   // 0原顺序；1降序；2升序。
 </code></pre>
-<p>​           </p>
 <p>放在<strong>computed</strong>里：</p>
 <pre><code>computed: &#123;
   filPersonList() &#123;
@@ -598,7 +598,6 @@ sortType: 0,   // 0原顺序；1降序；2升序。
   &#125;
 &#125;
 </code></pre>
-<p>​            </p>
 <p>PS：复习一下数组的<strong>sort</strong>方法：（<strong>两个参数</strong>：前一项、后一项。）</p>
 <p><img src="https://s2.loli.net/2022/10/05/1ki4ae8CMbwyR7D.png" alt="image-数组的sort方法"></p>
 <pre><code>    // sort是改变原数组的。
@@ -609,16 +608,16 @@ sortType: 0,   // 0原顺序；1降序；2升序。
     &#125;);
     console.log(arr);
 </code></pre>
-<h2 id="6-Vue监测数据改变的原理"><a href="#6-Vue监测数据改变的原理" class="headerlink" title="6. Vue监测数据改变的原理"></a>6. Vue监测数据改变的原理</h2><p><strong>总结：</strong></p>
+<h2 id="6-Vue-监测数据改变的原理"><a href="#6-Vue-监测数据改变的原理" class="headerlink" title="6. Vue 监测数据改变的原理"></a>6. Vue 监测数据改变的原理</h2><p><strong>总结：</strong></p>
 <ol>
-<li><p>Vue会监视data中所有层次的数据。</p>
+<li><p>Vue 会监视 data 中所有层次的数据。</p>
 </li>
 <li><p>如何监测<strong>对象</strong>中的数据：</p>
-<p>通过setter实现监视，且要在new Vue时就传入要监测的数据。</p>
+<p>通过 setter 实现监视，且要在 new Vue 时就传入要监测的数据。</p>
 <ul>
 <li><ol>
-<li>对象中后追加的属性，Vue默认不做响应式处理。</li>
-<li>如需给后添加属性做响应式，使用以下API：<ol>
+<li>对象中后追加的属性，Vue 默认不做响应式处理。</li>
+<li>如需给后添加属性做响应式，使用以下 API：<ol>
 <li>Vue.set(target, propertyName/index, value)，或</li>
 <li>vm.$set(target, propertyName/index, value)</li>
 </ol>
@@ -630,7 +629,7 @@ sortType: 0,   // 0原顺序；1降序；2升序。
 <li><p>如何监测<strong>数组</strong>中的数据：</p>
 </li>
 </ol>
-<p>​     通过包裹数组更新元素的方法实现，本质上做了两件事：</p>
+<p>通过包裹数组更新元素的方法实现，本质上做了两件事：</p>
 <ul>
 <li><ol>
 <li>调用原生对应的方法对数组进行更新。</li>
@@ -638,10 +637,10 @@ sortType: 0,   // 0原顺序；1降序；2升序。
 </ol>
 </li>
 </ul>
-<p>​     在Vue修改数组中的某个元素一定要用以下方法：</p>
+<p>在 Vue 修改数组中的某个元素一定要用以下方法：</p>
 <ul>
 <li><ol>
-<li>使用这些API：push()、pop()、shift()、unshift()、splice()、sort()、reverse()。</li>
+<li>使用这些 API：push()、pop()、shift()、unshift()、splice()、sort()、reverse()。</li>
 <li>Vue.set() 或 vm.$set。</li>
 </ol>
 </li>
@@ -649,27 +648,26 @@ sortType: 0,   // 0原顺序；1降序；2升序。
 <ol start="4">
 <li><strong>注意</strong>：<strong>Vue.set() 和 vm.$set() 不能给 vm 或 vm 的根数据对象添加属性！！！</strong></li>
 </ol>
-<h3 id="6-1-Vue监测数据改变的原理——对象"><a href="#6-1-Vue监测数据改变的原理——对象" class="headerlink" title="6.1 Vue监测数据改变的原理——对象"></a>6.1 Vue监测数据改变的原理——对象</h3><ul>
-<li>Vue中会有默认的监视，当data中数据发生变化，它就会去找用到的地方去更新。至于watch，是Vue提供出来被配置使用的。而两者的原理是一样的。</li>
+<h3 id="6-1-Vue-监测数据改变的原理——对象"><a href="#6-1-Vue-监测数据改变的原理——对象" class="headerlink" title="6.1 Vue 监测数据改变的原理——对象"></a>6.1 Vue 监测数据改变的原理——对象</h3><ul>
+<li>Vue 中会有默认的监视，当 data 中数据发生变化，它就会去找用到的地方去更新。至于 watch，是 Vue 提供出来被配置使用的。而两者的原理是一样的。</li>
 </ul>
-<p><strong>PS：</strong>列表排序是一种破坏顺序的行为，v-for遍历时绑定的key应该改为列表每一项中自己的id。</p>
-<h4 id="1-一种情况："><a href="#1-一种情况：" class="headerlink" title="1. 一种情况："></a>1. 一种情况：</h4><p>在点击事件的函数里这样修改列表中的数据：（是无效的，Vue监测不到变化。）</p>
+<p><strong>PS：</strong>列表排序是一种破坏顺序的行为，v-for 遍历时绑定的 key 应该改为列表每一项中自己的 id。</p>
+<h4 id="1-一种情况："><a href="#1-一种情况：" class="headerlink" title="1. 一种情况："></a>1. 一种情况：</h4><p>在点击事件的函数里这样修改列表中的数据：（是无效的，Vue 监测不到变化。）</p>
 <pre><code>this.personList[0] = &#123;id:&#39;001&#39;, name:&#39;罗老师&#39;, age:&#39;40&#39;, sex:&#39;男&#39;&#125;
 </code></pre>
-<p><strong>原因</strong>：直接操作了数组的索引值通过赋值的方式改，而这数组中的某一项是个对象，没有给它的                 getter、setter。</p>
+<p><strong>原因</strong>：直接操作了数组的索引值通过赋值的方式改，而这数组中的某一项是个对象，没有给它的 getter、setter。</p>
 <p><strong>正确方式：</strong></p>
 <pre><code>this.persons.splice(0, 1, &#39;&#123;id:&#39;001&#39;, name:&#39;罗老师&#39;, age:&#39;40&#39;, sex:&#39;男&#39;&#125;&#39;);
 </code></pre>
-<p>​      </p>
 <ul>
-<li>红色框里的被Vue管理了，所以就不再是正常原型对象上的push了。Vue里的push做了两件事：1. 调了正常数组上的方法；2. 重新解析模板 生成虚拟DOM等一系列操作。</li>
-<li>也就是说<strong>Vue对数组的监测靠的是包装数组上常用的修改数组的方法实现的</strong>。</li>
+<li>红色框里的被 Vue 管理了，所以就不再是正常原型对象上的 push 了。Vue 里的 push 做了两件事：1. 调了正常数组上的方法；2. 重新解析模板 生成虚拟 DOM 等一系列操作。</li>
+<li>也就是说<strong>Vue 对数组的监测靠的是包装数组上常用的修改数组的方法实现的</strong>。</li>
 </ul>
-<p>​    <img src="https://s2.loli.net/2022/10/05/lXZHMDQ7ULdaNjY.png" alt="image-png"></p>
-<h4 id="2-复习一下数据代理："><a href="#2-复习一下数据代理：" class="headerlink" title="2. 复习一下数据代理："></a>2. 复习一下数据代理：</h4><p>​    <img src="https://s2.loli.net/2022/10/05/n2SJtCkAuXZlMjz.png" alt="image-数据代理"></p>
-<p>第一步中加工data是为了实现响应式，也就能实现对对象里的属性的监视。改了data中的就会引起setter的调用来重新解析模板。</p>
-<h4 id="3-Vue监测原理："><a href="#3-Vue监测原理：" class="headerlink" title="3. Vue监测原理："></a>3. Vue监测原理：</h4><h5 id="3-1-先举个反例-amp-引出原理："><a href="#3-1-先举个反例-amp-引出原理：" class="headerlink" title="3.1 先举个反例&amp;引出原理："></a>3.1 先举个反例&amp;引出原理：</h5><p>​    <img src="https://s2.loli.net/2022/10/05/f8DoHKvxUjhYAEq.png" alt="image-反例"></p>
-<p>这种代码会一直递归导致栈溢出。原因是读取数据就调getter执行红色框，接着执行到绿色框读到data.name就又跑去调getter，这样不停调不停读是个死循环。同理，setter也是。一旦data.name被修改就去调setter，执行赋值就又出发了setter。</p>
+<p><img src="https://s2.loli.net/2022/10/05/lXZHMDQ7ULdaNjY.png" alt="image-png"></p>
+<h4 id="2-复习一下数据代理："><a href="#2-复习一下数据代理：" class="headerlink" title="2. 复习一下数据代理："></a>2. 复习一下数据代理：</h4><p><img src="https://s2.loli.net/2022/10/05/n2SJtCkAuXZlMjz.png" alt="image-数据代理"></p>
+<p>第一步中加工 data 是为了实现响应式，也就能实现对对象里的属性的监视。改了 data 中的就会引起 setter 的调用来重新解析模板。</p>
+<h4 id="3-Vue-监测原理："><a href="#3-Vue-监测原理：" class="headerlink" title="3. Vue 监测原理："></a>3. Vue 监测原理：</h4><h5 id="3-1-先举个反例-amp-引出原理："><a href="#3-1-先举个反例-amp-引出原理：" class="headerlink" title="3.1 先举个反例&amp;引出原理："></a>3.1 先举个反例&amp;引出原理：</h5><p><img src="https://s2.loli.net/2022/10/05/f8DoHKvxUjhYAEq.png" alt="image-反例"></p>
+<p>这种代码会一直递归导致栈溢出。原因是读取数据就调 getter 执行红色框，接着执行到绿色框读到 data.name 就又跑去调 getter，这样不停调不停读是个死循环。同理，setter 也是。一旦 data.name 被修改就去调 setter，执行赋值就又出发了 setter。</p>
 <h5 id="3-2-模拟一个数据监测："><a href="#3-2-模拟一个数据监测：" class="headerlink" title="3.2 模拟一个数据监测："></a>3.2 模拟一个数据监测：</h5><p><del>它里面写了个构造函数，</del></p>
 <pre><code>    let data = &#123;
       name: &#39;天天&#39;,
@@ -709,18 +707,17 @@ sortType: 0,   // 0原顺序；1降序；2升序。
       &#125;)
     &#125;
 </code></pre>
-<p>​       </p>
-<p>这里只是个大概，Vue中写的很完善，无论嵌套了几层对象它都可以找到而且数组中的对象也可以。</p>
-<h3 id="6-2-Vue-set的使用"><a href="#6-2-Vue-set的使用" class="headerlink" title="6.2 Vue.set的使用"></a>6.2 Vue.set的使用</h3><ul>
+<p>这里只是个大概，Vue 中写的很完善，无论嵌套了几层对象它都可以找到而且数组中的对象也可以。</p>
+<h3 id="6-2-Vue-set-的使用"><a href="#6-2-Vue-set-的使用" class="headerlink" title="6.2 Vue.set 的使用"></a>6.2 Vue.set 的使用</h3><ul>
 <li>Vue.set() 给传<strong>三个参数</strong>：target（往谁身上追加属性）、key（追加什么属性）、value（属性值）。</li>
-<li>它<strong>只能给data里追加，不能再在某个嵌套里</strong>。也就是说第一个参数不允许是vm或vm里的数据对象data。</li>
+<li>它<strong>只能给 data 里追加，不能再在某个嵌套里</strong>。也就是说第一个参数不允许是 vm 或 vm 里的数据对象 data。</li>
 </ul>
 <p>官方文档中：</p>
 <p><img src="https://s2.loli.net/2022/10/05/XBKle7aSyRZtCsT.png" alt="image-官方文档中"></p>
-<p><strong>与$set的区别：</strong></p>
+<p><strong>与$set 的区别：</strong></p>
 <ul>
 <li>用法一模一样。</li>
-<li>但它不在Vue身上，它在vm上。</li>
+<li>但它不在 Vue 身上，它在 vm 上。</li>
 </ul>
 <p>例：</p>
 <pre><code>  methods: &#123;
@@ -732,22 +729,22 @@ sortType: 0,   // 0原顺序；1降序；2升序。
     &#125;
   &#125;
 </code></pre>
-<h3 id="6-3-Vue监测数据改变的原理——数组"><a href="#6-3-Vue监测数据改变的原理——数组" class="headerlink" title="6.3 Vue监测数据改变的原理——数组"></a>6.3 Vue监测数据改变的原理——数组</h3><ol>
-<li>使用数组API；</li>
-<li>用Vue.set() ，用的不多。</li>
+<h3 id="6-3-Vue-监测数据改变的原理——数组"><a href="#6-3-Vue-监测数据改变的原理——数组" class="headerlink" title="6.3 Vue 监测数据改变的原理——数组"></a>6.3 Vue 监测数据改变的原理——数组</h3><ol>
+<li>使用数组 API；</li>
+<li>用 Vue.set() ，用的不多。</li>
 </ol>
 <p>可以直接去看上面的总结 &amp; 代码笔记的 7.1-7.3。（这里没记全）</p>
 <p><strong>补充</strong>：</p>
 <p><img src="https://s2.loli.net/2022/10/05/xqEC7orFsuULh8g.png" alt="image-官方文档中"></p>
 <p>另外关于数据劫持：</p>
-<p>若有人改了data中某个数值，setter就像劫持一样马上出面然后拿着这些数据去做两件事：</p>
+<p>若有人改了 data 中某个数值，setter 就像劫持一样马上出面然后拿着这些数据去做两件事：</p>
 <ol>
 <li><p>拿着接收到的数据去改数据；</p>
 </li>
 <li><p>重新解析模板。</p>
 </li>
 </ol>
-<p><strong>PS：它和数据代理都离不开Object.defineProperty。</strong></p>
+<p><strong>PS：它和数据代理都离不开 Object.defineProperty。</strong></p>
 
                 
             </div>
@@ -1400,7 +1397,7 @@ sortType: 0,   // 0原顺序；1降序；2升序。
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('3'),
+            collapseDepth: Number('6'),
             headingSelector: 'h2, h3, h4'
         });
 
@@ -1507,7 +1504,7 @@ sortType: 0,   // 0原顺序；1降序；2升序。
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">30.9k</span>&nbsp;字
+                class="white-color">39.6k</span>&nbsp;字
             
             
             

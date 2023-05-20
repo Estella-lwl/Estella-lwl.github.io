@@ -297,6 +297,8 @@
     .toc-widget {
         width: 345px;
         padding-left: 20px;
+        height: 88%;
+        overflow-y: auto;
     }
 
     .toc-widget .toc-title {
@@ -321,7 +323,8 @@
     }
 
     #toc-content ol li {
-        padding-left: 10px;
+        /* 目录可能溢出暂时注释 */
+        /* padding-left: 10px; */
     }
 
     #toc-content .toc-link:hover {
@@ -402,14 +405,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-12-11
+                    2021-09-11
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-02-07
+                    2023-05-20
                 </div>
                 
 
@@ -438,29 +441,30 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="1-函数："><a href="#1-函数：" class="headerlink" title="1. 函数："></a><strong>1. 函数：</strong></h2><ul>
+                <h2 id="1-函数"><a href="#1-函数" class="headerlink" title="1. 函数"></a>1. 函数</h2><ul>
 <li>在实际开发中，经常会使用一个变量来接收函数返回的结果。</li>
-<li>return 有终止函数的作用，return后的语句不会被执行。</li>
-<li>return只能返回一个值。（有多个时返回最后一个）</li>
-<li>所以当要return返回多个时，可以使用数组：</li>
+<li>return 有终止函数的作用，return 后的语句不会被执行。</li>
+<li>return 只能返回一个值。（有多个时返回最后一个）</li>
+<li>所以当要 return 返回多个时，可以使用数组：</li>
 </ul>
 <p>return [num1+num2,num1*num2]</p>
 <ul>
-<li><p>函数都有返回值。若有，则返回return后的值；若没有，则返回undefined。</p>
-</li>
-<li><ul>
-<li><strong>arguments的使用：</strong> ( 注意：只有函数才有arguments)</li>
-<li>当不确定有多少个参数传递的时候，可以用arguments来获取。在JS中，arguments实际上是当前函数的一个内置对象。<strong>所有函数都内置了一个arguments对象，arguments对象中存储了传递的所有实参。</strong></li>
+<li><p>函数都有返回值。若有，则返回 return 后的值；若没有，则返回 undefined。</p>
+<ul>
+<li><strong>arguments 的使用：</strong> ( 注意：只有函数才有 arguments)</li>
+<li>当不确定有多少个参数传递的时候，可以用 arguments 来获取。在 JS 中，arguments 实际上是当前函数的一个内置对象。<strong>所有函数都内置了一个 arguments 对象，arguments 对象中存储了传递的所有实参。</strong></li>
 </ul>
 </li>
-<li><p>arguments的展示形式是一个伪数组，因此可以进行遍历。</p>
+<li><p>arguments 的展示形式是一个伪数组，因此可以进行遍历。</p>
+<ul>
+<li><p>伪数组的特点： （伪数组并不是真正意义上的数组）</p>
 </li>
-<li><p>伪数组的特点：     （伪数组并不是真正意义上的数组）</p>
+<li><p>具有 length 属性；</p>
 </li>
-<li><ul>
-<li>具有length属性；</li>
-<li>按索引方式存储数据；</li>
-<li>不具有数组的push，pop等方法。</li>
+<li><p>按索引方式存储数据；</p>
+</li>
+<li><p>不具有数组的 push，pop 等方法。</p>
+</li>
 </ul>
 </li>
 <li><p>代码从上往下执行。当执行到调用某函数时，会去找执行部分的代码，如下面的 函数中调用另一个函数：</p>
@@ -476,7 +480,7 @@
     console.log(&#39;fn2&#39;)       /* 第3个执行 */
   &#125;
   fn1();                     /* 先找到这里 */
-  
+
  // 执行顺序：
 
  // 从上往下，fn1和fn2的代码块都未调用，所以这两个代码块都先不管。
@@ -487,35 +491,32 @@
 
  // 3.回去接着执行并输出fn1。
 </code></pre>
-<h2 id="2-JS作用域："><a href="#2-JS作用域：" class="headerlink" title="2. JS作用域："></a><strong>2. JS作用域：</strong></h2><ul>
+<h2 id="2-JS-作用域"><a href="#2-JS-作用域" class="headerlink" title="2. JS 作用域"></a>2. JS 作用域</h2><ul>
 <li><p>就是代码名字（变量）在某个范围内起作用和效果，目的是为了提高程序的可靠性，更重要的是减少命名冲突。</p>
 </li>
-<li><p>在ES6之前：全局作用域，局部作用域（也叫函数作用域）。两者就算名字一样也互不影响。</p>
+<li><p>在 ES6 之前：全局作用域，局部作用域（也叫函数作用域）。两者就算名字一样也互不影响。</p>
 </li>
 <li><p>注意：函数的形参也可以看作局部变量。</p>
 </li>
 <li><p>从执行效率来说，</p>
-</li>
-<li><ul>
+<ul>
 <li>全局变量：只有在浏览亲关闭的时候才会销毁。比较占内存资源。</li>
 <li>局部变量：当程序执行完之后就会销毁。比较节约内存资源。</li>
 </ul>
 </li>
-<li><p>块级作用域：ES6新增的，原本JS中没有块级作用域。</p>
+<li><p>块级作用域：ES6 新增的，原本 JS 中没有块级作用域。</p>
 </li>
-<li><p><strong>作用域链：</strong>     （<strong>就近原则</strong>）</p>
-</li>
-<li><ul>
+<li><p><strong>作用域链：</strong> （<strong>就近原则</strong>）</p>
+<ul>
 <li>内部函数访问外部函数的变量，采取的是链式查找的方式来决定取哪个值。这种结构就叫作用域链。</li>
 </ul>
 </li>
 </ul>
-<h2 id="3-JS预解析："><a href="#3-JS预解析：" class="headerlink" title="3. JS预解析："></a><strong>3. JS预解析：</strong></h2><ul>
-<li><p>JS引擎运行JS分为两步：预解析、代码执行。</p>
+<h2 id="3-JS-预解析"><a href="#3-JS-预解析" class="headerlink" title="3. JS 预解析"></a>3. JS 预解析</h2><ul>
+<li><p>JS 引擎运行 JS 分为两步：预解析、代码执行。</p>
 </li>
-<li><p>预解析：JS引擎会把JS里所有的var和function提升到当前作用域的最前面。</p>
-</li>
-<li><ul>
+<li><p>预解析：JS 引擎会把 JS 里所有的 var 和 function 提升到当前作用域的最前面。</p>
+<ul>
 <li>变量预解析（变量提升）：就是把所有的变量声明提升到<strong>当前</strong>作用域的最前面，<strong>不提升赋值操作</strong>。</li>
 <li>函数预解析（函数提升）：就是把所有函数声明提升到当前作用域的最前面，不调用函数。<strong>只有函数声明形式才有函数提升。</strong></li>
 <li><strong>函数提升优先级高于变量提升。</strong></li>
@@ -616,7 +617,7 @@
   function f1() &#123;
     // 这句相当于var a =9； b = 9；c = 9; 而不是var a;var b;var c;
     // 所以b、c并没有声明!!! 要当全局看
-    var a = b = c = 9;              
+    var a = b = c = 9;
     console.log(a);
     console.log(b);
     console.log(c);
@@ -624,8 +625,8 @@
 
   // 相当于执行下面的代码：
   function f1() &#123;
-    var a;  
-    a = b = c = 9;  
+    var a;
+    a = b = c = 9;
     // var b;     不是这样，写错了。。。
     // var c;
     // a = 9;
@@ -644,8 +645,8 @@
 <ul>
 <li>代码执行：按照代码顺序从上往下执行。</li>
 </ul>
-<h2 id="对象："><a href="#对象：" class="headerlink" title="对象："></a><strong>对象：</strong></h2><ul>
-<li><p>在JS中，对象是一组无序的相关属性和方法的集合，所有事物都是对象，如数组、字符串、函数、数值。</p>
+<h2 id="4-对象"><a href="#4-对象" class="headerlink" title="4. 对象"></a>4. 对象</h2><ul>
+<li><p>在 JS 中，对象是一组无序的相关属性和方法的集合，所有事物都是对象，如数组、字符串、函数、数值。</p>
 </li>
 <li><p>对象是由<strong>属性</strong>和<strong>方法</strong>组成的。</p>
 </li>
@@ -654,26 +655,24 @@
 <li><p>方法：是事物的<strong>行为</strong>，在对象中用<strong>方法</strong>来表示。（常用动词）</p>
 </li>
 <li><p>为什么需要对象：</p>
-</li>
-<li><ul>
-<li>保存一个值时，可以使用变量，保存多个值时，可以使用数组，如果要保存一个人的完整信息嘞~    </li>
+<ul>
+<li>保存一个值时，可以使用变量，保存多个值时，可以使用数组，如果要保存一个人的完整信息嘞~</li>
 </ul>
 </li>
 <li><p>现阶段可以用三种方式创建对象：</p>
-</li>
-<li><ul>
+<ul>
 <li>字面量创建；</li>
-<li>new Object创建对象；</li>
+<li>new Object 创建对象；</li>
 <li>利用构造函数创建对象。</li>
 </ul>
 </li>
 </ul>
-<h2 id="类class："><a href="#类class：" class="headerlink" title="类class："></a><strong>类class：</strong></h2><ul>
-<li>在ES6中新增了类的概念，可以使用class关键字声明一个类，之后以这个类来实例化对象。</li>
+<h2 id="5-类-class"><a href="#5-类-class" class="headerlink" title="5. 类 class"></a>5. 类 class</h2><ul>
+<li>在 ES6 中新增了类的概念，可以使用 class 关键字声明一个类，之后以这个类来实例化对象。</li>
 <li><strong>类</strong>抽象了对象的公共部分，它泛指某一大类(class)。</li>
 <li><strong>对象</strong>特指某一个，通过类实例化一个具体的对象。</li>
 </ul>
-<h3 id="1-创建类："><a href="#1-创建类：" class="headerlink" title="1.创建类："></a><strong>1.创建类：</strong></h3><p>语法：</p>
+<h3 id="5-1-创建类"><a href="#5-1-创建类" class="headerlink" title="5.1 创建类"></a>5.1 创建类</h3><p>语法：</p>
 <pre><code>class name &#123;
     //class body
 &#125;
@@ -681,10 +680,10 @@
 <p>创建实例：</p>
 <pre><code>var xx =  new name();
 </code></pre>
-<p>注意：类必须使用new实例化对象。</p>
-<h3 id="2-类-constructor-构造函数"><a href="#2-类-constructor-构造函数" class="headerlink" title="2.类 constructor 构造函数"></a><strong>2.类 constructor 构造函数</strong></h3><ul>
-<li><strong>constructor()</strong> 方法是类的构造函数（默认方法），<strong>用于传递参数，返回实例对象</strong>，通过new命令生成对象实例时，自动调用该方法。如果没有显式定义，类的内部会自动创建一个constructor()。</li>
-<li>有了它就不用return。</li>
+<p>注意：类必须使用 new 实例化对象。</p>
+<h3 id="5-2-类-constructor-构造函数"><a href="#5-2-类-constructor-构造函数" class="headerlink" title="5.2 类 constructor 构造函数"></a>5.2 类 constructor 构造函数</h3><ul>
+<li><strong>constructor()</strong> 方法是类的构造函数（默认方法），<strong>用于传递参数，返回实例对象</strong>，通过 new 命令生成对象实例时，自动调用该方法。如果没有显式定义，类的内部会自动创建一个 constructor()。</li>
+<li>有了它就不用 return。</li>
 </ul>
 <p>例：</p>
 <pre><code>// 1.创建类class，创建一个Star类。
@@ -701,7 +700,7 @@ class name &#123;
 &#125;
 // 2.利用类创建对象 new
 var zs = new Star(&#39;张三&#39;,18);   /* 只要加了new，就自动调用constructor。 */
-var ls = new Star(&#39;李四&#39;,20); 
+var ls = new Star(&#39;李四&#39;,20);
 console.log(zs);           /* 输出张三 */
 console.log(ls);
 zs.sing(&#39;lost river&#39;);
@@ -709,19 +708,19 @@ zs.sing(&#39;///////&#39;);
 </code></pre>
 <p><strong>注意点：</strong></p>
 <ol>
-<li>通过class关键字创建类，类名要大写。</li>
-<li>类里面有个constructor函数，可以接受传递过来的参数，同时返回实例对象。</li>
-<li>constructor函数只要new生成实例时，就会自动调用这个函数，如果不写这个函数，类也会自动生成这个函数。</li>
-<li>生成实例，new不能省略。</li>
-<li>最后注意语法规范，<strong>创建类</strong>，类名后面不要加小括号，<strong>生成实例</strong>，类名后面要加小括号，构造函数不需要加function。</li>
+<li>通过 class 关键字创建类，类名要大写。</li>
+<li>类里面有个 constructor 函数，可以接受传递过来的参数，同时返回实例对象。</li>
+<li>constructor 函数只要 new 生成实例时，就会自动调用这个函数，如果不写这个函数，类也会自动生成这个函数。</li>
+<li>生成实例，new 不能省略。</li>
+<li>最后注意语法规范，<strong>创建类</strong>，类名后面不要加小括号，<strong>生成实例</strong>，类名后面要加小括号，构造函数不需要加 function。</li>
 </ol>
 <p>另外：</p>
 <ul>
-<li>类里面所有的函数都不用写function来声明。</li>
+<li>类里面所有的函数都不用写 function 来声明。</li>
 <li>类里面，所有函数/方法之间不能加逗号分割。</li>
 <li></li>
 </ul>
-<h3 id="3-类的继承："><a href="#3-类的继承：" class="headerlink" title="3. 类的继承："></a><strong>3. 类的继承：</strong></h3><p>下次更新写。</p>
+<h3 id="5-3-类的继承"><a href="#5-3-类的继承" class="headerlink" title="5.3 类的继承"></a>5.3 类的继承</h3><p>下次更新写。</p>
 
                 
             </div>
@@ -1228,13 +1227,13 @@ zs.sing(&#39;///////&#39;);
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/posts/7a4077d8/">
+                <a href="/posts/f85ba3a7/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="关于移动端CSS">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="删除已推送的某个文件">
                         
-                        <span class="card-title">关于移动端CSS</span>
+                        <span class="card-title">删除已推送的某个文件</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1245,14 +1244,14 @@ zs.sing(&#39;///////&#39;);
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-11
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-16
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CSS/" class="post-category">
-                                    CSS
+                            <a href="/categories/Git/" class="post-category">
+                                    Git
                                 </a>
                             
                             
@@ -1262,8 +1261,8 @@ zs.sing(&#39;///////&#39;);
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CSS/">
-                        <span class="chip bg-color">CSS</span>
+                    <a href="/tags/Git/">
+                        <span class="chip bg-color">Git</span>
                     </a>
                     
                 </div>
@@ -1277,13 +1276,13 @@ zs.sing(&#39;///////&#39;);
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/posts/3eeb/">
+                <a href="/posts/9ccbc75b/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="axios拦截器">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">axios拦截器</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1294,15 +1293,31 @@ zs.sing(&#39;///////&#39;);
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-11
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-07-17
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            polariis
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Axios/" class="post-category">
+                                    Axios
+                                </a>
+                            
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Axios/">
+                        <span class="chip bg-color">Axios</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9B%B4%E6%96%B0%E4%B8%AD/">
+                        <span class="chip bg-color">更新中</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1358,7 +1373,7 @@ zs.sing(&#39;///////&#39;);
             tocSelector: '#toc-content',
             contentSelector: '#articleContent',
             headingsOffset: -($(window).height() * 0.4 - 45),
-            collapseDepth: Number('3'),
+            collapseDepth: Number('6'),
             headingSelector: 'h2, h3, h4'
         });
 
@@ -1465,7 +1480,7 @@ zs.sing(&#39;///////&#39;);
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">30.9k</span>&nbsp;字
+                class="white-color">39.6k</span>&nbsp;字
             
             
             
